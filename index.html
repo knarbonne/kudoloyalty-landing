@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KudoLoyalty — Simple LINE-native loyalty rewards for Thai businesses. Give your customers a reason to return." />
+  <meta property="og:title" content="KudoLoyalty — Rewards made simple" />
+  <meta property="og:description" content="LINE-native loyalty for Thai businesses. No app download. Set up in minutes." />
+  <meta name="theme-color" content="#7C3AED" />
+  <title>KudoLoyalty — Rewards made simple</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237C3AED'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='900'>K</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1A1A2E;
+      --violet: #7C3AED;
+      --violet-light: #EDE9FE;
+      --violet-mid: #A78BFA;
+      --muted: #64748B;
+      --border: #E5E7EB;
+      --bg: #FFFFFF;
+      --bg-subtle: #F9F8FF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .logo span { color: var(--violet); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: var(--violet);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── Sections ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 120px 24px 96px;
+      background: var(--bg);
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: var(--violet-light);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--violet); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--violet);
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hero-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Hero visual: mock loyalty card ── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .mock-phone {
+      width: 260px;
+      background: var(--ink);
+      border-radius: 36px;
+      padding: 32px 20px;
+      box-shadow: 0 40px 80px rgba(26,26,46,0.18), 0 0 0 1px rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .mock-merchant-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .mock-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--violet);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #fff;
+      font-size: 14px;
+    }
+    .mock-merchant-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .mock-merchant-tag { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 1px; }
+    .mock-card {
+      background: linear-gradient(135deg, var(--violet) 0%, #5B21B6 100%);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+    .mock-card-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+    .mock-card-points { font-size: 40px; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+    .mock-card-unit { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-top: 4px; }
+    .mock-progress-label { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 14px; margin-bottom: 6px; }
+    .mock-progress-bar { height: 5px; background: rgba(255,255,255,0.18); border-radius: 99px; overflow: hidden; }
+    .mock-progress-fill { height: 100%; width: 72%; background: rgba(255,255,255,0.85); border-radius: 99px; }
+    .mock-reward {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mock-reward-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .mock-reward-cost { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .mock-reward-btn {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--violet);
+      background: var(--violet-light);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .mock-badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: #10B981;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(16,185,129,0.35);
+    }
+
+    /* ── How it works ── */
+    .how { background: var(--bg-subtle); }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .step {
+      display: grid;
+      gap: 14px;
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--violet);
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .step p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Features ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .feature-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
+      display: grid;
+      gap: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--violet-mid);
+      box-shadow: 0 8px 32px rgba(124,58,237,0.08);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--violet-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Who it's for ── */
+    .for { background: var(--bg-subtle); }
+    .for-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .for-card {
+      padding: 28px 24px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+      text-align: center;
+      display: grid;
+      gap: 10px;
+    }
+    .for-icon { font-size: 32px; }
+    .for-card h3 { font-size: 15px; font-weight: 800; color: var(--ink); }
+    .for-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--ink);
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .cta-section h2 span { color: var(--violet-mid); }
+    .cta-section p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 40px;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 36px;
+      background: var(--violet);
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+    .cta-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .footer-logo { font-size: 15px; font-weight: 900; color: var(--ink); letter-spacing: -0.02em; }
+    .footer-logo span { color: var(--violet); }
+    .footer-links { display: flex; gap: 24px; align-items: center; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--violet); }
+    .footer-copy { font-size: 12px; color: #CBD5E1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero .container { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { order: -1; }
+      .mock-phone { width: 220px; }
+      .steps { grid-template-columns: 1fr; gap: 24px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .for-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 64px 20px; }
+      .hero { padding: 72px 20px 64px; }
+    }
+    @media (max-width: 480px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .for-grid { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><span>Kudo</span>Loyalty</a>
+      <a href="https://stre-loyalty.web.app/portal" class="nav-cta">Get started →</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#7C3AED"/><path d="M4 7l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          LINE-native loyalty for Thai businesses
+        </div>
+        <h1>Rewards<br /><span>made simple.</span></h1>
+        <p class="hero-sub">
+          Give your customers a reason to return. KudoLoyalty runs inside LINE — no app download, no friction, no technical knowledge required.
+        </p>
+        <div class="hero-actions">
+          <a href="https://stre-loyalty.web.app/portal" class="btn-primary">
+            Start free
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span class="hero-note">No credit card required</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mock-phone">
+          <div class="mock-badge">72 pts earned today</div>
+          <div class="mock-merchant-header">
+            <div class="mock-logo">B</div>
+            <div>
+              <div class="mock-merchant-name">Blue Elephant Café</div>
+              <div class="mock-merchant-tag">Rewards program</div>
+            </div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-label">Your points</div>
+            <div class="mock-card-points">248</div>
+            <div class="mock-card-unit">points</div>
+            <div class="mock-progress-label">
+              <span>Progress to reward</span>
+              <span>248 / 300</span>
+            </div>
+            <div class="mock-progress-bar">
+              <div class="mock-progress-fill"></div>
+            </div>
+          </div>
+          <div class="mock-reward">
+            <div>
+              <div class="mock-reward-name">Free coffee</div>
+              <div class="mock-reward-cost">300 points</div>
+            </div>
+            <div class="mock-reward-btn">Redeem</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <div class="container">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">Live in under 15 minutes</h2>
+      <p class="section-sub">No developers, no integrations, no headaches. Just sign up, set up your rewards, and share your link.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Set up your program</h3>
+          <p>Create your account, pick your loyalty model — points, visits, or online claims — and add your first rewards. Guided setup walks you through every step.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Share with customers</h3>
+          <p>Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>They earn, they return</h3>
+          <p>Members collect points and redeem rewards automatically. You see everything in your dashboard — who's active, what's working, what to do next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <div class="container">
+      <div class="section-eyebrow">Features</div>
+      <h2 class="section-title">Everything you need.<br />Nothing you don't.</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>LINE-native</h3>
+          <p>Members earn and redeem inside LINE. No app to download, no new account to create. Works on every phone.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎁</div>
+          <h3>Flexible rewards</h3>
+          <p>Points, visits, or online claims. Staff-verified redemptions or instant digital coupons — your choice.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎟️</div>
+          <h3>Promo campaigns</h3>
+          <p>Run promo codes, collect registrations, and export participant lists — all from the same dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Live analytics</h3>
+          <p>Track active members, earning trends, and which rewards drive the most return visits.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Coupon wallet</h3>
+          <p>Instant discount codes delivered directly to members when they claim — no staff needed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Guided setup</h3>
+          <p>Step-by-step onboarding for LINE OA, LIFF connection, and your first reward. No technical knowledge needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="for">
+    <div class="container">
+      <div class="section-eyebrow">Who it's for</div>
+      <h2 class="section-title">Built for Thai small businesses</h2>
+      <p class="section-sub">Any business that wants customers to come back more often.</p>
+      <div class="for-grid">
+        <div class="for-card">
+          <div class="for-icon">☕</div>
+          <h3>Cafés & restaurants</h3>
+          <p>Stamp cards, visit rewards, and loyalty programs your regulars will love.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">💅</div>
+          <h3>Salons & beauty</h3>
+          <p>Reward repeat bookings and turn first-time clients into regulars.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">🛍️</div>
+          <h3>Retail shops</h3>
+          <p>Points on every purchase, redeemable for discounts or free items.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">📦</div>
+          <h3>Online stores</h3>
+          <p>Loyalty claims on delivery — parcel codes or QR tokens included in every order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to reward<br /><span>your customers?</span></h2>
+    <p>Start free. No credit card required. Live in under 15 minutes.</p>
+    <a href="https://stre-loyalty.web.app/portal" class="btn-cta">
+      Get started free
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 9h11M10 5l4.5 4L10 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <p class="cta-note">Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo"><span>Kudo</span>Loyalty</div>
+    <div class="footer-links">
+      <a href="mailto:krissada.narbonne@gmail.com">Contact</a>
+      <a href="https://stre-loyalty.web.app/portal">Sign in</a>
+    </div>
+    <div class="footer-copy">© 2026 KudoLoyalty · Built by <a href="https://www.strebrand.com" style="color:#CBD5E1;text-decoration:none;">STRE</a></div>
+  </footer>
+
+</body>
+</html>
