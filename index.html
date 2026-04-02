@@ -146,7 +146,7 @@
       color: var(--muted);
     }
 
-    /* ── Hero visual: mock loyalty card ── */
+    /* ── Hero visual: phone mockup matching actual app ── */
     .hero-visual {
       display: flex;
       justify-content: center;
@@ -155,74 +155,120 @@
     }
     .mock-phone {
       width: 260px;
-      background: var(--ink);
-      border-radius: 36px;
-      padding: 32px 20px;
-      box-shadow: 0 40px 80px rgba(26,26,46,0.18), 0 0 0 1px rgba(255,255,255,0.06);
+      background: #0f172a;
+      border-radius: 40px;
+      padding: 14px 10px;
+      box-shadow: 0 40px 80px rgba(26,26,46,0.22), 0 0 0 1px rgba(255,255,255,0.07);
       position: relative;
     }
-    .mock-merchant-header {
+    /* Notch */
+    .mock-notch {
+      width: 60px;
+      height: 8px;
+      background: #1e293b;
+      border-radius: 99px;
+      margin: 0 auto 10px;
+    }
+    /* Screen */
+    .mock-screen {
+      background: #f8f9fc;
+      border-radius: 28px;
+      overflow: hidden;
+    }
+    /* Hero card */
+    .mock-hero-card {
+      margin: 10px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.14);
+    }
+    /* Cover zone */
+    .mock-cover {
+      background: linear-gradient(160deg, #7C3AED 0%, #5B21B6 100%);
+      height: 86px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8px;
+    }
+    /* Frosted glass panel */
+    .mock-glass {
+      background: rgba(255,255,255,0.94);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.8);
+      padding: 7px 10px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: 8px;
     }
     .mock-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
       background: var(--violet);
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      color: #fff;
-      font-size: 14px;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.5);
     }
-    .mock-merchant-name { font-size: 14px; font-weight: 700; color: #fff; }
-    .mock-merchant-tag { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 1px; }
-    .mock-card {
-      background: linear-gradient(135deg, var(--violet) 0%, #5B21B6 100%);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 14px;
+    .mock-merchant-name { font-size: 11px; font-weight: 800; color: #1a1a2e; line-height: 1.2; }
+    .mock-merchant-tag { font-size: 9px; color: #64748b; margin-top: 1px; }
+    /* Balance zone */
+    .mock-balance {
+      background: #7C3AED;
+      padding: 10px 12px 12px;
     }
-    .mock-card-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
-    .mock-card-points { font-size: 40px; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
-    .mock-card-unit { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-top: 4px; }
-    .mock-progress-label { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 14px; margin-bottom: 6px; }
-    .mock-progress-bar { height: 5px; background: rgba(255,255,255,0.18); border-radius: 99px; overflow: hidden; }
-    .mock-progress-fill { height: 100%; width: 72%; background: rgba(255,255,255,0.85); border-radius: 99px; }
-    .mock-reward {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      padding: 14px 16px;
+    .mock-greeting { font-size: 9px; color: rgba(255,255,255,0.72); font-weight: 600; margin-bottom: 2px; }
+    .mock-points-num { font-size: 30px; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+    .mock-points-unit { font-size: 9px; color: rgba(255,255,255,0.72); font-weight: 700; margin-top: 2px; margin-bottom: 8px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .mock-progress-meta { display: flex; justify-content: space-between; font-size: 8px; color: rgba(255,255,255,0.6); margin-bottom: 4px; font-weight: 600; }
+    .mock-progress-bar { height: 4px; background: rgba(255,255,255,0.18); border-radius: 99px; overflow: hidden; }
+    .mock-progress-fill { height: 100%; width: 82%; background: rgba(255,255,255,0.9); border-radius: 99px; }
+    /* Tab bar */
+    .mock-tabs {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: #fff;
+      border-bottom: 1px solid rgba(226,232,240,0.8);
     }
-    .mock-reward-name { font-size: 13px; font-weight: 700; color: #fff; }
-    .mock-reward-cost { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
-    .mock-reward-btn {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--violet);
-      background: var(--violet-light);
-      padding: 6px 12px;
-      border-radius: 999px;
+    .mock-tab {
+      flex: 1;
+      text-align: center;
+      padding: 9px 0;
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      border-bottom: 2.5px solid transparent;
     }
-    .mock-badge {
-      position: absolute;
-      top: -12px;
-      right: -12px;
-      background: #10B981;
+    .mock-tab.active { color: #7C3AED; border-bottom-color: #7C3AED; }
+    /* Reward card */
+    .mock-reward-card {
+      margin: 8px 10px 10px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+    .mock-reward-img {
+      height: 52px;
+      background: linear-gradient(135deg, #EDE9FE 0%, #C4B5FD 100%);
+    }
+    .mock-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .mock-reward-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .mock-reward-name { font-size: 11px; font-weight: 800; color: #0f172a; }
+    .mock-reward-cost { font-size: 10px; font-weight: 800; color: #94a3b8; flex-shrink: 0; }
+    .mock-redeem-btn {
+      width: 100%;
+      background: #7C3AED;
       color: #fff;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(16,185,129,0.35);
+      text-align: center;
+      padding: 7px;
+      border-radius: 8px;
     }
 
     /* ── How it works ── */
@@ -406,7 +452,7 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 48px; }
       .hero-visual { order: -1; }
-      .mock-phone { width: 220px; }
+      .mock-phone { width: 230px; }
       .steps { grid-template-columns: 1fr; gap: 24px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .for-grid { grid-template-columns: 1fr 1fr; }
@@ -453,32 +499,50 @@
 
       <div class="hero-visual">
         <div class="mock-phone">
-          <div class="mock-badge">72 pts earned today</div>
-          <div class="mock-merchant-header">
-            <div class="mock-logo">B</div>
-            <div>
-              <div class="mock-merchant-name">Blue Elephant Café</div>
-              <div class="mock-merchant-tag">Rewards program</div>
+          <div class="mock-notch"></div>
+          <div class="mock-screen">
+            <!-- Hero card -->
+            <div class="mock-hero-card">
+              <!-- Cover zone + frosted glass -->
+              <div class="mock-cover">
+                <div class="mock-glass">
+                  <div class="mock-logo">B</div>
+                  <div>
+                    <div class="mock-merchant-name">Blue Elephant Café</div>
+                    <div class="mock-merchant-tag">Earn points on every visit</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Balance zone -->
+              <div class="mock-balance">
+                <div class="mock-greeting">Hi, Kanya 👋</div>
+                <div class="mock-points-num">248</div>
+                <div class="mock-points-unit">points</div>
+                <div class="mock-progress-meta">
+                  <span>Progress to reward</span>
+                  <span>248 / 300</span>
+                </div>
+                <div class="mock-progress-bar">
+                  <div class="mock-progress-fill"></div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="mock-card">
-            <div class="mock-card-label">Your points</div>
-            <div class="mock-card-points">248</div>
-            <div class="mock-card-unit">points</div>
-            <div class="mock-progress-label">
-              <span>Progress to reward</span>
-              <span>248 / 300</span>
+            <!-- Tab bar -->
+            <div class="mock-tabs">
+              <div class="mock-tab active">Loyalty</div>
+              <div class="mock-tab">My Coupons</div>
             </div>
-            <div class="mock-progress-bar">
-              <div class="mock-progress-fill"></div>
+            <!-- Reward card -->
+            <div class="mock-reward-card">
+              <div class="mock-reward-img"></div>
+              <div class="mock-reward-body">
+                <div class="mock-reward-row">
+                  <div class="mock-reward-name">Free coffee</div>
+                  <div class="mock-reward-cost">300 pts</div>
+                </div>
+                <div class="mock-redeem-btn">Redeem</div>
+              </div>
             </div>
-          </div>
-          <div class="mock-reward">
-            <div>
-              <div class="mock-reward-name">Free coffee</div>
-              <div class="mock-reward-cost">300 points</div>
-            </div>
-            <div class="mock-reward-btn">Redeem</div>
           </div>
         </div>
       </div>
