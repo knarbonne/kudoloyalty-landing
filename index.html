@@ -384,6 +384,46 @@
       line-height: 1.65;
     }
 
+    /* ── Gamification ── */
+    .gamification {
+      background: linear-gradient(160deg, #1a1a2e 0%, #2d1b69 100%);
+      padding: 96px 24px;
+    }
+    .gamification .section-eyebrow { color: #a78bfa; }
+    .gamification .section-title { color: #fff; }
+    .gamification .section-sub { color: rgba(255,255,255,0.55); margin-bottom: 48px; }
+    .game-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .game-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      padding: 36px 32px;
+      display: grid;
+      gap: 14px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .game-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(167,139,250,0.4); }
+    .game-icon { font-size: 44px; line-height: 1; }
+    .game-card h3 { font-size: 20px; font-weight: 900; color: #fff; margin: 0; }
+    .game-card p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
+    .game-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #a78bfa;
+      background: rgba(124,58,237,0.2);
+      border: 1px solid rgba(124,58,237,0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
     /* ── Who it's for ── */
     .for { background: var(--bg-subtle); }
     .for-grid {
@@ -470,9 +510,11 @@
       .mock-phone { width: 230px; }
       .steps { grid-template-columns: 1fr; gap: 24px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
+      .game-cards { grid-template-columns: 1fr; }
       .for-grid { grid-template-columns: 1fr 1fr; }
       section { padding: 64px 20px; }
       .hero { padding: 72px 20px 64px; }
+      .gamification { padding: 64px 20px; }
     }
     @media (max-width: 480px) {
       .features-grid { grid-template-columns: 1fr; }
@@ -633,6 +675,29 @@
     </div>
   </section>
 
+  <!-- Gamification -->
+  <section class="gamification">
+    <div class="container">
+      <div class="section-eyebrow" id="game-eyebrow">Gamification</div>
+      <h2 class="section-title" id="game-title">Turn loyalty into a game</h2>
+      <p class="section-sub" id="game-sub">Keep customers coming back with daily games that reward bonus points — making your loyalty program something they actually look forward to opening.</p>
+      <div class="game-cards">
+        <div class="game-card">
+          <div class="game-icon">🎰</div>
+          <div class="game-badge" id="game1-badge">Daily · Configurable win rate</div>
+          <h3 id="game1-title">Scratch Card</h3>
+          <p id="game1-text">Members scratch a card inside LINE to instantly reveal if they've won bonus points. Set the win rate, point range, and daily play limit to match your margin.</p>
+        </div>
+        <div class="game-card">
+          <div class="game-icon">🎡</div>
+          <div class="game-badge" id="game2-badge">Daily · Custom prize segments</div>
+          <h3 id="game2-title">Lucky Spin</h3>
+          <p id="game2-text">A prize wheel with fully customisable segments — each showing a different point reward. Members spin once a day and see their result in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Who it's for -->
   <section class="for">
     <div class="container">
@@ -718,6 +783,15 @@
         'for2-title': 'Salons & beauty',     'for2-text': 'Reward repeat bookings and turn first-time clients into regulars.',
         'for3-title': 'Retail shops',        'for3-text': 'Points on every purchase, redeemable for discounts or free items.',
         'for4-title': 'Online stores',       'for4-text': 'Loyalty claims on delivery — parcel codes or QR tokens included in every order.',
+        'game-eyebrow': 'Gamification',
+        'game-title':   'Turn loyalty into a game',
+        'game-sub':     'Keep customers coming back with daily games that reward bonus points — making your loyalty program something they actually look forward to opening.',
+        'game1-badge':  'Daily · Configurable win rate',
+        'game1-title':  'Scratch Card',
+        'game1-text':   'Members scratch a card inside LINE to instantly reveal if they\'ve won bonus points. Set the win rate, point range, and daily play limit to match your margin.',
+        'game2-badge':  'Daily · Custom prize segments',
+        'game2-title':  'Lucky Spin',
+        'game2-text':   'A prize wheel with fully customisable segments — each showing a different point reward. Members spin once a day and see their result in real time.',
         'cta-h2':  'Ready to reward<br /><span>your customers?</span>',
         'cta-p':   'Start free. No credit card required. Live in under 15 minutes.',
         'cta-btn': 'Get started free',
@@ -754,6 +828,15 @@
         'for2-title': 'ร้านเสริมสวยและความงาม','for2-text': 'ให้รางวัลการนัดซ้ำ เปลี่ยนลูกค้าใหม่ให้กลายเป็นลูกค้าประจำ',
         'for3-title': 'ร้านค้าปลีก',           'for3-text': 'แต้มทุกครั้งที่ซื้อ แลกเป็นส่วนลดหรือสินค้าฟรี',
         'for4-title': 'ร้านค้าออนไลน์',        'for4-text': 'สะสมแต้มผ่านการจัดส่ง — โค้ดพัสดุหรือ QR Token ในทุกออร์เดอร์',
+        'game-eyebrow': 'เกมสะสมแต้ม',
+        'game-title':   'เปลี่ยนความภักดีให้เป็นเกม',
+        'game-sub':     'ดึงดูดลูกค้าให้กลับมาด้วยเกมรายวันที่มอบแต้มโบนัส — ทำให้โปรแกรมสะสมแต้มของคุณน่าเปิดดูทุกวัน',
+        'game1-badge':  'รายวัน · กำหนดอัตราชนะได้',
+        'game1-title':  'ขูดรางวัล',
+        'game1-text':   'สมาชิกขูดการ์ดใน LINE เพื่อรู้ทันทีว่าได้แต้มโบนัสหรือไม่ ตั้งค่าอัตราชนะ ช่วงแต้ม และจำนวนครั้งต่อวันได้ตามต้องการ',
+        'game2-badge':  'รายวัน · กำหนดช่องรางวัลเอง',
+        'game2-title':  'วงล้อโชคดี',
+        'game2-text':   'วงล้อรางวัลที่กำหนดช่องได้เอง — แต่ละช่องแสดงจำนวนแต้มที่ต่างกัน สมาชิกหมุนได้วันละครั้งและเห็นผลทันที',
         'cta-h2':  'พร้อมมอบรางวัล<br /><span>ให้ลูกค้าแล้วหรือยัง?</span>',
         'cta-p':   'เริ่มฟรี ไม่ต้องใช้บัตรเครดิต เริ่มใช้งานได้ภายใน 15 นาที',
         'cta-btn': 'เริ่มใช้งานฟรีเลย',
