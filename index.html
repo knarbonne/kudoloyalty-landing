@@ -75,6 +75,21 @@
       transition: opacity 0.15s;
     }
     .nav-cta:hover { opacity: 0.88; }
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      font-family: inherit;
+    }
+    .lang-btn:hover { border-color: var(--violet); color: var(--violet); }
 
     /* ── Sections ── */
     section { padding: 96px 24px; }
@@ -472,7 +487,10 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="logo"><span>Kudo</span>Loyalty</a>
-      <a href="https://stre-loyalty.web.app/portal" class="nav-cta">Get started →</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ภาษาไทย</button>
+        <a href="https://stre-loyalty.web.app/portal" class="nav-cta" id="nav-cta">Get started →</a>
+      </div>
     </div>
   </nav>
 
@@ -482,18 +500,18 @@
       <div class="hero-content">
         <div class="hero-eyebrow">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#7C3AED"/><path d="M4 7l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          LINE-native loyalty for Thai businesses
+          <span id="hero-eyebrow">LINE-native loyalty for Thai businesses</span>
         </div>
-        <h1>Rewards<br /><span>made simple.</span></h1>
-        <p class="hero-sub">
+        <h1 id="hero-h1">Rewards<br /><span>made simple.</span></h1>
+        <p class="hero-sub" id="hero-sub">
           Give your customers a reason to return. KudoLoyalty runs inside LINE — no app download, no friction, no technical knowledge required.
         </p>
         <div class="hero-actions">
           <a href="https://stre-loyalty.web.app/portal" class="btn-primary">
-            Start free
+            <span id="hero-cta">Start free</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <span class="hero-note">No credit card required</span>
+          <span class="hero-note" id="hero-note">No credit card required</span>
         </div>
       </div>
 
@@ -552,24 +570,24 @@
   <!-- How it works -->
   <section class="how">
     <div class="container">
-      <div class="section-eyebrow">How it works</div>
-      <h2 class="section-title">Live in under 15 minutes</h2>
-      <p class="section-sub">No developers, no integrations, no headaches. Just sign up, set up your rewards, and share your link.</p>
+      <div class="section-eyebrow" id="how-eyebrow">How it works</div>
+      <h2 class="section-title" id="how-title">Live in under 15 minutes</h2>
+      <p class="section-sub" id="how-sub">No developers, no integrations, no headaches. Just sign up, set up your rewards, and share your link.</p>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3>Set up your program</h3>
-          <p>Create your account, pick your loyalty model — points, visits, or online claims — and add your first rewards. Guided setup walks you through every step.</p>
+          <h3 id="step1-title">Set up your program</h3>
+          <p id="step1-text">Create your account, pick your loyalty model — points, visits, or online claims — and add your first rewards. Guided setup walks you through every step.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3>Share with customers</h3>
-          <p>Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.</p>
+          <h3 id="step2-title">Share with customers</h3>
+          <p id="step2-text">Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3>They earn, they return</h3>
-          <p>Members collect points and redeem rewards automatically. You see everything in your dashboard — who's active, what's working, what to do next.</p>
+          <h3 id="step3-title">They earn, they return</h3>
+          <p id="step3-text">Members collect points and redeem rewards automatically. You see everything in your dashboard — who's active, what's working, what to do next.</p>
         </div>
       </div>
     </div>
@@ -578,38 +596,38 @@
   <!-- Features -->
   <section>
     <div class="container">
-      <div class="section-eyebrow">Features</div>
-      <h2 class="section-title">Everything you need.<br />Nothing you don't.</h2>
+      <div class="section-eyebrow" id="feat-eyebrow">Features</div>
+      <h2 class="section-title" id="feat-title">Everything you need.<br />Nothing you don't.</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">💬</div>
-          <h3>LINE-native</h3>
-          <p>Members earn and redeem inside LINE. No app to download, no new account to create. Works on every phone.</p>
+          <h3 id="f1-title">LINE-native</h3>
+          <p id="f1-text">Members earn and redeem inside LINE. No app to download, no new account to create. Works on every phone.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎁</div>
-          <h3>Flexible rewards</h3>
-          <p>Points, visits, or online claims. Staff-verified redemptions or instant digital coupons — your choice.</p>
+          <h3 id="f2-title">Flexible rewards</h3>
+          <p id="f2-text">Points, visits, or online claims. Staff-verified redemptions or instant digital coupons — your choice.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎟️</div>
-          <h3>Promo campaigns</h3>
-          <p>Run promo codes, collect registrations, and export participant lists — all from the same dashboard.</p>
+          <h3 id="f3-title">Promo campaigns</h3>
+          <p id="f3-text">Run promo codes, collect registrations, and export participant lists — all from the same dashboard.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📊</div>
-          <h3>Live analytics</h3>
-          <p>Track active members, earning trends, and which rewards drive the most return visits.</p>
+          <h3 id="f4-title">Live analytics</h3>
+          <p id="f4-text">Track active members, earning trends, and which rewards drive the most return visits.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📱</div>
-          <h3>Coupon wallet</h3>
-          <p>Instant discount codes delivered directly to members when they claim — no staff needed.</p>
+          <h3 id="f5-title">Coupon wallet</h3>
+          <p id="f5-text">Instant discount codes delivered directly to members when they claim — no staff needed.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>Guided setup</h3>
-          <p>Step-by-step onboarding for LINE OA, LIFF connection, and your first reward. No technical knowledge needed.</p>
+          <h3 id="f6-title">Guided setup</h3>
+          <p id="f6-text">Step-by-step onboarding for LINE OA, LIFF connection, and your first reward. No technical knowledge needed.</p>
         </div>
       </div>
     </div>
@@ -618,29 +636,29 @@
   <!-- Who it's for -->
   <section class="for">
     <div class="container">
-      <div class="section-eyebrow">Who it's for</div>
-      <h2 class="section-title">Built for Thai small businesses</h2>
-      <p class="section-sub">Any business that wants customers to come back more often.</p>
+      <div class="section-eyebrow" id="for-eyebrow">Who it's for</div>
+      <h2 class="section-title" id="for-title">Built for Thai small businesses</h2>
+      <p class="section-sub" id="for-sub">Any business that wants customers to come back more often.</p>
       <div class="for-grid">
         <div class="for-card">
           <div class="for-icon">☕</div>
-          <h3>Cafés & restaurants</h3>
-          <p>Stamp cards, visit rewards, and loyalty programs your regulars will love.</p>
+          <h3 id="for1-title">Cafés & restaurants</h3>
+          <p id="for1-text">Stamp cards, visit rewards, and loyalty programs your regulars will love.</p>
         </div>
         <div class="for-card">
           <div class="for-icon">💅</div>
-          <h3>Salons & beauty</h3>
-          <p>Reward repeat bookings and turn first-time clients into regulars.</p>
+          <h3 id="for2-title">Salons & beauty</h3>
+          <p id="for2-text">Reward repeat bookings and turn first-time clients into regulars.</p>
         </div>
         <div class="for-card">
           <div class="for-icon">🛍️</div>
-          <h3>Retail shops</h3>
-          <p>Points on every purchase, redeemable for discounts or free items.</p>
+          <h3 id="for3-title">Retail shops</h3>
+          <p id="for3-text">Points on every purchase, redeemable for discounts or free items.</p>
         </div>
         <div class="for-card">
           <div class="for-icon">📦</div>
-          <h3>Online stores</h3>
-          <p>Loyalty claims on delivery — parcel codes or QR tokens included in every order.</p>
+          <h3 id="for4-title">Online stores</h3>
+          <p id="for4-text">Loyalty claims on delivery — parcel codes or QR tokens included in every order.</p>
         </div>
       </div>
     </div>
@@ -648,13 +666,13 @@
 
   <!-- CTA -->
   <section class="cta-section">
-    <h2>Ready to reward<br /><span>your customers?</span></h2>
-    <p>Start free. No credit card required. Live in under 15 minutes.</p>
+    <h2 id="cta-h2">Ready to reward<br /><span>your customers?</span></h2>
+    <p id="cta-p">Start free. No credit card required. Live in under 15 minutes.</p>
     <a href="https://stre-loyalty.web.app/portal" class="btn-cta">
-      Get started free
+      <span id="cta-btn">Get started free</span>
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 9h11M10 5l4.5 4L10 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-    <p class="cta-note">Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a></p>
+    <p class="cta-note" id="cta-note">Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a></p>
   </section>
 
   <!-- Footer -->
@@ -667,5 +685,101 @@
     <div class="footer-copy">© 2026 KudoLoyalty · Built by <a href="https://www.strebrand.com" style="color:#CBD5E1;text-decoration:none;">STRE</a></div>
   </footer>
 
+  <script>
+    const T = {
+      en: {
+        'nav-cta':       'Get started →',
+        'hero-eyebrow':  'LINE-native loyalty for Thai businesses',
+        'hero-h1':       'Rewards<br /><span>made simple.</span>',
+        'hero-sub':      'Give your customers a reason to return. KudoLoyalty runs inside LINE — no app download, no friction, no technical knowledge required.',
+        'hero-cta':      'Start free',
+        'hero-note':     'No credit card required',
+        'how-eyebrow':   'How it works',
+        'how-title':     'Live in under 15 minutes',
+        'how-sub':       'No developers, no integrations, no headaches. Just sign up, set up your rewards, and share your link.',
+        'step1-title':   'Set up your program',
+        'step1-text':    'Create your account, pick your loyalty model — points, visits, or online claims — and add your first rewards. Guided setup walks you through every step.',
+        'step2-title':   'Share with customers',
+        'step2-text':    'Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.',
+        'step3-title':   'They earn, they return',
+        'step3-text':    'Members collect points and redeem rewards automatically. You see everything in your dashboard — who\'s active, what\'s working, what to do next.',
+        'feat-eyebrow':  'Features',
+        'feat-title':    'Everything you need.<br />Nothing you don\'t.',
+        'f1-title': 'LINE-native',         'f1-text': 'Members earn and redeem inside LINE. No app to download, no new account to create. Works on every phone.',
+        'f2-title': 'Flexible rewards',    'f2-text': 'Points, visits, or online claims. Staff-verified redemptions or instant digital coupons — your choice.',
+        'f3-title': 'Promo campaigns',     'f3-text': 'Run promo codes, collect registrations, and export participant lists — all from the same dashboard.',
+        'f4-title': 'Live analytics',      'f4-text': 'Track active members, earning trends, and which rewards drive the most return visits.',
+        'f5-title': 'Coupon wallet',       'f5-text': 'Instant discount codes delivered directly to members when they claim — no staff needed.',
+        'f6-title': 'Guided setup',        'f6-text': 'Step-by-step onboarding for LINE OA, LIFF connection, and your first reward. No technical knowledge needed.',
+        'for-eyebrow':  'Who it\'s for',
+        'for-title':    'Built for Thai small businesses',
+        'for-sub':      'Any business that wants customers to come back more often.',
+        'for1-title': 'Cafés & restaurants', 'for1-text': 'Stamp cards, visit rewards, and loyalty programs your regulars will love.',
+        'for2-title': 'Salons & beauty',     'for2-text': 'Reward repeat bookings and turn first-time clients into regulars.',
+        'for3-title': 'Retail shops',        'for3-text': 'Points on every purchase, redeemable for discounts or free items.',
+        'for4-title': 'Online stores',       'for4-text': 'Loyalty claims on delivery — parcel codes or QR tokens included in every order.',
+        'cta-h2':  'Ready to reward<br /><span>your customers?</span>',
+        'cta-p':   'Start free. No credit card required. Live in under 15 minutes.',
+        'cta-btn': 'Get started free',
+        'cta-note': 'Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a>',
+      },
+      th: {
+        'nav-cta':       'เริ่มใช้งาน →',
+        'hero-eyebrow':  'ระบบสะสมแต้มผ่าน LINE สำหรับธุรกิจไทย',
+        'hero-h1':       'รางวัล<br /><span>ที่ง่ายกว่าเดิม</span>',
+        'hero-sub':      'มอบเหตุผลให้ลูกค้ากลับมาใช้บริการอีกครั้ง KudoLoyalty ทำงานผ่าน LINE — ไม่ต้องดาวน์โหลดแอป ไม่มีขั้นตอนยุ่งยาก ไม่ต้องมีความรู้ด้านเทคนิค',
+        'hero-cta':      'เริ่มใช้ฟรี',
+        'hero-note':     'ไม่ต้องใช้บัตรเครดิต',
+        'how-eyebrow':   'วิธีการใช้งาน',
+        'how-title':     'เริ่มต้นได้ภายใน 15 นาที',
+        'how-sub':       'ไม่ต้องมีนักพัฒนา ไม่ต้องเชื่อมต่อระบบ แค่สมัคร ตั้งค่ารางวัล แล้วแชร์ลิงก์ให้ลูกค้า',
+        'step1-title':   'ตั้งค่าโปรแกรมสะสมแต้ม',
+        'step1-text':    'สร้างบัญชี เลือกรูปแบบสะสมแต้ม — แต้ม เยี่ยมชม หรือซื้อออนไลน์ — และเพิ่มรางวัลแรก ระบบจะแนะนำทุกขั้นตอน',
+        'step2-title':   'แชร์ให้ลูกค้า',
+        'step2-text':    'ลูกค้าเข้าร่วมผ่าน LINE ที่พวกเขาใช้อยู่ทุกวัน ไม่ต้องดาวน์โหลดแอปเพิ่ม ไม่ต้องสร้างบัญชีใหม่',
+        'step3-title':   'สะสมแต้มและกลับมาอีก',
+        'step3-text':    'สมาชิกสะสมแต้มและแลกรางวัลได้อัตโนมัติ ดูทุกอย่างในแดชบอร์ด — ใครใช้งาน อะไรได้ผล และควรทำอะไรต่อ',
+        'feat-eyebrow':  'ฟีเจอร์',
+        'feat-title':    'ทุกสิ่งที่คุณต้องการ<br />ไม่มากและไม่น้อยกว่านั้น',
+        'f1-title': 'ผ่าน LINE โดยตรง',    'f1-text': 'สมาชิกสะสมและแลกแต้มใน LINE ได้เลย ไม่ต้องดาวน์โหลดแอป ใช้ได้ทุกโทรศัพท์',
+        'f2-title': 'รางวัลยืดหยุ่น',      'f2-text': 'แต้ม เยี่ยมชม หรือซื้อออนไลน์ พนักงานยืนยันหรือคูปองดิจิทัลทันที — เลือกได้ตามต้องการ',
+        'f3-title': 'แคมเปญโปรโมชั่น',     'f3-text': 'รันโค้ดโปรโมชั่น รับสมัครผู้เข้าร่วม และส่งออกรายชื่อ — ทั้งหมดจากแดชบอร์ดเดียว',
+        'f4-title': 'วิเคราะห์แบบเรียลไทม์','f4-text': 'ติดตามสมาชิกที่ใช้งาน แนวโน้มการสะสมแต้ม และรางวัลที่ดึงดูดลูกค้าให้กลับมามากที่สุด',
+        'f5-title': 'กระเป๋าคูปอง',         'f5-text': 'โค้ดส่วนลดส่งให้สมาชิกทันทีเมื่อแลก ไม่ต้องผ่านพนักงาน',
+        'f6-title': 'ตั้งค่าแบบมีผู้แนะนำ', 'f6-text': 'ตั้งค่า LINE OA, LIFF และรางวัลแรกทีละขั้นตอน ไม่ต้องมีความรู้ด้านเทคนิค',
+        'for-eyebrow':  'เหมาะสำหรับใคร',
+        'for-title':    'สร้างมาสำหรับธุรกิจขนาดเล็กในไทย',
+        'for-sub':      'ทุกธุรกิจที่ต้องการให้ลูกค้ากลับมาบ่อยขึ้น',
+        'for1-title': 'คาเฟ่และร้านอาหาร',    'for1-text': 'บัตรสะสมแต้ม รางวัลเยี่ยมชม โปรแกรมที่ลูกค้าประจำจะชื่นชอบ',
+        'for2-title': 'ร้านเสริมสวยและความงาม','for2-text': 'ให้รางวัลการนัดซ้ำ เปลี่ยนลูกค้าใหม่ให้กลายเป็นลูกค้าประจำ',
+        'for3-title': 'ร้านค้าปลีก',           'for3-text': 'แต้มทุกครั้งที่ซื้อ แลกเป็นส่วนลดหรือสินค้าฟรี',
+        'for4-title': 'ร้านค้าออนไลน์',        'for4-text': 'สะสมแต้มผ่านการจัดส่ง — โค้ดพัสดุหรือ QR Token ในทุกออร์เดอร์',
+        'cta-h2':  'พร้อมมอบรางวัล<br /><span>ให้ลูกค้าแล้วหรือยัง?</span>',
+        'cta-p':   'เริ่มฟรี ไม่ต้องใช้บัตรเครดิต เริ่มใช้งานได้ภายใน 15 นาที',
+        'cta-btn': 'เริ่มใช้งานฟรีเลย',
+        'cta-note': 'มีคำถาม? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">ติดต่อเรา</a>',
+      }
+    };
+
+    var currentLang = localStorage.getItem('kl_land_lang') ||
+      (navigator.language && navigator.language.toLowerCase().startsWith('th') ? 'th' : 'en');
+
+    function applyLang(lang) {
+      var t = T[lang];
+      for (var id in t) {
+        var el = document.getElementById(id);
+        if (el) el.innerHTML = t[id];
+      }
+      var btn = document.getElementById('lang-btn');
+      if (btn) btn.textContent = lang === 'en' ? 'ภาษาไทย' : 'English';
+      document.documentElement.lang = lang === 'th' ? 'th' : 'en';
+      currentLang = lang;
+      localStorage.setItem('kl_land_lang', lang);
+    }
+
+    function toggleLang() { applyLang(currentLang === 'en' ? 'th' : 'en'); }
+
+    if (currentLang === 'th') applyLang('th');
+  </script>
 </body>
 </html>
