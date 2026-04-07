@@ -190,8 +190,8 @@
     }
     .hero-visuals-wrap {
       position: relative;
-      width: 340px;
-      height: 420px;
+      width: 400px;
+      height: 500px;
     }
 
     /* Phone mockup */
@@ -313,11 +313,11 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 210px;
+      width: 260px;
       background: #fff;
       border-radius: 16px;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 20px 60px rgba(26,26,46,0.14), 0 0 0 1px rgba(124,58,237,0.05);
+      box-shadow: 0 24px 70px rgba(26,26,46,0.18), 0 0 0 1px rgba(124,58,237,0.05);
       overflow: hidden;
       z-index: 3;
     }
@@ -351,113 +351,138 @@
       white-space: nowrap;
       overflow: hidden;
     }
-    /* portal layout */
+    /* portal card layout */
     .portal-layout {
       display: flex;
-      height: 240px;
+      height: 330px;
     }
     .portal-sidebar {
-      width: 52px;
+      width: 82px;
       background: #fff;
       border-right: 1px solid #f1f5f9;
-      padding: 10px 6px;
+      padding: 10px 8px 8px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
       flex-shrink: 0;
     }
     .portal-wordmark {
-      font-size: 7px;
+      font-size: 8px;
       font-weight: 900;
-      color: var(--violet);
+      color: #1A1A2E;
       letter-spacing: -0.02em;
-      padding: 0 2px 8px;
+      line-height: 1.2;
+      padding-bottom: 6px;
       border-bottom: 1px solid #f1f5f9;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
+    }
+    .portal-wordmark-sub {
+      font-size: 5px;
+      color: #94a3b8;
+      font-weight: 500;
+      margin-top: 1px;
     }
     .portal-nav-item {
       display: flex;
       align-items: center;
       gap: 5px;
-      padding: 5px 4px;
-      border-radius: 6px;
+      padding: 4px 5px;
+      border-radius: 5px;
       font-size: 7px;
       font-weight: 600;
       color: #94a3b8;
-      cursor: default;
+      margin-bottom: 1px;
     }
     .portal-nav-item.active {
       background: var(--violet-light);
       color: var(--violet);
+      font-weight: 700;
     }
-    .portal-nav-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #e2e8f0;
+    .portal-nav-icon {
+      width: 10px;
+      height: 10px;
+      opacity: 0.5;
       flex-shrink: 0;
     }
-    .portal-nav-dot.active { background: var(--violet); }
+    .portal-nav-item.active .portal-nav-icon { opacity: 1; }
+    .portal-signout {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 5px;
+      font-size: 7px;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-top: auto;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 6px;
+    }
     .portal-main {
       flex: 1;
       background: #f8f9fc;
-      padding: 10px;
+      padding: 9px;
       overflow: hidden;
     }
     .portal-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
-    .portal-page-title { font-size: 9px; font-weight: 800; color: var(--ink); }
-    .portal-merchant-name { font-size: 7px; color: var(--muted); font-weight: 600; }
-    /* KPI row */
-    .portal-kpi-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-    .portal-kpi {
-      background: #fff;
-      border-radius: 8px;
-      border: 1px solid #f1f5f9;
-      padding: 7px 8px;
-      border-left: 3px solid var(--violet);
-    }
-    .portal-kpi-num { font-size: 16px; font-weight: 900; color: var(--ink); line-height: 1; }
-    .portal-kpi-label { font-size: 7px; color: var(--muted); font-weight: 600; margin-top: 2px; }
-    .portal-kpi-change {
-      display: inline-flex;
-      align-items: center;
-      font-size: 6px;
+    .portal-page-title { font-size: 11px; font-weight: 900; color: var(--ink); letter-spacing: -0.01em; }
+    .portal-merchant-name {
+      font-size: 6.5px;
+      color: var(--muted);
       font-weight: 700;
-      padding: 1px 4px;
-      border-radius: 99px;
-      margin-top: 3px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 2px 6px;
     }
-    .portal-kpi-change.up { background: #dcfce7; color: #16a34a; }
-    /* Segment rows */
-    .portal-segment-rows { display: flex; flex-direction: column; gap: 4px; }
-    .portal-segment-row {
-      background: #fff;
-      border-radius: 6px;
-      border: 1px solid #f1f5f9;
-      padding: 5px 8px;
+    /* Portal segment card */
+    .portal-seg-card {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      border-radius: 7px;
+      border: 1px solid rgba(203,213,225,0.8);
+      overflow: hidden;
+      background: #fff;
+      margin-bottom: 5px;
     }
-    .portal-seg-left { display: flex; align-items: center; gap: 5px; }
-    .portal-seg-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
+    .portal-seg-accent {
+      width: 3px;
       flex-shrink: 0;
     }
-    .portal-seg-label { font-size: 7px; font-weight: 600; color: var(--ink); }
-    .portal-seg-count { font-size: 7px; font-weight: 800; color: var(--muted); }
+    .portal-seg-body {
+      padding: 7px 9px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 0;
+    }
+    .portal-seg-name {
+      font-size: 8px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .portal-seg-badge {
+      font-size: 7px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 99px;
+      margin-left: 5px;
+    }
+    .portal-seg-desc { font-size: 6.5px; color: #94a3b8; font-weight: 500; margin-top: 1px; }
+    .portal-broadcast-btn {
+      font-size: 6.5px;
+      font-weight: 700;
+      color: #7C3AED;
+      background: #EDE9FE;
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 99px;
+      padding: 3px 7px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
     /* ── How it works ── */
     .how { background: var(--bg-subtle); }
@@ -529,26 +554,27 @@
       color: #94a3b8;
       font-weight: 500;
     }
-    .browser-body { display: flex; height: 340px; }
+    .browser-body { display: flex; height: 420px; }
     .browser-sidebar {
-      width: 160px;
+      width: 156px;
       background: #fff;
       border-right: 1px solid #f1f5f9;
-      padding: 16px 12px;
+      padding: 16px 12px 12px;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      gap: 4px;
     }
     .b-wordmark {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 900;
-      color: var(--violet);
       letter-spacing: -0.02em;
+      color: var(--ink);
       padding-bottom: 12px;
       border-bottom: 1px solid #f1f5f9;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+      line-height: 1.3;
     }
+    .b-wordmark span { color: var(--violet); }
     .b-nav-item {
       display: flex;
       align-items: center;
@@ -558,6 +584,7 @@
       font-size: 11px;
       font-weight: 600;
       color: #94a3b8;
+      margin-bottom: 2px;
     }
     .b-nav-item.active {
       background: var(--violet-light);
@@ -565,12 +592,24 @@
       font-weight: 700;
     }
     .b-nav-icon {
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       opacity: 0.5;
       flex-shrink: 0;
     }
     .b-nav-item.active .b-nav-icon { opacity: 1; }
+    .b-signout {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-top: auto;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 10px;
+    }
     .browser-main {
       flex: 1;
       background: #f8f9fc;
@@ -583,54 +622,64 @@
       align-items: center;
       margin-bottom: 14px;
     }
-    .b-page-title { font-size: 14px; font-weight: 800; color: var(--ink); }
-    .b-merchant { font-size: 11px; color: var(--muted); font-weight: 600; }
+    .b-page-title { font-size: 15px; font-weight: 900; color: var(--ink); letter-spacing: -0.01em; }
+    .b-merchant {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
     .b-kpi-row {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
       margin-bottom: 12px;
     }
     .b-kpi {
       background: #fff;
-      border-radius: 10px;
-      border: 1px solid #f1f5f9;
-      padding: 10px 12px;
-      border-left: 3px solid var(--violet);
+      border-radius: 12px;
+      border: 1px solid rgba(203,213,225,0.8);
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
     }
-    .b-kpi-num { font-size: 22px; font-weight: 900; color: var(--ink); line-height: 1; }
-    .b-kpi-label { font-size: 9px; color: var(--muted); font-weight: 600; margin-top: 3px; }
+    .b-kpi::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: #7C3AED;
+      opacity: 0.4;
+    }
+    .b-kpi-num { font-size: 26px; font-weight: 900; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+    .b-kpi-label { font-size: 9px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
     .b-kpi-pill {
       display: inline-flex;
       align-items: center;
       font-size: 8px;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 99px;
-      margin-top: 4px;
     }
     .b-kpi-pill.up { background: #dcfce7; color: #16a34a; }
     .b-kpi-pill.amber { background: #fef9c3; color: #92400e; }
-    .b-seg-header { font-size: 10px; font-weight: 800; color: var(--ink); margin-bottom: 7px; }
+    .b-seg-header { font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 7px; }
     .b-seg-rows { display: flex; flex-direction: column; gap: 5px; }
     .b-seg-row {
       background: #fff;
       border-radius: 8px;
-      border: 1px solid #f1f5f9;
+      border: 1px solid rgba(203,213,225,0.7);
       padding: 7px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .b-seg-left { display: flex; align-items: center; gap: 8px; }
-    .b-seg-bar {
-      width: 4px;
-      height: 20px;
-      border-radius: 99px;
-      flex-shrink: 0;
-    }
-    .b-seg-name { font-size: 10px; font-weight: 600; color: var(--ink); }
-    .b-seg-count { font-size: 10px; font-weight: 800; color: var(--muted); }
+    .b-seg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .b-seg-name { font-size: 10.5px; font-weight: 600; color: var(--ink); }
+    .b-seg-count { font-size: 11px; font-weight: 800; color: var(--muted); }
     .portal-preview-copy .bullet-list {
       list-style: none;
       display: flex;
@@ -1114,9 +1163,9 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 56px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { width: 300px; height: 360px; }
-      .mock-phone { width: 168px; }
-      .mock-portal-card { width: 180px; }
+      .hero-visuals-wrap { width: 340px; height: 420px; }
+      .mock-phone { width: 175px; }
+      .mock-portal-card { width: 220px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .game-cards { grid-template-columns: 1fr; }
       section { padding: 64px 20px; }
@@ -1129,10 +1178,9 @@
       .for-grid { grid-template-columns: 1fr 1fr; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .steps { grid-template-columns: 1fr; }
-      .hero-visuals-wrap { width: 260px; height: 320px; }
-      .mock-phone { width: 148px; }
-      .mock-portal-card { width: 160px; }
-      .b-kpi-row { grid-template-columns: 1fr 1fr; }
+      .hero-visuals-wrap { width: 290px; height: 360px; }
+      .mock-phone { width: 155px; }
+      .mock-portal-card { width: 185px; }
     }
   </style>
 </head>
@@ -1229,70 +1277,105 @@
             </div>
             <div class="portal-layout">
               <div class="portal-sidebar">
-                <div class="portal-wordmark">Kudo</div>
-                <div class="portal-nav-item active">
-                  <div class="portal-nav-dot active"></div>
+                <div class="portal-wordmark">
+                  <span style="color:#7C3AED;">Kudo</span>Loyalty
+                  <div class="portal-wordmark-sub">Merchant Portal</div>
+                </div>
+                <div class="portal-nav-item">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
                   Dashboard
                 </div>
                 <div class="portal-nav-item">
-                  <div class="portal-nav-dot"></div>
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
                   Members
                 </div>
-                <div class="portal-nav-item">
-                  <div class="portal-nav-dot"></div>
+                <div class="portal-nav-item active">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 14h6M8 11v3"/></svg>
                   Engage
                 </div>
                 <div class="portal-nav-item">
-                  <div class="portal-nav-dot"></div>
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 12 5 7 8 10 11 6 15 10"/></svg>
                   Analytics
                 </div>
                 <div class="portal-nav-item">
-                  <div class="portal-nav-dot"></div>
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H4a1 1 0 00-1 1v11a1 1 0 001 1h8a1 1 0 001-1V3a1 1 0 00-1-1z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
                   Rewards
                 </div>
                 <div class="portal-nav-item">
-                  <div class="portal-nav-dot"></div>
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42"/></svg>
                   Settings
+                </div>
+                <div class="portal-signout">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h3a1 1 0 011 1v8a1 1 0 01-1 1h-3M7 11l3-3-3-3M10 8H1"/></svg>
+                  Sign out
                 </div>
               </div>
               <div class="portal-main">
                 <div class="portal-topbar">
-                  <div class="portal-page-title">Dashboard</div>
+                  <div class="portal-page-title">Engage</div>
                   <div class="portal-merchant-name">Blue Elephant</div>
                 </div>
-                <div class="portal-kpi-row">
-                  <div class="portal-kpi">
-                    <div class="portal-kpi-num">1,247</div>
-                    <div class="portal-kpi-label">Members</div>
-                    <div class="portal-kpi-change up">+34</div>
-                  </div>
-                  <div class="portal-kpi">
-                    <div class="portal-kpi-num">89</div>
-                    <div class="portal-kpi-label">Active</div>
-                    <div class="portal-kpi-change up">+12</div>
+                <!-- Tabs -->
+                <div style="display:flex;gap:0;border-bottom:1px solid rgba(203,213,225,0.6);margin-bottom:7px;">
+                  <div style="padding:4px 8px;font-size:7px;font-weight:700;color:#7C3AED;border-bottom:2px solid #7C3AED;">Segments</div>
+                  <div style="padding:4px 7px;font-size:7px;font-weight:600;color:#94a3b8;">Auto Rewards</div>
+                  <div style="padding:4px 7px;font-size:7px;font-weight:600;color:#94a3b8;">Broadcasts</div>
+                </div>
+                <div style="font-size:6px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Auto-segments</div>
+                <!-- New members -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:#22c55e;"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">New members</span>
+                        <span class="portal-seg-badge" style="background:#dcfce7;color:#16a34a;">34</span>
+                      </div>
+                      <div class="portal-seg-desc">Joined in the last 14 days</div>
+                    </div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
                   </div>
                 </div>
-                <div class="portal-segment-rows">
-                  <div class="portal-segment-row">
-                    <div class="portal-seg-left">
-                      <div class="portal-seg-dot" style="background:#34d399;"></div>
-                      <div class="portal-seg-label">New this month</div>
+                <!-- Active -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:#7C3AED;"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">Active</span>
+                        <span class="portal-seg-badge" style="background:#EDE9FE;color:#7C3AED;">89</span>
+                      </div>
+                      <div class="portal-seg-desc">Earned in the last 30 days</div>
                     </div>
-                    <div class="portal-seg-count">34</div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
                   </div>
-                  <div class="portal-segment-row">
-                    <div class="portal-seg-left">
-                      <div class="portal-seg-dot" style="background:#fbbf24;"></div>
-                      <div class="portal-seg-label">Need attention</div>
+                </div>
+                <!-- Need attention -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:#f59e0b;"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">Need attention</span>
+                        <span class="portal-seg-badge" style="background:#fef3c7;color:#d97706;">12</span>
+                      </div>
+                      <div class="portal-seg-desc">No activity in 30–90 days</div>
                     </div>
-                    <div class="portal-seg-count">12</div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
                   </div>
-                  <div class="portal-segment-row">
-                    <div class="portal-seg-left">
-                      <div class="portal-seg-dot" style="background:#f87171;"></div>
-                      <div class="portal-seg-label">Lapsed</div>
+                </div>
+                <!-- Lapsed -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:#94a3b8;"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">Lapsed</span>
+                        <span class="portal-seg-badge" style="background:#f1f5f9;color:#64748b;">8</span>
+                      </div>
+                      <div class="portal-seg-desc">No activity in 90+ days</div>
                     </div>
-                    <div class="portal-seg-count">8</div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
                   </div>
                 </div>
               </div>
@@ -1350,8 +1433,11 @@
           </div>
           <div class="browser-body">
             <div class="browser-sidebar">
-              <div class="b-wordmark">KudoLoyalty</div>
-              <div class="b-nav-item active">
+              <div class="b-wordmark">
+                <span>Kudo</span>Loyalty
+                <div style="font-size:9px;color:#94a3b8;font-weight:500;margin-top:2px;">Merchant Portal</div>
+              </div>
+              <div class="b-nav-item">
                 <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
                 Dashboard
               </div>
@@ -1359,7 +1445,7 @@
                 <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
                 Members
               </div>
-              <div class="b-nav-item">
+              <div class="b-nav-item active">
                 <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 14h6M8 11v3"/></svg>
                 Engage
               </div>
@@ -1372,61 +1458,97 @@
                 Rewards
               </div>
               <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 14h6M8 11v3"/></svg>
+                Offers
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="12" rx="2"/><path d="M11 1v4M5 1v4M1 7h14"/></svg>
+                Events
+              </div>
+              <div class="b-nav-item">
                 <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42"/></svg>
                 Settings
+              </div>
+              <div class="b-signout">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h3a1 1 0 011 1v8a1 1 0 01-1 1h-3M7 11l3-3-3-3M10 8H1"/></svg>
+                Sign out
               </div>
             </div>
             <div class="browser-main">
               <div class="b-topbar">
-                <div class="b-page-title">Dashboard</div>
+                <div class="b-page-title">Engage</div>
                 <div class="b-merchant">Blue Elephant Café</div>
               </div>
-              <div class="b-kpi-row">
-                <div class="b-kpi">
-                  <div class="b-kpi-num">1,247</div>
-                  <div class="b-kpi-label">Total members</div>
-                  <div class="b-kpi-pill up">+34 this month</div>
+              <!-- White content card -->
+              <div style="background:#fff;border-radius:14px;border:1px solid rgba(203,213,225,0.8);overflow:hidden;">
+                <div style="padding:12px 16px;border-bottom:1px solid rgba(203,213,225,0.5);">
+                  <span style="font-size:11px;font-weight:600;color:#475569;">Segments, automated rewards and broadcasts</span>
                 </div>
-                <div class="b-kpi">
-                  <div class="b-kpi-num">89</div>
-                  <div class="b-kpi-label">Active (30d)</div>
-                  <div class="b-kpi-pill up">+12</div>
+                <!-- Tabs -->
+                <div style="display:flex;padding:0 16px;border-bottom:1px solid rgba(203,213,225,0.5);">
+                  <div style="padding:9px 12px;font-size:10px;font-weight:700;color:#7C3AED;border-bottom:2px solid #7C3AED;">Segments</div>
+                  <div style="padding:9px 12px;font-size:10px;font-weight:600;color:#94a3b8;border-bottom:2px solid transparent;">Auto Rewards</div>
+                  <div style="padding:9px 12px;font-size:10px;font-weight:600;color:#94a3b8;border-bottom:2px solid transparent;">Auto Messages</div>
+                  <div style="padding:9px 12px;font-size:10px;font-weight:600;color:#94a3b8;border-bottom:2px solid transparent;">Broadcasts</div>
                 </div>
-                <div class="b-kpi">
-                  <div class="b-kpi-num">12</div>
-                  <div class="b-kpi-label">Need attention</div>
-                  <div class="b-kpi-pill amber">Action needed</div>
-                </div>
-              </div>
-              <div class="b-seg-header">Member segments</div>
-              <div class="b-seg-rows">
-                <div class="b-seg-row">
-                  <div class="b-seg-left">
-                    <div class="b-seg-bar" style="background:#34d399;"></div>
-                    <div class="b-seg-name">New members</div>
+                <div style="font-size:8.5px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;padding:12px 16px 8px;">Auto-segments</div>
+                <div style="padding:0 12px 12px;display:flex;flex-direction:column;gap:7px;">
+                  <!-- New members -->
+                  <div style="display:flex;border-radius:10px;border:1px solid rgba(203,213,225,0.8);overflow:hidden;background:#fff;">
+                    <div style="width:4px;background:#22c55e;flex-shrink:0;"></div>
+                    <div style="padding:10px 14px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px;">
+                          <span style="font-size:12px;font-weight:800;color:#0f172a;">New members</span>
+                          <span style="background:#dcfce7;color:#16a34a;font-size:9px;font-weight:700;padding:1px 7px;border-radius:99px;">34</span>
+                        </div>
+                        <div style="font-size:9.5px;color:#94a3b8;font-weight:500;">Joined in the last 14 days</div>
+                      </div>
+                      <div style="background:#EDE9FE;color:#7C3AED;font-size:9.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid rgba(124,58,237,0.2);white-space:nowrap;">Broadcast →</div>
+                    </div>
                   </div>
-                  <div class="b-seg-count">34</div>
-                </div>
-                <div class="b-seg-row">
-                  <div class="b-seg-left">
-                    <div class="b-seg-bar" style="background:#7C3AED;"></div>
-                    <div class="b-seg-name">Active</div>
+                  <!-- Active -->
+                  <div style="display:flex;border-radius:10px;border:1px solid rgba(203,213,225,0.8);overflow:hidden;background:#fff;">
+                    <div style="width:4px;background:#7C3AED;flex-shrink:0;"></div>
+                    <div style="padding:10px 14px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px;">
+                          <span style="font-size:12px;font-weight:800;color:#0f172a;">Active</span>
+                          <span style="background:#EDE9FE;color:#7C3AED;font-size:9px;font-weight:700;padding:1px 7px;border-radius:99px;">89</span>
+                        </div>
+                        <div style="font-size:9.5px;color:#94a3b8;font-weight:500;">Earned in the last 30 days</div>
+                      </div>
+                      <div style="background:#EDE9FE;color:#7C3AED;font-size:9.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid rgba(124,58,237,0.2);white-space:nowrap;">Broadcast →</div>
+                    </div>
                   </div>
-                  <div class="b-seg-count">89</div>
-                </div>
-                <div class="b-seg-row">
-                  <div class="b-seg-left">
-                    <div class="b-seg-bar" style="background:#fbbf24;"></div>
-                    <div class="b-seg-name">Need attention</div>
+                  <!-- Need attention -->
+                  <div style="display:flex;border-radius:10px;border:1px solid rgba(203,213,225,0.8);overflow:hidden;background:#fff;">
+                    <div style="width:4px;background:#f59e0b;flex-shrink:0;"></div>
+                    <div style="padding:10px 14px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px;">
+                          <span style="font-size:12px;font-weight:800;color:#0f172a;">Need attention</span>
+                          <span style="background:#fef3c7;color:#d97706;font-size:9px;font-weight:700;padding:1px 7px;border-radius:99px;">12</span>
+                        </div>
+                        <div style="font-size:9.5px;color:#94a3b8;font-weight:500;">No activity in 30–90 days</div>
+                      </div>
+                      <div style="background:#EDE9FE;color:#7C3AED;font-size:9.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid rgba(124,58,237,0.2);white-space:nowrap;">Broadcast →</div>
+                    </div>
                   </div>
-                  <div class="b-seg-count">12</div>
-                </div>
-                <div class="b-seg-row">
-                  <div class="b-seg-left">
-                    <div class="b-seg-bar" style="background:#f87171;"></div>
-                    <div class="b-seg-name">Lapsed</div>
+                  <!-- Lapsed -->
+                  <div style="display:flex;border-radius:10px;border:1px solid rgba(203,213,225,0.8);overflow:hidden;background:#fff;">
+                    <div style="width:4px;background:#94a3b8;flex-shrink:0;"></div>
+                    <div style="padding:10px 14px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px;">
+                          <span style="font-size:12px;font-weight:800;color:#0f172a;">Lapsed</span>
+                          <span style="background:#f1f5f9;color:#64748b;font-size:9px;font-weight:700;padding:1px 7px;border-radius:99px;">8</span>
+                        </div>
+                        <div style="font-size:9.5px;color:#94a3b8;font-weight:500;">No activity in 90+ days</div>
+                      </div>
+                      <div style="background:#EDE9FE;color:#7C3AED;font-size:9.5px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid rgba(124,58,237,0.2);white-space:nowrap;">Broadcast →</div>
+                    </div>
                   </div>
-                  <div class="b-seg-count">8</div>
                 </div>
               </div>
             </div>
@@ -1647,7 +1769,7 @@
           </div>
           <div class="seg-member-rows">
             <div class="seg-member-row">
-              <div class="seg-avatar" style="background:#f87171;">S</div>
+              <div class="seg-avatar" style="background:#8b5cf6;">S</div>
               <div class="seg-member-info">
                 <div class="seg-member-name">Siriporn K.</div>
                 <div class="seg-member-meta" id="seg-last1">Last visit 62 days ago</div>
@@ -1655,7 +1777,7 @@
               <div class="seg-member-badge" style="background:rgba(251,191,36,0.15);color:#fbbf24;" id="seg-badge1">At risk</div>
             </div>
             <div class="seg-member-row">
-              <div class="seg-avatar" style="background:#f87171;">N</div>
+              <div class="seg-avatar" style="background:#f97316;">N</div>
               <div class="seg-member-info">
                 <div class="seg-member-name">Natthapong W.</div>
                 <div class="seg-member-meta" id="seg-last2">Last visit 95 days ago</div>
