@@ -189,22 +189,20 @@
       position: relative;
     }
     .hero-visuals-wrap {
-      position: relative;
-      width: 500px;
-      height: 540px;
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      width: 100%;
     }
 
     /* Phone mockup */
     .mock-phone {
-      width: 195px;
+      width: 175px;
       background: #0f172a;
       border-radius: 34px;
       padding: 12px 8px;
       box-shadow: 0 40px 80px rgba(26,26,46,0.28), 0 0 0 1px rgba(255,255,255,0.07);
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 3;
+      flex-shrink: 0;
     }
     .mock-notch {
       width: 52px;
@@ -310,17 +308,13 @@
 
     /* Portal browser screen (wide horizontal) */
     .mock-portal-card {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
+      flex: 1;
+      min-width: 0;
       background: #fff;
       border-radius: 14px;
       border: 1px solid #e2e8f0;
       box-shadow: 0 20px 60px rgba(26,26,46,0.16), 0 0 0 1px rgba(124,58,237,0.04);
       overflow: hidden;
-      z-index: 2;
     }
     /* browser chrome */
     .portal-chrome {
@@ -355,7 +349,7 @@
     /* portal card layout */
     .portal-layout {
       display: flex;
-      height: 310px;
+      height: 260px;
     }
     .portal-sidebar {
       width: 110px;
@@ -522,15 +516,38 @@
       display: flex;
       justify-content: center;
     }
-    /* Large portal browser mockup */
-    .browser-mock {
+    /* Large portal browser mockup — laptop frame */
+    .laptop-frame {
       width: 100%;
       max-width: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+    .browser-mock {
+      width: 100%;
       background: #fff;
-      border-radius: 16px;
+      border-radius: 16px 16px 0 0;
       border: 1px solid #e2e8f0;
+      border-bottom: none;
       box-shadow: 0 24px 64px rgba(26,26,46,0.12);
       overflow: hidden;
+    }
+    .laptop-base {
+      background: linear-gradient(to bottom, #dde1e7, #e8ecf0);
+      height: 16px;
+      border-radius: 0 0 6px 6px;
+      border: 1px solid #d1d5db;
+      border-top: none;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 3px;
+    }
+    .laptop-hinge {
+      width: 56px;
+      height: 5px;
+      background: #c8cdd4;
+      border-radius: 0 0 4px 4px;
     }
     .browser-chrome {
       background: #f1f5f9;
@@ -1161,16 +1178,12 @@
       .engage-content { grid-template-columns: 1fr; gap: 32px; }
       .for-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 900px) {
-      .hero-visuals-wrap { width: 420px; height: 480px; }
-    }
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 56px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { width: 380px; height: 440px; }
-      .mock-phone { width: 170px; }
+      .mock-phone { width: 155px; }
       .portal-sidebar { width: 90px; }
-      .portal-layout { height: 270px; }
+      .portal-layout { height: 240px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .game-cards { grid-template-columns: 1fr; }
       section { padding: 64px 20px; }
@@ -1183,10 +1196,10 @@
       .for-grid { grid-template-columns: 1fr 1fr; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .steps { grid-template-columns: 1fr; }
-      .hero-visuals-wrap { width: 320px; height: 390px; }
-      .mock-phone { width: 148px; }
+      .hero-visuals-wrap { gap: 8px; }
+      .mock-phone { width: 130px; }
       .portal-sidebar { width: 76px; }
-      .portal-layout { height: 240px; }
+      .portal-layout { height: 210px; }
       .portal-nav-item { font-size: 7.5px; padding: 4px 5px; }
       .portal-wordmark { font-size: 8px; }
     }
@@ -1430,6 +1443,7 @@
   <section class="portal-preview">
     <div class="container">
       <div class="portal-preview-visual">
+        <div class="laptop-frame">
         <div class="browser-mock">
           <div class="browser-chrome">
             <div class="b-dots">
@@ -1561,6 +1575,8 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="laptop-base"><div class="laptop-hinge"></div></div>
         </div>
       </div>
 
