@@ -190,21 +190,21 @@
     }
     .hero-visuals-wrap {
       position: relative;
-      width: 400px;
-      height: 500px;
+      width: 500px;
+      height: 540px;
     }
 
     /* Phone mockup */
     .mock-phone {
-      width: 200px;
+      width: 195px;
       background: #0f172a;
       border-radius: 34px;
       padding: 12px 8px;
-      box-shadow: 0 40px 80px rgba(26,26,46,0.22), 0 0 0 1px rgba(255,255,255,0.07);
+      box-shadow: 0 40px 80px rgba(26,26,46,0.28), 0 0 0 1px rgba(255,255,255,0.07);
       position: absolute;
       bottom: 0;
       left: 0;
-      z-index: 2;
+      z-index: 3;
     }
     .mock-notch {
       width: 52px;
@@ -308,18 +308,19 @@
       border-radius: 6px;
     }
 
-    /* Portal dashboard card (floating) */
+    /* Portal browser screen (wide horizontal) */
     .mock-portal-card {
       position: absolute;
       top: 0;
+      left: 0;
       right: 0;
-      width: 260px;
+      width: 100%;
       background: #fff;
-      border-radius: 16px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 24px 70px rgba(26,26,46,0.18), 0 0 0 1px rgba(124,58,237,0.05);
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 20px 60px rgba(26,26,46,0.16), 0 0 0 1px rgba(124,58,237,0.04);
       overflow: hidden;
-      z-index: 3;
+      z-index: 2;
     }
     /* browser chrome */
     .portal-chrome {
@@ -354,40 +355,40 @@
     /* portal card layout */
     .portal-layout {
       display: flex;
-      height: 330px;
+      height: 310px;
     }
     .portal-sidebar {
-      width: 82px;
+      width: 110px;
       background: #fff;
       border-right: 1px solid #f1f5f9;
-      padding: 10px 8px 8px;
+      padding: 12px 10px 10px;
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
     }
     .portal-wordmark {
-      font-size: 8px;
+      font-size: 10px;
       font-weight: 900;
       color: #1A1A2E;
       letter-spacing: -0.02em;
       line-height: 1.2;
-      padding-bottom: 6px;
+      padding-bottom: 8px;
       border-bottom: 1px solid #f1f5f9;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
     .portal-wordmark-sub {
-      font-size: 5px;
+      font-size: 7px;
       color: #94a3b8;
       font-weight: 500;
-      margin-top: 1px;
+      margin-top: 2px;
     }
     .portal-nav-item {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 4px 5px;
-      border-radius: 5px;
-      font-size: 7px;
+      gap: 7px;
+      padding: 6px 7px;
+      border-radius: 6px;
+      font-size: 9px;
       font-weight: 600;
       color: #94a3b8;
       margin-bottom: 1px;
@@ -398,8 +399,8 @@
       font-weight: 700;
     }
     .portal-nav-icon {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       opacity: 0.5;
       flex-shrink: 0;
     }
@@ -407,36 +408,36 @@
     .portal-signout {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 4px 5px;
-      font-size: 7px;
+      gap: 7px;
+      padding: 6px 7px;
+      font-size: 9px;
       font-weight: 500;
       color: #94a3b8;
       margin-top: auto;
       border-top: 1px solid #f1f5f9;
-      padding-top: 6px;
+      padding-top: 8px;
     }
     .portal-main {
       flex: 1;
       background: #f8f9fc;
-      padding: 9px;
+      padding: 12px;
       overflow: hidden;
     }
     .portal-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 7px;
+      margin-bottom: 9px;
     }
-    .portal-page-title { font-size: 11px; font-weight: 900; color: var(--ink); letter-spacing: -0.01em; }
+    .portal-page-title { font-size: 13px; font-weight: 900; color: var(--ink); letter-spacing: -0.01em; }
     .portal-merchant-name {
-      font-size: 6.5px;
+      font-size: 8px;
       color: var(--muted);
       font-weight: 700;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 4px;
-      padding: 2px 6px;
+      border-radius: 5px;
+      padding: 3px 8px;
     }
     /* Portal segment card */
     .portal-seg-card {
@@ -460,26 +461,26 @@
       min-width: 0;
     }
     .portal-seg-name {
-      font-size: 8px;
+      font-size: 10px;
       font-weight: 800;
       color: #0f172a;
     }
     .portal-seg-badge {
-      font-size: 7px;
+      font-size: 8px;
       font-weight: 700;
-      padding: 1px 5px;
+      padding: 1px 6px;
       border-radius: 99px;
-      margin-left: 5px;
+      margin-left: 6px;
     }
-    .portal-seg-desc { font-size: 6.5px; color: #94a3b8; font-weight: 500; margin-top: 1px; }
+    .portal-seg-desc { font-size: 8px; color: #94a3b8; font-weight: 500; margin-top: 2px; }
     .portal-broadcast-btn {
-      font-size: 6.5px;
+      font-size: 8px;
       font-weight: 700;
       color: #7C3AED;
       background: #EDE9FE;
       border: 1px solid rgba(124,58,237,0.2);
       border-radius: 99px;
-      padding: 3px 7px;
+      padding: 4px 9px;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -1160,12 +1161,16 @@
       .engage-content { grid-template-columns: 1fr; gap: 32px; }
       .for-grid { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 900px) {
+      .hero-visuals-wrap { width: 420px; height: 480px; }
+    }
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 56px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { width: 340px; height: 420px; }
-      .mock-phone { width: 175px; }
-      .mock-portal-card { width: 220px; }
+      .hero-visuals-wrap { width: 380px; height: 440px; }
+      .mock-phone { width: 170px; }
+      .portal-sidebar { width: 90px; }
+      .portal-layout { height: 270px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .game-cards { grid-template-columns: 1fr; }
       section { padding: 64px 20px; }
@@ -1178,9 +1183,12 @@
       .for-grid { grid-template-columns: 1fr 1fr; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .steps { grid-template-columns: 1fr; }
-      .hero-visuals-wrap { width: 290px; height: 360px; }
-      .mock-phone { width: 155px; }
-      .mock-portal-card { width: 185px; }
+      .hero-visuals-wrap { width: 320px; height: 390px; }
+      .mock-phone { width: 148px; }
+      .portal-sidebar { width: 76px; }
+      .portal-layout { height: 240px; }
+      .portal-nav-item { font-size: 7.5px; padding: 4px 5px; }
+      .portal-wordmark { font-size: 8px; }
     }
   </style>
 </head>
