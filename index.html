@@ -1113,6 +1113,72 @@
     .for-card h3 { font-size: 15px; font-weight: 800; color: var(--ink); }
     .for-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
+    /* ── Pricing ── */
+    .pricing { background: #fff; }
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 24px auto 48px;
+    }
+    .pricing-toggle-track {
+      width: 44px; height: 24px; border-radius: 99px;
+      background: var(--violet); position: relative; cursor: pointer;
+      flex-shrink: 0; border: none; outline: none;
+    }
+    .pricing-toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #fff; transition: transform 0.2s;
+    }
+    .pricing-toggle-track.annual .pricing-toggle-thumb { transform: translateX(20px); }
+    .pricing-toggle-label { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .pricing-toggle-badge {
+      font-size: 11px; font-weight: 700; color: #16a34a;
+      background: #dcfce7; padding: 2px 8px; border-radius: 99px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pricing-card {
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: box-shadow 0.2s;
+    }
+    .pricing-card.featured {
+      border-color: var(--violet);
+      box-shadow: 0 8px 40px rgba(124,58,237,0.12);
+    }
+    .pricing-tier { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .pricing-price { font-size: 32px; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
+    .pricing-price span { font-size: 14px; font-weight: 600; color: var(--muted); }
+    .pricing-annual { font-size: 12px; color: var(--muted); margin-top: 4px; min-height: 18px; }
+    .pricing-limit { font-size: 14px; font-weight: 700; color: var(--ink); margin: 16px 0 20px; padding: 10px 14px; background: var(--bg-subtle); border-radius: 10px; }
+    .pricing-cta {
+      display: block; width: 100%; padding: 11px 0;
+      border-radius: 12px; font-size: 14px; font-weight: 700;
+      text-align: center; text-decoration: none; cursor: pointer;
+      border: none;
+    }
+    .pricing-cta.primary { background: var(--violet); color: #fff; }
+    .pricing-cta.secondary { background: var(--violet-light); color: var(--violet); }
+    .pricing-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 20px; }
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── CTA ── */
     .cta-section {
       background: var(--ink);
@@ -1901,6 +1967,60 @@
     </div>
   </section>
 
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-eyebrow" id="pricing-eyebrow">Pricing</div>
+      <h2 class="section-title" id="pricing-title">Simple, transparent pricing</h2>
+      <p class="section-sub" id="pricing-sub">All features on every plan — only your member count changes.</p>
+
+      <div class="pricing-toggle" id="pricing-toggle-wrap">
+        <span class="pricing-toggle-label" id="ptl-monthly">Monthly</span>
+        <button class="pricing-toggle-track" id="billing-toggle" aria-label="Toggle annual billing">
+          <span class="pricing-toggle-thumb"></span>
+        </button>
+        <span class="pricing-toggle-label" id="ptl-annual">Annual</span>
+        <span class="pricing-toggle-badge" id="ptl-badge">Save 2 months</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="pricing-card">
+          <div class="pricing-tier" id="pt-free">Free</div>
+          <div class="pricing-price">฿0 <span id="pp-free">/mo</span></div>
+          <div class="pricing-annual" id="pa-free"></div>
+          <div class="pricing-limit" id="pl-free">Up to 200 members</div>
+          <a href="https://stre-loyalty.web.app/portal" class="pricing-cta secondary" id="pc-free">Get started</a>
+        </div>
+        <!-- Starter -->
+        <div class="pricing-card">
+          <div class="pricing-tier" id="pt-starter">Starter</div>
+          <div class="pricing-price" id="pp-starter-price">฿590 <span>/mo</span></div>
+          <div class="pricing-annual" id="pa-starter">or ฿492/mo billed annually</div>
+          <div class="pricing-limit" id="pl-starter">Up to 1,000 members</div>
+          <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Starter plan" class="pricing-cta secondary" id="pc-starter">Upgrade</a>
+        </div>
+        <!-- Growth — featured -->
+        <div class="pricing-card featured">
+          <div class="pricing-tier" style="color:var(--violet)" id="pt-growth">Growth</div>
+          <div class="pricing-price" id="pp-growth-price">฿1,290 <span>/mo</span></div>
+          <div class="pricing-annual" id="pa-growth">or ฿1,075/mo billed annually</div>
+          <div class="pricing-limit" id="pl-growth">Up to 5,000 members</div>
+          <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Growth plan" class="pricing-cta primary" id="pc-growth">Upgrade</a>
+        </div>
+        <!-- Business -->
+        <div class="pricing-card">
+          <div class="pricing-tier" id="pt-business">Business</div>
+          <div class="pricing-price" id="pp-business-price">฿2,490 <span>/mo</span></div>
+          <div class="pricing-annual" id="pa-business">or ฿2,075/mo billed annually</div>
+          <div class="pricing-limit" id="pl-business">Unlimited members</div>
+          <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Business plan" class="pricing-cta secondary" id="pc-business">Upgrade</a>
+        </div>
+      </div>
+      <p class="pricing-note" id="pricing-note">No credit card required to start. Upgrade anytime by email.</p>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="container">
@@ -2032,6 +2152,15 @@
         'cta-p': 'Start free. No credit card required. Live in under 15 minutes.',
         'cta-btn': 'Get started free',
         'cta-note': 'Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a>',
+        /* Pricing */
+        'pricing-eyebrow': 'Pricing',
+        'pricing-title': 'Simple, transparent pricing',
+        'pricing-sub': 'All features on every plan — only your member count changes.',
+        'ptl-monthly': 'Monthly', 'ptl-annual': 'Annual', 'ptl-badge': 'Save 2 months',
+        'pt-free': 'Free', 'pt-starter': 'Starter', 'pt-growth': 'Growth', 'pt-business': 'Business',
+        'pl-free': 'Up to 200 members', 'pl-starter': 'Up to 1,000 members', 'pl-growth': 'Up to 5,000 members', 'pl-business': 'Unlimited members',
+        'pc-free': 'Get started', 'pc-starter': 'Upgrade', 'pc-growth': 'Upgrade', 'pc-business': 'Upgrade',
+        'pricing-note': 'No credit card required to start. Upgrade anytime by email.',
         /* Footer */
         'footer-contact': 'Contact',
         'footer-signin': 'Sign in',
@@ -2140,6 +2269,15 @@
         'cta-p': 'เริ่มฟรี ไม่ต้องใช้บัตรเครดิต เริ่มใช้งานได้ภายใน 15 นาที',
         'cta-btn': 'เริ่มใช้งานฟรีเลย',
         'cta-note': 'มีคำถาม? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">ติดต่อเรา</a>',
+        /* Pricing */
+        'pricing-eyebrow': 'ราคา',
+        'pricing-title': 'ราคาโปร่งใส เข้าใจง่าย',
+        'pricing-sub': 'ทุกฟีเจอร์ครบทุกแพ็กเกจ — ต่างกันแค่จำนวนสมาชิก',
+        'ptl-monthly': 'รายเดือน', 'ptl-annual': 'รายปี', 'ptl-badge': 'ประหยัด 2 เดือน',
+        'pt-free': 'ฟรี', 'pt-starter': 'สตาร์ทเตอร์', 'pt-growth': 'โกรท', 'pt-business': 'บิซเนส',
+        'pl-free': 'สูงสุด 200 สมาชิก', 'pl-starter': 'สูงสุด 1,000 สมาชิก', 'pl-growth': 'สูงสุด 5,000 สมาชิก', 'pl-business': 'ไม่จำกัดสมาชิก',
+        'pc-free': 'เริ่มใช้งาน', 'pc-starter': 'อัพเกรด', 'pc-growth': 'อัพเกรด', 'pc-business': 'อัพเกรด',
+        'pricing-note': 'ไม่ต้องใช้บัตรเครดิตในการเริ่มต้น อัพเกรดได้ทุกเมื่อผ่านอีเมล',
         /* Footer */
         'footer-contact': 'ติดต่อ',
         'footer-signin': 'เข้าสู่ระบบ',
@@ -2165,6 +2303,42 @@
     function toggleLang() { applyLang(currentLang === 'en' ? 'th' : 'en'); }
 
     if (currentLang === 'th') applyLang('th');
+
+    // Annual billing toggle
+    var isAnnual = false;
+    var annualData = {
+      starter: { monthly: '฿590', annual: '฿492', annualNote: 'หรือ ฿492/เดือน เมื่อชำระรายปี' },
+      growth:  { monthly: '฿1,290', annual: '฿1,075', annualNote: 'หรือ ฿1,075/เดือน เมื่อชำระรายปี' },
+      business:{ monthly: '฿2,490', annual: '฿2,075', annualNote: 'หรือ ฿2,075/เดือน เมื่อชำระรายปี' },
+    };
+    var annualDataEn = {
+      starter: { monthly: '฿590', annual: '฿492', annualNote: 'or ฿492/mo billed annually' },
+      growth:  { monthly: '฿1,290', annual: '฿1,075', annualNote: 'or ฿1,075/mo billed annually' },
+      business:{ monthly: '฿2,490', annual: '฿2,075', annualNote: 'or ฿2,075/mo billed annually' },
+    };
+    function updatePricing() {
+      var d = currentLang === 'th' ? annualData : annualDataEn;
+      var mo = '/mo'; var moTh = '/เดือน';
+      ['starter','growth','business'].forEach(function(t) {
+        var priceEl = document.getElementById('pp-' + t + '-price');
+        var noteEl = document.getElementById('pa-' + t);
+        if (!priceEl || !noteEl) return;
+        var price = isAnnual ? d[t].annual : d[t].monthly;
+        var moLabel = currentLang === 'th' ? moTh : mo;
+        priceEl.innerHTML = price + ' <span>' + moLabel + '</span>';
+        noteEl.textContent = isAnnual ? '' : d[t].annualNote;
+      });
+      var track = document.getElementById('billing-toggle');
+      if (track) {
+        if (isAnnual) track.classList.add('annual');
+        else track.classList.remove('annual');
+      }
+    }
+    document.getElementById('billing-toggle') && document.getElementById('billing-toggle').addEventListener('click', function() {
+      isAnnual = !isAnnual;
+      updatePricing();
+    });
+    updatePricing();
   </script>
 </body>
 </html>
