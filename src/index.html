@@ -1,0 +1,2613 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KudoLoyalty — LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, broadcasts, and automated messages — without asking customers to download anything new." />
+  <meta name="theme-color" content="#7C3AED" />
+  <title>KudoLoyalty — Loyalty built for LINE</title>
+  <link rel="canonical" href="https://kudoloyalty-landing.vercel.app/" />
+
+  <!-- Link preview. og:image MUST be an absolute URL — scrapers (LINE, Slack,
+       Facebook, X) fetch it directly and never run the page's JS or CSS.
+       Change the host in these four URLs if a custom domain is added. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KudoLoyalty" />
+  <meta property="og:url" content="https://kudoloyalty-landing.vercel.app/" />
+  <meta property="og:title" content="KudoLoyalty — Loyalty built for LINE" />
+  <meta property="og:description" content="Your customers are already on LINE. Give them a loyalty program that lives there too. Self-serve setup in under 15 minutes." />
+  <meta property="og:image" content="https://kudoloyalty-landing.vercel.app/og.png" />
+  <meta property="og:image:secure_url" content="https://kudoloyalty-landing.vercel.app/og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="KudoLoyalty — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="th_TH" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KudoLoyalty — Loyalty built for LINE" />
+  <meta name="twitter:description" content="Your customers are already on LINE. Give them a loyalty program that lives there too. Self-serve setup in under 15 minutes." />
+  <meta name="twitter:image" content="https://kudoloyalty-landing.vercel.app/og.png" />
+  <meta name="twitter:image:alt" content="KudoLoyalty — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%237C3AED'/><text x='50' y='73' font-size='62' text-anchor='middle' fill='%23FFFFFF' font-family='ui-monospace,monospace' font-weight='600'>K</text></svg>" />
+
+  <!-- Open Props: raw design tokens (radius/size/ease scales) -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/open-props@1.7.23/open-props.min.css" />
+
+  <!-- Space Grotesk (display) · IBM Plex Sans/Mono/Sans Thai (metric-matched) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ═══════════════════════════════════════════════════════════
+       Design tokens — semantic layer over Open Props.
+       Open Props supplies the raw scales (--radius-*, --size-*,
+       --ease-*); everything below names them for this brand.
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      /* ── Type: grotesk display, Plex body, mono for labels/data ── */
+      --font-display: 'Space Grotesk', 'IBM Plex Sans Thai', -apple-system, sans-serif;
+      --font-sans: 'IBM Plex Sans', 'IBM Plex Sans Thai', -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+      /* ── Ground & ink: cool, near-white ── */
+      --paper:      #FFFFFF;
+      --paper-2:    #FAFAFC;
+      --card:       #FFFFFF;
+      --ink:        #0E0E13;
+      --ink-2:      #35353F;
+      --muted:      #6A6A78;
+      --muted-2:    #9A9AA8;
+      --rule:       #E4E4EB;
+      --rule-soft:  #EFEFF4;
+
+      /* ── Brand: violet, flat, used as a signal not a wash ── */
+      --accent:      #7C3AED;
+      --accent-deep: #6D28D9;
+      --accent-lift: #A78BFA;   /* violet legible on night */
+      --accent-line: rgba(124,58,237,0.24);
+      --wash:        #F4F0FE;
+
+      /* ── Night grounds ── */
+      --night:      #0B0B10;
+      --night-2:    #121218;
+      --night-rule: rgba(255,255,255,0.10);
+      --night-text: rgba(255,255,255,0.60);
+      --night-dim:  rgba(255,255,255,0.40);
+
+      /* ── Functional data colors ── */
+      --ok: #15803D;    --ok-bg: #E8F5EC;    --ok-d: #4ADE80;
+      --warn: #B45309;  --warn-bg: #FDF2E0;  --warn-d: #FBBF24;
+      --risk: #BE123C;  --risk-bg: #FDE9EE;  --risk-d: #FB7185;
+      --info: #1D4ED8;  --info-bg: #E7EDFD;  --info-d: #93B4FC;
+
+      /* ── Device-screen neutrals ── */
+      --screen:      #FAFAFC;
+      --screen-card: #FFFFFF;
+      --screen-rule: #E7E7EE;
+      --screen-dim:  #9A9AA8;
+      --device:      #16161C;
+
+      /* ── Geometry: tight and technical ── */
+      --r-xs: 3px;
+      --r-sm: 6px;
+      --r-lg: 10px;
+      --r-pill: var(--radius-round);
+      --r-circle: 50%;
+      --r-phone: 30px;   --r-phone-lg: 36px;
+      --r-screen-r: 20px; --r-screen-lg: 24px;
+      --r-mock-card: 8px;
+
+      /* ── Elevation: hairlines do the work ── */
+      --lift: 0 1px 2px rgba(14,14,19,0.05), 0 8px 24px -14px rgba(14,14,19,0.18);
+      --device-shadow: 0 1px 3px rgba(14,14,19,0.06), 0 28px 56px -24px rgba(14,14,19,0.28);
+
+      /* ── Rhythm ── */
+      --gutter: var(--size-5);
+      --section-y: 88px;
+
+      /* ── Aliases (pre-existing var names / inline styles) ── */
+      --violet:       var(--accent);
+      --violet-light: var(--wash);
+      --violet-mid:   var(--accent-lift);
+      --bg:           var(--paper);
+      --bg-subtle:    var(--paper-2);
+      --border:       var(--rule);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Editorial headings: serif, set at normal weight ────── */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      letter-spacing: -0.022em;
+      text-wrap: balance;
+    }
+
+    /* Thai has no serif counterpart here — Plex Sans Thai carries
+       it, so nudge weight and size to hold the same optical mass. */
+    html[lang="th"] h1,
+    html[lang="th"] h2,
+    html[lang="th"] h3,
+    html[lang="th"] h4 {
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.35;
+    }
+    /* mono has no Thai — fall back cleanly */
+    html[lang="th"] .section-eyebrow,
+    html[lang="th"] .hero-eyebrow,
+    html[lang="th"] .pricing-tier,
+    html[lang="th"] .seg-card-title { font-family: var(--font-sans); letter-spacing: 0.10em; }
+    html[lang="th"] body { line-height: 1.75; }
+
+    a { color: inherit; }
+
+    /* Focus is visible everywhere — it was missing before. */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: var(--r-xs);
+    }
+    .cta-section a:focus-visible,
+    .engage-section a:focus-visible,
+    .gamification a:focus-visible { outline-color: var(--accent-lift); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ═══════════════════════════════ Nav ═══════════════════════ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251,248,243,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 var(--gutter);
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: var(--size-2); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      transition: background 0.18s var(--ease-3);
+    }
+    .nav-cta:hover { background: var(--accent-deep); }
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 13px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--rule);
+      cursor: pointer;
+      transition: border-color 0.18s var(--ease-3), color 0.18s var(--ease-3);
+      font-family: inherit;
+      text-decoration: none;
+    }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ══════════════════════ Shared section ════════════════════ */
+    section { padding: var(--section-y) var(--gutter); }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    /* Eyebrow: tracked small caps behind a hairline rule. */
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--size-3);
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      vertical-align: middle;
+      margin-right: 12px;
+      opacity: 0.55;
+    }
+    .section-title {
+      font-size: clamp(28px, 3.1vw, 40px);
+      font-weight: 600;
+      line-height: 1.14;
+      letter-spacing: -0.028em;
+      color: var(--ink);
+      margin-bottom: var(--size-3);
+      max-width: 24ch;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+
+    /* ═══════════════════════════ Hero ══════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 96px var(--gutter) 88px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    /* grid lives on a pseudo-element — masking .hero itself would
+       fade the content along with the background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+      background-size: 64px 64px;
+      background-position: center top;
+      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    }
+    .hero > .container { position: relative; z-index: 1; }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1.16fr 1.2fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--wash);
+      border: 1px solid var(--accent-line);
+      border-radius: var(--r-xs);
+      padding: 5px 10px;
+      margin-bottom: var(--size-5);
+      font-family: var(--font-mono);
+    }
+    .hero-eyebrow svg { flex-shrink: 0; }
+    .hero h1 {
+      font-size: clamp(33px, 3.5vw, 46px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.032em;
+      color: var(--ink);
+      margin-bottom: var(--size-4);
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: var(--size-7);
+      max-width: 46ch;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--size-5);
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 24px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 500;
+      font-size: 15px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      transition: background 0.18s var(--ease-3);
+    }
+    .btn-primary:hover { background: var(--accent-deep); }
+    .hero-note { font-size: 13px; color: var(--muted-2); }
+
+    /* ── Hero dual visual ── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-visuals-wrap {
+      position: relative;
+      width: 100%;
+      height: 400px;
+    }
+
+    /* Phone mockup */
+    .mock-phone {
+      position: absolute;
+      bottom: 0;
+      right: 20px;
+      width: 190px;
+      background: var(--device);
+      border-radius: var(--r-phone);
+      padding: 12px 8px;
+      box-shadow: var(--device-shadow);
+      z-index: 3;
+    }
+    .mock-notch {
+      width: 52px;
+      height: 7px;
+      background: #35302708;
+      background: rgba(255,255,255,0.14);
+      border-radius: var(--r-pill);
+      margin: 0 auto 8px;
+    }
+    .mock-screen {
+      background: var(--screen);
+      border-radius: var(--r-screen-r);
+      overflow: hidden;
+    }
+    .mock-hero-card {
+      margin: 8px;
+      border-radius: var(--r-mock-card);
+      overflow: hidden;
+      border: 1px solid var(--screen-rule);
+    }
+    .mock-cover {
+      background: var(--accent);
+      height: 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 7px;
+    }
+    .mock-glass {
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--r-sm);
+      border: 1px solid rgba(255,255,255,0.7);
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .mock-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: var(--r-xs);
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .mock-merchant-name { font-size: 9px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+    .mock-merchant-tag { font-size: 7px; color: var(--screen-dim); margin-top: 1px; }
+    .mock-balance {
+      background: var(--accent);
+      padding: 8px 10px 10px;
+    }
+    .mock-greeting { font-size: 7px; color: rgba(255,255,255,0.75); font-weight: 400; margin-bottom: 2px; }
+    .mock-points-num { font-family: var(--font-mono); font-size: 26px; font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .mock-points-unit { font-size: 7px; color: rgba(255,255,255,0.75); font-weight: 500; margin-top: 3px; margin-bottom: 6px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .mock-progress-meta { display: flex; justify-content: space-between; font-size: 7px; color: rgba(255,255,255,0.65); margin-bottom: 3px; font-weight: 400; }
+    .mock-progress-bar { height: 3px; background: rgba(255,255,255,0.22); border-radius: var(--r-pill); overflow: hidden; }
+    .mock-progress-fill { height: 100%; width: 82%; background: rgba(255,255,255,0.92); border-radius: var(--r-pill); }
+    .mock-tabs {
+      display: flex;
+      background: var(--screen-card);
+      border-bottom: 1px solid var(--screen-rule);
+    }
+    .mock-tab {
+      flex: 1;
+      text-align: center;
+      padding: 7px 0;
+      font-size: 8px;
+      font-weight: 500;
+      color: var(--screen-dim);
+      border-bottom: 1.5px solid transparent;
+    }
+    .mock-tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+    .mock-reward-card {
+      margin: 6px 8px 8px;
+      background: var(--screen-card);
+      border-radius: var(--r-sm);
+      border: 1px solid var(--screen-rule);
+      overflow: hidden;
+    }
+    .mock-reward-img {
+      height: 40px;
+      background: var(--wash);
+    }
+    .mock-reward-body { padding: 6px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
+    .mock-reward-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .mock-reward-name { font-size: 9px; font-weight: 600; color: var(--ink); }
+    .mock-reward-cost { font-size: 8px; font-weight: 500; color: var(--screen-dim); flex-shrink: 0; font-variant-numeric: tabular-nums; }
+    .mock-redeem-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 500;
+      text-align: center;
+      padding: 5px;
+      border-radius: var(--r-xs);
+    }
+
+    /* Portal browser screen (wide horizontal) */
+    .mock-portal-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 115px;
+      background: var(--screen-card);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--screen-rule);
+      box-shadow: var(--lift);
+      overflow: hidden;
+      z-index: 2;
+    }
+    /* browser chrome */
+    .portal-chrome {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--screen-rule);
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .portal-dots { display: flex; gap: 4px; }
+    .portal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: var(--r-circle);
+      background: var(--screen-rule);
+    }
+    .portal-dot.red,
+    .portal-dot.yellow,
+    .portal-dot.green { background: #D9D1C4; }
+    .portal-url {
+      flex: 1;
+      background: var(--screen-card);
+      border-radius: var(--r-xs);
+      border: 1px solid var(--screen-rule);
+      padding: 3px 7px;
+      font-size: 7px;
+      color: var(--screen-dim);
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    /* portal card layout */
+    .portal-layout {
+      display: flex;
+      min-height: 270px;
+    }
+    .portal-sidebar {
+      width: 95px;
+      background: var(--screen-card);
+      border-right: 1px solid var(--screen-rule);
+      padding: 12px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .portal-wordmark {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--screen-rule);
+      margin-bottom: 6px;
+    }
+    .portal-wordmark-sub {
+      font-family: var(--font-sans);
+      font-size: 7px;
+      color: var(--screen-dim);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .portal-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 7px;
+      border-radius: var(--r-xs);
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--screen-dim);
+      margin-bottom: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .portal-nav-item.active {
+      background: var(--wash);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .portal-nav-icon {
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+    .portal-nav-item.active .portal-nav-icon { opacity: 1; }
+    .portal-signout {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 7px;
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--screen-dim);
+      margin-top: auto;
+      border-top: 1px solid var(--screen-rule);
+      padding-top: 8px;
+    }
+    .portal-main {
+      flex: 1;
+      min-width: 0;
+      background: var(--screen);
+      padding: 12px;
+      overflow: hidden;
+    }
+    .portal-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+    .portal-page-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .portal-merchant-name {
+      font-size: 8px;
+      color: var(--muted);
+      font-weight: 500;
+      background: var(--screen-card);
+      border: 1px solid var(--screen-rule);
+      border-radius: var(--r-xs);
+      padding: 3px 8px;
+    }
+    /* Portal segment card */
+    .portal-seg-card {
+      display: flex;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--screen-rule);
+      overflow: hidden;
+      background: var(--screen-card);
+      margin-bottom: 5px;
+    }
+    .portal-seg-accent {
+      width: 3px;
+      flex-shrink: 0;
+    }
+    .portal-seg-body {
+      padding: 7px 9px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 0;
+    }
+    .portal-seg-name {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .portal-seg-badge {
+      font-size: 8px;
+      font-weight: 500;
+      padding: 1px 6px;
+      border-radius: var(--r-xs);
+      margin-left: 6px;
+    }
+    .portal-seg-desc { font-size: 8px; color: var(--screen-dim); font-weight: 400; margin-top: 2px; }
+    .portal-broadcast-btn {
+      font-size: 8px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--wash);
+      border: 1px solid rgba(164,70,42,0.18);
+      border-radius: var(--r-xs);
+      padding: 4px 9px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════ How it works ═════════════════════ */
+    .how { background: var(--paper-2); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--size-6);
+    }
+    /* Editorial numerals over a hairline, not filled chips. */
+    .step {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      padding-top: var(--size-3);
+      border-top: 1px solid var(--rule);
+    }
+    .step-num {
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: none;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      color: var(--accent);
+      display: block;
+    }
+    .step-num::before { content: '0'; }
+    .step h3 { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.28; }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.68; }
+
+    /* ════════════════════ Portal preview ══════════════════════ */
+    .portal-preview {
+      background: var(--paper);
+    }
+    .portal-preview .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .portal-preview-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+    /* Large portal browser mockup — laptop frame */
+    .laptop-frame {
+      width: 100%;
+      max-width: 480px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .browser-mock {
+      width: 100%;
+      background: var(--screen-card);
+      border-radius: var(--r-lg) var(--r-lg) 0 0;
+      border: 1px solid var(--screen-rule);
+      border-bottom: none;
+      box-shadow: var(--device-shadow);
+      overflow: hidden;
+    }
+    .laptop-base {
+      background: #E6E0D6;
+      height: 15px;
+      border-radius: 0 0 var(--r-sm) var(--r-sm);
+      border: 1px solid #D6CEC1;
+      border-top: none;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 3px;
+    }
+    .laptop-hinge {
+      width: 56px;
+      height: 4px;
+      background: #CFC6B7;
+      border-radius: 0 0 var(--r-xs) var(--r-xs);
+    }
+    .browser-chrome {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--screen-rule);
+      padding: 7px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .b-dots { display: flex; gap: 4px; }
+    .b-dot { width: 8px; height: 8px; border-radius: var(--r-circle); background: #D9D1C4; }
+    .b-dot.r, .b-dot.y, .b-dot.g { background: #D9D1C4; }
+    .b-url {
+      flex: 1;
+      background: var(--screen-card);
+      border-radius: var(--r-xs);
+      border: 1px solid var(--screen-rule);
+      padding: 3px 7px;
+      font-size: 9px;
+      color: var(--screen-dim);
+      font-weight: 400;
+    }
+    .browser-body { display: flex; min-height: 300px; min-width: 0; }
+    .browser-sidebar {
+      width: 118px;
+      background: var(--screen-card);
+      border-right: 1px solid var(--screen-rule);
+      padding: 11px 8px 9px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .b-wordmark {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--screen-rule);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .b-wordmark span { color: var(--accent); }
+    .b-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 6px;
+      border-radius: var(--r-xs);
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--screen-dim);
+      margin-bottom: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .b-nav-item.active {
+      background: var(--wash);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .b-nav-icon {
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+    .b-nav-item.active .b-nav-icon { opacity: 1; }
+    .b-signout {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 6px;
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--screen-dim);
+      margin-top: auto;
+      border-top: 1px solid var(--screen-rule);
+      padding-top: 7px;
+    }
+    .browser-main {
+      flex: 1;
+      min-width: 0;
+      background: var(--screen);
+      padding: 11px;
+      overflow: hidden;
+    }
+    .b-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .b-page-title { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .b-merchant {
+      font-size: 9px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .b-kpi-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .b-kpi {
+      background: var(--screen-card);
+      border-radius: var(--r-sm);
+      border: 1px solid var(--screen-rule);
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .b-kpi::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 22%;
+      bottom: 22%;
+      width: 2px;
+      background: var(--accent);
+      opacity: 0.55;
+    }
+    .b-kpi-num { font-family: var(--font-mono); font-size: 25px; font-weight: 500; color: var(--ink); line-height: 1; margin-bottom: 5px; font-variant-numeric: tabular-nums lining-nums; }
+    .b-kpi-label { font-size: 9px; color: var(--muted); font-weight: 400; margin-bottom: 6px; }
+    .b-kpi-pill {
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      font-size: 8px;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: var(--r-xs);
+    }
+    .b-kpi-pill.up { background: var(--ok-bg); color: var(--ok); }
+    .b-kpi-pill.amber { background: var(--warn-bg); color: var(--warn); }
+    .b-seg-header { font-family: var(--font-mono); font-size: 8.5px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 7px; }
+    .b-seg-rows { display: flex; flex-direction: column; gap: 5px; }
+    .b-seg-row {
+      background: var(--screen-card);
+      border-radius: var(--r-sm);
+      border: 1px solid var(--screen-rule);
+      padding: 7px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .b-seg-left { display: flex; align-items: center; gap: 8px; }
+    .b-seg-dot { width: 7px; height: 7px; border-radius: var(--r-circle); flex-shrink: 0; }
+    .b-seg-name { font-size: 10.5px; font-weight: 400; color: var(--ink); }
+    .b-seg-count { font-size: 11px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    /* Bullet lists — hairline-boxed icons, no filled chips. */
+    .portal-preview-copy .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-4);
+      margin-top: var(--size-7);
+    }
+    .portal-preview-copy .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .bullet-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--r-sm);
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════ Member app ════════════════════════ */
+    .member-section {
+      background: var(--paper-2);
+    }
+    .member-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .member-copy-side { order: -1; }
+    .member-visual-side {
+      display: flex;
+      justify-content: center;
+    }
+    .member-big-phone {
+      width: 240px;
+      background: var(--device);
+      border-radius: var(--r-phone-lg);
+      padding: 14px 10px;
+      box-shadow: var(--device-shadow);
+    }
+    .member-big-notch {
+      width: 60px;
+      height: 8px;
+      background: rgba(255,255,255,0.14);
+      border-radius: var(--r-pill);
+      margin: 0 auto 10px;
+    }
+    .member-big-screen {
+      background: var(--screen);
+      border-radius: var(--r-screen-lg);
+      overflow: hidden;
+    }
+    .mbig-hero-card {
+      margin: 10px;
+      border-radius: var(--r-mock-card);
+      overflow: hidden;
+      border: 1px solid var(--screen-rule);
+    }
+    .mbig-cover {
+      background: var(--accent);
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8px;
+    }
+    .mbig-glass {
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--r-sm);
+      border: 1px solid rgba(255,255,255,0.7);
+      padding: 7px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mbig-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--r-xs);
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .mbig-merchant-name { font-size: 11px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+    .mbig-merchant-tag { font-size: 9px; color: var(--screen-dim); margin-top: 1px; }
+    .mbig-balance {
+      background: var(--accent);
+      padding: 10px 12px 12px;
+    }
+    .mbig-greeting { font-size: 9px; color: rgba(255,255,255,0.75); font-weight: 400; margin-bottom: 3px; }
+    .mbig-points-num { font-family: var(--font-mono); font-size: 31px; font-weight: 500; color: #fff; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .mbig-points-unit { font-size: 9px; color: rgba(255,255,255,0.75); font-weight: 500; margin-top: 4px; margin-bottom: 8px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .mbig-progress-meta { display: flex; justify-content: space-between; font-size: 8px; color: rgba(255,255,255,0.65); margin-bottom: 4px; font-weight: 400; }
+    .mbig-progress-bar { height: 4px; background: rgba(255,255,255,0.22); border-radius: var(--r-pill); overflow: hidden; }
+    .mbig-progress-fill { height: 100%; width: 82%; background: rgba(255,255,255,0.92); border-radius: var(--r-pill); }
+    .mbig-tabs {
+      display: flex;
+      background: var(--screen-card);
+      border-bottom: 1px solid var(--screen-rule);
+    }
+    .mbig-tab {
+      flex: 1;
+      text-align: center;
+      padding: 9px 0;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--screen-dim);
+      border-bottom: 2px solid transparent;
+    }
+    .mbig-tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+    .mbig-reward-card {
+      margin: 8px 10px 10px;
+      background: var(--screen-card);
+      border-radius: var(--r-sm);
+      border: 1px solid var(--screen-rule);
+      overflow: hidden;
+    }
+    .mbig-reward-img {
+      height: 52px;
+      background: var(--wash);
+    }
+    .mbig-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
+    .mbig-reward-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .mbig-reward-name { font-size: 11px; font-weight: 600; color: var(--ink); }
+    .mbig-reward-cost { font-size: 10px; font-weight: 500; color: var(--screen-dim); flex-shrink: 0; font-variant-numeric: tabular-nums; }
+    .mbig-redeem-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 500;
+      text-align: center;
+      padding: 7px;
+      border-radius: var(--r-xs);
+    }
+    .member-bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--size-7);
+      border-top: 1px solid var(--rule);
+    }
+    .member-bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .member-bullet-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: var(--r-circle);
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    /* ══════════════════════ Features ══════════════════════════ */
+    .features-section { background: var(--paper); }
+    .features-grid {
+      counter-reset: feat;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 60px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    /* A ruled grid rather than twelve floating rounded boxes. */
+    .feature-card {
+      counter-increment: feat;
+      position: relative;
+      padding: 32px 30px;
+      border: none;
+      border-radius: 0;
+      background: var(--paper);
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      transition: background 0.2s var(--ease-3);
+    }
+    .feature-card::before {
+      content: counter(feat, decimal-leading-zero);
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--muted-2);
+    }
+    .feature-card:hover {
+      background: var(--paper-2);
+      box-shadow: none;
+    }
+    .feature-card:hover::before { color: var(--accent); }
+    .feature-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 0;
+      background: transparent;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 2px;
+    }
+    .feature-card h3 { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.68; }
+
+    /* ═════════════════════ Engage (night) ═════════════════════ */
+    .engage-section {
+      background: var(--night);
+      padding: var(--section-y) var(--gutter);
+    }
+    .engage-section .section-eyebrow { color: var(--accent-lift); }
+    .engage-section .section-title { color: #F5F5F8; }
+    .engage-section .section-sub { color: var(--night-text); max-width: 56ch; }
+    .engage-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--size-8);
+      margin-top: 60px;
+    }
+    .engage-feature-rows { display: flex; flex-direction: column; gap: 0; }
+    .engage-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--size-4);
+      padding: var(--size-4) 0;
+      border-bottom: 1px solid var(--night-rule);
+    }
+    .engage-feature:first-child { padding-top: 0; }
+    .engage-feature:last-child { border-bottom: none; }
+    .engage-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 0;
+      background: transparent;
+      border: none;
+      color: var(--accent-lift);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .engage-feature h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .engage-feature p {
+      font-size: 13.5px;
+      color: var(--night-dim);
+      line-height: 1.68;
+    }
+    /* Segment preview card on night section */
+    .segment-preview-card {
+      background: var(--night-2);
+      border: 1px solid var(--night-rule);
+      border-radius: var(--r-lg);
+      padding: var(--size-6);
+      align-self: start;
+    }
+    .seg-card-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-lift);
+      margin-bottom: var(--size-4);
+    }
+    .seg-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: var(--size-4);
+    }
+    .seg-pill {
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 9px;
+      border-radius: var(--r-xs);
+      border: 1px solid var(--night-rule);
+      background: rgba(255,255,255,0.04);
+    }
+    .seg-pill.green  { color: var(--ok-d); }
+    .seg-pill.violet { color: var(--accent-lift); }
+    .seg-pill.amber  { color: var(--warn-d); }
+    .seg-pill.red    { color: var(--risk-d); }
+    .seg-dot { width: 5px; height: 5px; border-radius: var(--r-circle); background: currentColor; }
+    .seg-member-rows { display: flex; flex-direction: column; gap: 5px; }
+    .seg-member-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      background: rgba(255,255,255,0.035);
+      border-radius: var(--r-sm);
+      border: 1px solid var(--night-rule);
+    }
+    .seg-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--r-circle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 500;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .seg-member-info { flex: 1; }
+    .seg-member-name { font-size: 11.5px; font-weight: 500; color: #F5F5F8; }
+    .seg-member-meta { font-size: 9.5px; color: rgba(255,255,255,0.38); margin-top: 1px; }
+    .seg-member-badge {
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: var(--r-xs);
+    }
+    .seg-broadcast-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: var(--size-4);
+      padding: 10px 18px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 500;
+      border-radius: var(--r-sm);
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ═════════════════ Gamification (night) ═══════════════════ */
+    .gamification {
+      background: var(--night-2);
+      padding: var(--section-y) var(--gutter);
+      border-top: 1px solid var(--night-rule);
+    }
+    .gamification .section-eyebrow { color: var(--accent-lift); }
+    .gamification .section-title { color: #F5F5F8; }
+    .gamification .section-sub { color: var(--night-text); margin-bottom: var(--size-8); }
+    .game-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--size-5);
+    }
+    .game-card {
+      background: transparent;
+      border: 1px solid var(--night-rule);
+      border-radius: var(--r-lg);
+      padding: var(--size-7) var(--size-6);
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      transition: background 0.2s var(--ease-3), border-color 0.2s var(--ease-3);
+    }
+    .game-card:hover { background: rgba(255,255,255,0.03); border-color: rgba(227,163,121,0.35); }
+    .game-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 0;
+      background: transparent;
+      border: none;
+      color: var(--accent-lift);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .game-card h3 { font-size: 21px; font-weight: 600; color: #F5F5F8; margin: 0; }
+    .game-card p { font-size: 15px; color: var(--night-text); line-height: 1.68; margin: 0; }
+    .game-badge {
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--accent-lift);
+      background: transparent;
+      border: 1px solid var(--night-rule);
+      padding: 4px 10px;
+      border-radius: var(--r-xs);
+      width: fit-content;
+    }
+
+    /* ══════════════════════ Who it's for ═════════════════════ */
+    .for { background: var(--paper-2); }
+    .for-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: var(--size-8);
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .for-card {
+      padding: 28px 24px;
+      border-radius: 0;
+      background: var(--paper-2);
+      border: none;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+    .for-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      background: transparent;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 2px;
+    }
+    .for-card h3 { font-size: 15.5px; font-weight: 600; color: var(--ink); }
+    .for-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ════════════════════════ Pricing ═════════════════════════ */
+    .pricing { background: var(--paper); }
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      margin: 0 0 var(--size-8);
+    }
+    .pricing-toggle-track {
+      width: 42px; height: 24px; border-radius: var(--r-pill);
+      background: var(--ink); position: relative; cursor: pointer;
+      flex-shrink: 0; border: none;
+      transition: background 0.2s var(--ease-3);
+    }
+    .pricing-toggle-track.annual { background: var(--accent); }
+    .pricing-toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; border-radius: var(--r-circle);
+      background: var(--paper); transition: transform 0.2s var(--ease-3);
+    }
+    .pricing-toggle-track.annual .pricing-toggle-thumb { transform: translateX(18px); }
+    .pricing-toggle-label { font-size: 14px; font-weight: 400; color: var(--ink); }
+    .pricing-toggle-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px; font-weight: 500; color: var(--ok);
+      background: var(--ok-bg); padding: 3px 9px; border-radius: var(--r-xs);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      align-items: stretch;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .pricing-card {
+      border-radius: 0;
+      border: none;
+      background: var(--paper);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: background 0.2s var(--ease-3);
+    }
+    .pricing-card.featured {
+      background: var(--card);
+      box-shadow: inset 0 2px 0 0 var(--accent);
+    }
+    .pricing-tier { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 14px; }
+    .pricing-price { font-family: var(--font-mono); font-size: 34px; font-weight: 500; color: var(--ink); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .pricing-price span { font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+    .pricing-annual { font-size: 12px; color: var(--muted-2); margin-top: 7px; min-height: 18px; }
+    .pricing-limit { font-size: 14px; font-weight: 400; color: var(--ink); margin: 18px 0 auto; padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .pricing-cta {
+      display: block; width: 100%; padding: 11px 0;
+      border-radius: var(--r-sm); font-size: 14px; font-weight: 500;
+      text-align: center; text-decoration: none; cursor: pointer;
+      border: 1px solid transparent;
+      margin-top: 22px;
+      transition: background 0.18s var(--ease-3), border-color 0.18s var(--ease-3);
+    }
+    .pricing-cta.primary { background: var(--accent); color: #fff; }
+    .pricing-cta.primary:hover { background: var(--accent-deep); }
+    .pricing-cta.secondary { background: transparent; color: var(--ink); border-color: var(--rule); }
+    .pricing-cta.secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .pricing-note { font-size: 12.5px; color: var(--muted-2); text-align: left; margin-top: var(--size-4); }
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════ CTA ═══════════════════════════ */
+    .cta-section {
+      background: var(--night);
+      padding: 112px var(--gutter);
+      text-align: center;
+      border-top: 1px solid var(--night-rule);
+    }
+    .cta-section h2 {
+      font-size: clamp(32px, 3.8vw, 50px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.032em;
+      color: #F5F5F8;
+      margin: 0 auto var(--size-4);
+      max-width: 16ch;
+    }
+    .cta-section h2 span { color: var(--accent-lift); }
+    .cta-section > .container > p {
+      font-size: 17px;
+      color: var(--night-text);
+      margin-bottom: var(--size-8);
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 15px 32px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      transition: background 0.18s var(--ease-3);
+    }
+    .btn-cta:hover { background: var(--accent-deep); }
+    .cta-note {
+      margin-top: var(--size-5);
+      font-size: 13px;
+      color: rgba(255,255,255,0.34);
+    }
+
+    /* ═════════════════════════ Footer ═════════════════════════ */
+    .footer-wrap {
+      padding: var(--size-7) var(--gutter);
+      border-top: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    footer {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: -0.03em; }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: var(--size-6); align-items: center; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s var(--ease-3); }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 12px; color: var(--muted-2); }
+
+    /* ═══════════════════════ Responsive ═══════════════════════ */
+    @media (max-width: 900px) {
+      :root { --section-y: 76px; }
+      .steps { grid-template-columns: 1fr 1fr; row-gap: var(--size-7); }
+      .portal-preview .container { grid-template-columns: 1fr; gap: var(--size-8); }
+      .portal-preview-visual { order: -1; }
+      .member-section .container { grid-template-columns: 1fr; gap: var(--size-8); }
+      .member-copy-side { order: 1; }
+      .member-visual-side { order: -1; }
+      .engage-content { grid-template-columns: 1fr; gap: var(--size-7); }
+      .for-grid { grid-template-columns: 1fr 1fr; }
+      .section-title { max-width: 26ch; }
+    }
+    @media (max-width: 768px) {
+      .hero .container { grid-template-columns: 1fr; gap: var(--size-8); }
+      .hero-visual { order: -1; }
+      .hero-visuals-wrap { height: 340px; }
+      .mock-phone { width: 190px; transform: scale(0.853); transform-origin: bottom right; }
+      .mock-portal-card { right: 96px; left: 0; }
+      .portal-sidebar { width: 90px; }
+      .portal-layout { min-height: 0; height: 240px; }
+      .mock-portal-card .portal-seg-card:nth-last-child(1) { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .game-cards { grid-template-columns: 1fr; }
+      section { padding: var(--section-y) 20px; }
+      .hero { padding: 64px 20px var(--section-y); }
+      .gamification { padding: var(--section-y) 20px; }
+      .engage-section { padding: var(--section-y) 20px; }
+      .cta-section { padding: 84px 20px; }
+    }
+    @media (max-width: 540px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .for-grid { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: var(--size-3); }
+      .steps { grid-template-columns: 1fr; }
+      .hero-visuals-wrap { height: 290px; }
+      .mock-phone { width: 190px; transform: scale(0.716); transform-origin: bottom right; }
+      .mock-portal-card { right: 80px; left: 0; }
+      .portal-sidebar { width: 76px; }
+      .portal-layout { min-height: 0; height: auto; }
+      .mock-portal-card .portal-seg-card:nth-last-child(2) { display: none; }
+      .portal-nav-item { font-size: 7.5px; padding: 4px 5px; }
+      .portal-wordmark { font-size: 9px; }
+      .feature-card { padding: 26px 22px; }
+      .pricing-toggle { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo"><span>Kudo</span>Loyalty</a>
+      <div class="nav-right">
+        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ภาษาไทย</button>
+        <a href="https://stre-loyalty.web.app/portal" class="nav-cta" id="nav-cta">Get started →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="currentColor"/><path d="M4 7l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="hero-eyebrow">LINE-native loyalty for Thai businesses</span>
+        </div>
+        <h1 id="hero-h1">Your customers<br />are on <span>LINE.</span><br />Your loyalty<br />program should be too.</h1>
+        <p class="hero-sub" id="hero-sub">
+          KudoLoyalty gives you a complete loyalty program inside LINE — points, rewards, segments, and broadcasts — without asking customers to download anything new.
+        </p>
+        <div class="hero-actions">
+          <a href="https://stre-loyalty.web.app/portal" class="btn-primary">
+            <span id="hero-cta">Start free</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span class="hero-note" id="hero-note">No credit card required</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visuals-wrap">
+
+          <!-- Phone mockup (member app) -->
+          <div class="mock-phone">
+            <div class="mock-notch"></div>
+            <div class="mock-screen">
+              <div class="mock-hero-card">
+                <div class="mock-cover">
+                  <div class="mock-glass">
+                    <div class="mock-logo">B</div>
+                    <div>
+                      <div class="mock-merchant-name">Blue Elephant Café</div>
+                      <div class="mock-merchant-tag">Earn points on every visit</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mock-balance">
+                  <div class="mock-greeting">Hi, Kanya</div>
+                  <div class="mock-points-num">248</div>
+                  <div class="mock-points-unit">points</div>
+                  <div class="mock-progress-meta">
+                    <span>To next reward</span>
+                    <span>248 / 300</span>
+                  </div>
+                  <div class="mock-progress-bar">
+                    <div class="mock-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mock-tabs">
+                <div class="mock-tab active">Loyalty</div>
+                <div class="mock-tab">Coupons</div>
+              </div>
+              <div class="mock-reward-card">
+                <div class="mock-reward-img"></div>
+                <div class="mock-reward-body">
+                  <div class="mock-reward-row">
+                    <div class="mock-reward-name">Free coffee</div>
+                    <div class="mock-reward-cost">300 pts</div>
+                  </div>
+                  <div class="mock-redeem-btn">Redeem</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating portal card -->
+          <div class="mock-portal-card">
+            <div class="portal-chrome">
+              <div class="portal-dots">
+                <div class="portal-dot red"></div>
+                <div class="portal-dot yellow"></div>
+                <div class="portal-dot green"></div>
+              </div>
+              <div class="portal-url"></div>
+            </div>
+            <div class="portal-layout">
+              <div class="portal-sidebar">
+                <div class="portal-wordmark">
+                  <span style="color:var(--accent);">Kudo</span>Loyalty
+                  <div class="portal-wordmark-sub">Merchant Portal</div>
+                </div>
+                <div class="portal-nav-item">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
+                  Dashboard
+                </div>
+                <div class="portal-nav-item">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+                  Members
+                </div>
+                <div class="portal-nav-item active">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 14h6M8 11v3"/></svg>
+                  Engage
+                </div>
+                <div class="portal-nav-item">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 12 5 7 8 10 11 6 15 10"/></svg>
+                  Analytics
+                </div>
+                <div class="portal-nav-item">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H4a1 1 0 00-1 1v11a1 1 0 001 1h8a1 1 0 001-1V3a1 1 0 00-1-1z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
+                  Rewards
+                </div>
+                <div class="portal-nav-item">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42"/></svg>
+                  Settings
+                </div>
+                <div class="portal-signout">
+                  <svg class="portal-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h3a1 1 0 011 1v8a1 1 0 01-1 1h-3M7 11l3-3-3-3M10 8H1"/></svg>
+                  Sign out
+                </div>
+              </div>
+              <div class="portal-main">
+                <div class="portal-topbar">
+                  <div class="portal-page-title">Engage</div>
+                  <div class="portal-merchant-name">Blue Elephant</div>
+                </div>
+                <!-- Tabs -->
+                <div style="display:flex;gap:0;border-bottom:1px solid var(--screen-rule);margin-bottom:7px;">
+                  <div style="padding:4px 8px;font-size:7px;font-weight:500;color:var(--accent);border-bottom:2px solid var(--accent);">Segments</div>
+                  <div style="padding:4px 7px;font-size:7px;font-weight:600;color:var(--screen-dim);">Auto Rewards</div>
+                  <div style="padding:4px 7px;font-size:7px;font-weight:600;color:var(--screen-dim);">Broadcasts</div>
+                </div>
+                <div style="font-size:6px;font-weight:600;color:var(--screen-dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;">Auto-segments</div>
+                <!-- New members -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:var(--ok);"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">New members</span>
+                        <span class="portal-seg-badge" style="background:var(--ok-bg);color:var(--ok);">34</span>
+                      </div>
+                      <div class="portal-seg-desc">Joined in the last 14 days</div>
+                    </div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
+                  </div>
+                </div>
+                <!-- Active -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:var(--accent);"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">Active</span>
+                        <span class="portal-seg-badge" style="background:var(--wash);color:var(--accent);">89</span>
+                      </div>
+                      <div class="portal-seg-desc">Earned in the last 30 days</div>
+                    </div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
+                  </div>
+                </div>
+                <!-- Need attention -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:var(--warn);"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">Need attention</span>
+                        <span class="portal-seg-badge" style="background:var(--warn-bg);color:var(--warn);">12</span>
+                      </div>
+                      <div class="portal-seg-desc">No activity in 30–90 days</div>
+                    </div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
+                  </div>
+                </div>
+                <!-- Lapsed -->
+                <div class="portal-seg-card">
+                  <div class="portal-seg-accent" style="background:var(--screen-dim);"></div>
+                  <div class="portal-seg-body">
+                    <div>
+                      <div style="display:flex;align-items:center;">
+                        <span class="portal-seg-name">Lapsed</span>
+                        <span class="portal-seg-badge" style="background:var(--paper-2);color:var(--muted);">8</span>
+                      </div>
+                      <div class="portal-seg-desc">No activity in 90+ days</div>
+                    </div>
+                    <div class="portal-broadcast-btn">Broadcast →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <div class="container">
+      <div class="section-eyebrow" id="how-eyebrow">How it works</div>
+      <h2 class="section-title" id="how-title">Live in under 15 minutes</h2>
+      <p class="section-sub" id="how-sub">No developers, no integrations, no headaches. Follow the guided setup and you're ready to go.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3 id="step1-title">Set up your program</h3>
+          <p id="step1-text">Pick your loyalty mode — points, stamps, or online claims — and add your first rewards. The guided wizard walks you through LINE connection and branding step by step.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3 id="step2-title">Share with customers</h3>
+          <p id="step2-text">Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3 id="step3-title">Staff confirms in-store</h3>
+          <p id="step3-text">When a customer redeems a reward, your staff confirms via the admin app on any device. Or issue instant digital coupons — your choice.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3 id="step4-title">Engage and broadcast</h3>
+          <p id="step4-text">Automatically group members by activity level. Send targeted LINE messages to re-engage at-risk members or reward your most loyal ones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portal preview -->
+  <section class="portal-preview">
+    <div class="container">
+      <div class="portal-preview-visual">
+        <div class="laptop-frame">
+        <div class="browser-mock">
+          <div class="browser-chrome">
+            <div class="b-dots">
+              <div class="b-dot r"></div>
+              <div class="b-dot y"></div>
+              <div class="b-dot g"></div>
+            </div>
+            <div class="b-url"></div>
+          </div>
+          <div class="browser-body">
+            <div class="browser-sidebar">
+              <div class="b-wordmark">
+                <span>Kudo</span>Loyalty
+                <div style="font-size:7px;color:var(--screen-dim);font-weight:500;margin-top:2px;">Merchant Portal</div>
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
+                Dashboard
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+                Members
+              </div>
+              <div class="b-nav-item active">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 14h6M8 11v3"/></svg>
+                Engage
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 12 5 7 8 10 11 6 15 10"/></svg>
+                Analytics
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H4a1 1 0 00-1 1v11a1 1 0 001 1h8a1 1 0 001-1V3a1 1 0 00-1-1z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
+                Rewards
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2h12v9H2z"/><path d="M5 14h6M8 11v3"/></svg>
+                Offers
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="14" height="12" rx="2"/><path d="M11 1v4M5 1v4M1 7h14"/></svg>
+                Events
+              </div>
+              <div class="b-nav-item">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42"/></svg>
+                Settings
+              </div>
+              <div class="b-signout">
+                <svg class="b-nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h3a1 1 0 011 1v8a1 1 0 01-1 1h-3M7 11l3-3-3-3M10 8H1"/></svg>
+                Sign out
+              </div>
+            </div>
+            <div class="browser-main">
+              <div class="b-topbar">
+                <div class="b-page-title">Engage</div>
+                <div class="b-merchant">Blue Elephant Café</div>
+              </div>
+              <!-- White content card -->
+              <div style="background:var(--screen-card);border-radius:var(--r-sm);border:1px solid var(--screen-rule);overflow:hidden;">
+                <div style="padding:8px 12px;border-bottom:1px solid var(--screen-rule);">
+                  <span style="font-size:9px;font-weight:600;color:var(--ink-2);">Segments, automated rewards and broadcasts</span>
+                </div>
+                <!-- Tabs -->
+                <div style="display:flex;padding:0 12px;border-bottom:1px solid var(--screen-rule);">
+                  <div style="padding:6px 9px;font-size:8px;font-weight:500;color:var(--accent);border-bottom:2px solid var(--accent);">Segments</div>
+                  <div style="padding:6px 9px;font-size:8px;font-weight:600;color:var(--screen-dim);border-bottom:2px solid transparent;">Auto Rewards</div>
+                  <div style="padding:6px 9px;font-size:8px;font-weight:600;color:var(--screen-dim);border-bottom:2px solid transparent;">Auto Messages</div>
+                  <div style="padding:6px 9px;font-size:8px;font-weight:600;color:var(--screen-dim);border-bottom:2px solid transparent;">Broadcasts</div>
+                </div>
+                <div style="font-size:7px;font-weight:600;color:var(--screen-dim);text-transform:uppercase;letter-spacing:0.06em;padding:8px 12px 5px;">Auto-segments</div>
+                <div style="padding:0 8px 8px;display:flex;flex-direction:column;gap:5px;">
+                  <!-- New members -->
+                  <div style="display:flex;border-radius:var(--r-sm);border:1px solid var(--screen-rule);overflow:hidden;background:var(--screen-card);">
+                    <div style="width:3px;background:var(--ok);flex-shrink:0;"></div>
+                    <div style="padding:7px 10px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                          <span style="font-size:9px;font-weight:600;color:var(--ink);">New members</span>
+                          <span style="background:var(--ok-bg);color:var(--ok);font-size:7px;font-weight:500;padding:1px 5px;border-radius:var(--r-xs);">34</span>
+                        </div>
+                        <div style="font-size:8px;color:var(--screen-dim);font-weight:500;">Joined in the last 14 days</div>
+                      </div>
+                      <div style="background:var(--wash);color:var(--accent);font-size:8px;font-weight:500;padding:3px 8px;border-radius:var(--r-xs);border:1px solid rgba(164,70,42,0.18);white-space:nowrap;">Broadcast →</div>
+                    </div>
+                  </div>
+                  <!-- Active -->
+                  <div style="display:flex;border-radius:var(--r-sm);border:1px solid var(--screen-rule);overflow:hidden;background:var(--screen-card);">
+                    <div style="width:3px;background:var(--accent);flex-shrink:0;"></div>
+                    <div style="padding:7px 10px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                          <span style="font-size:9px;font-weight:600;color:var(--ink);">Active</span>
+                          <span style="background:var(--wash);color:var(--accent);font-size:7px;font-weight:500;padding:1px 5px;border-radius:var(--r-xs);">89</span>
+                        </div>
+                        <div style="font-size:8px;color:var(--screen-dim);font-weight:500;">Earned in the last 30 days</div>
+                      </div>
+                      <div style="background:var(--wash);color:var(--accent);font-size:8px;font-weight:500;padding:3px 8px;border-radius:var(--r-xs);border:1px solid rgba(164,70,42,0.18);white-space:nowrap;">Broadcast →</div>
+                    </div>
+                  </div>
+                  <!-- Need attention -->
+                  <div style="display:flex;border-radius:var(--r-sm);border:1px solid var(--screen-rule);overflow:hidden;background:var(--screen-card);">
+                    <div style="width:3px;background:var(--warn);flex-shrink:0;"></div>
+                    <div style="padding:7px 10px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                          <span style="font-size:9px;font-weight:600;color:var(--ink);">Need attention</span>
+                          <span style="background:var(--warn-bg);color:var(--warn);font-size:7px;font-weight:500;padding:1px 5px;border-radius:var(--r-xs);">12</span>
+                        </div>
+                        <div style="font-size:8px;color:var(--screen-dim);font-weight:500;">No activity in 30–90 days</div>
+                      </div>
+                      <div style="background:var(--wash);color:var(--accent);font-size:8px;font-weight:500;padding:3px 8px;border-radius:var(--r-xs);border:1px solid rgba(164,70,42,0.18);white-space:nowrap;">Broadcast →</div>
+                    </div>
+                  </div>
+                  <!-- Lapsed -->
+                  <div style="display:flex;border-radius:var(--r-sm);border:1px solid var(--screen-rule);overflow:hidden;background:var(--screen-card);">
+                    <div style="width:3px;background:var(--screen-dim);flex-shrink:0;"></div>
+                    <div style="padding:7px 10px;flex:1;display:flex;align-items:center;justify-content:space-between;">
+                      <div>
+                        <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                          <span style="font-size:9px;font-weight:600;color:var(--ink);">Lapsed</span>
+                          <span style="background:var(--paper-2);color:var(--muted);font-size:7px;font-weight:500;padding:1px 5px;border-radius:var(--r-xs);">8</span>
+                        </div>
+                        <div style="font-size:8px;color:var(--screen-dim);font-weight:500;">No activity in 90+ days</div>
+                      </div>
+                      <div style="background:var(--wash);color:var(--accent);font-size:8px;font-weight:500;padding:3px 8px;border-radius:var(--r-xs);border:1px solid rgba(164,70,42,0.18);white-space:nowrap;">Broadcast →</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="laptop-base"><div class="laptop-hinge"></div></div>
+        </div>
+      </div>
+
+      <div class="portal-preview-copy">
+        <div class="section-eyebrow" id="portal-eyebrow">Merchant portal</div>
+        <h2 class="section-title" id="portal-title">Your loyalty command center</h2>
+        <p class="section-sub" style="margin-bottom:0;" id="portal-sub">Everything you need to run and grow your loyalty program — in one clean dashboard.</p>
+        <ul class="bullet-list">
+          <li>
+            <div class="bullet-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
+            </div>
+            <span id="portal-b1">Auto-segment your members into New, Active, At risk, and Lapsed groups — automatically, with no setup.</span>
+          </li>
+          <li>
+            <div class="bullet-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h14v9H2zM6 15h6M9 12v3"/></svg>
+            </div>
+            <span id="portal-b2">Send targeted LINE messages to any segment — win-back campaigns, birthday rewards, or announcements.</span>
+          </li>
+          <li>
+            <div class="bullet-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 14 6 8 9 11 12 7 16 11"/></svg>
+            </div>
+            <span id="portal-b3">Track earning trends, reward performance, and member activity — all in one analytics dashboard.</span>
+          </li>
+          <li>
+            <div class="bullet-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H4a1 1 0 00-1 1v13a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1z"/><path d="M6 7h6M6 10h6M6 13h4"/></svg>
+            </div>
+            <span id="portal-b4">Manage rewards, promo codes, events, and gamification from a single sidebar — no switching between tools.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Member app section -->
+  <section class="member-section">
+    <div class="container">
+      <div class="member-copy-side">
+        <div class="section-eyebrow" id="member-eyebrow">Member app</div>
+        <h2 class="section-title" id="member-title">Zero friction for your customers</h2>
+        <p class="section-sub" style="margin-bottom:0;" id="member-sub">Members open LINE, tap your loyalty link, and they're in. No download, no new account, no password to forget.</p>
+        <ul class="member-bullet-list">
+          <li><div class="member-bullet-dot"></div><span id="member-b1">Check their points balance and progress toward the next reward</span></li>
+          <li><div class="member-bullet-dot"></div><span id="member-b2">Browse and redeem rewards — staff-verified in-store or instant digital coupons</span></li>
+          <li><div class="member-bullet-dot"></div><span id="member-b3">Play daily scratch cards or lucky spin to earn bonus points</span></li>
+          <li><div class="member-bullet-dot"></div><span id="member-b4">Receive automated birthday rewards and milestone bonuses automatically</span></li>
+          <li><div class="member-bullet-dot"></div><span id="member-b5">All inside the LINE app they already have — no extra step required</span></li>
+        </ul>
+      </div>
+      <div class="member-visual-side">
+        <div class="member-big-phone">
+          <div class="member-big-notch"></div>
+          <div class="member-big-screen">
+            <div class="mbig-hero-card">
+              <div class="mbig-cover">
+                <div class="mbig-glass">
+                  <div class="mbig-logo">B</div>
+                  <div>
+                    <div class="mbig-merchant-name">Blue Elephant Café</div>
+                    <div class="mbig-merchant-tag">Earn points on every visit</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mbig-balance">
+                <div class="mbig-greeting">Hi, Kanya</div>
+                <div class="mbig-points-num">248</div>
+                <div class="mbig-points-unit">points</div>
+                <div class="mbig-progress-meta">
+                  <span>Progress to reward</span>
+                  <span>248 / 300</span>
+                </div>
+                <div class="mbig-progress-bar">
+                  <div class="mbig-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mbig-tabs">
+              <div class="mbig-tab active">Loyalty</div>
+              <div class="mbig-tab">My Coupons</div>
+            </div>
+            <div class="mbig-reward-card">
+              <div class="mbig-reward-img"></div>
+              <div class="mbig-reward-body">
+                <div class="mbig-reward-row">
+                  <div class="mbig-reward-name">Free coffee</div>
+                  <div class="mbig-reward-cost">300 pts</div>
+                </div>
+                <div class="mbig-redeem-btn">Redeem</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-eyebrow" id="feat-eyebrow">Features</div>
+      <h2 class="section-title" id="feat-title">Everything you need.<br />Nothing you don't.</h2>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </div>
+          <h3 id="f1-title">LINE-native</h3>
+          <p id="f1-text">Customers earn and redeem inside the LINE app they use every day. No download, no new account, no friction.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 id="f2-title">Segments &amp; broadcasts</h3>
+          <p id="f2-text">Automatically group members by activity (New, Active, At risk, Lapsed) or create custom segments. Send targeted LINE messages to any group.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+          </div>
+          <h3 id="f3-title">Flexible rewards</h3>
+          <p id="f3-text">Points, stamps, or online claims. Staff-verified in-store or instant digital codes. Birthday bonuses, milestone rewards, and win-back campaigns included.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3 id="f4-title">Automated messages</h3>
+          <p id="f4-text">Set up a welcome message for new joiners, a win-back campaign for inactive members, and birthday rewards — all running automatically without lifting a finger.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 id="f5-title">Live analytics</h3>
+          <p id="f5-text">See which members are active, which rewards are popular, and how your automations are performing. No spreadsheets required.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="9"/><path d="M11 7l1.5 3.5L16 11l-3.5 1.5L11 16l-1.5-3.5L6 11l3.5-1.5L11 7z"/></svg>
+          </div>
+          <h3 id="f6-title">Gamification</h3>
+          <p id="f6-text">Daily scratch cards and lucky spin wheels with configurable win rates — keeping members engaged between visits.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Engage section -->
+  <section class="engage-section">
+    <div class="container">
+      <div class="section-eyebrow" id="engage-eyebrow">Engage</div>
+      <h2 class="section-title" id="engage-title">Re-engage customers before they're gone</h2>
+      <p class="section-sub" id="engage-sub">Most loyalty programs just collect data. KudoLoyalty helps you act on it — send the right message to the right members at the right time, directly through LINE.</p>
+
+      <div class="engage-content">
+        <div class="engage-feature-rows">
+          <div class="engage-feature">
+            <div class="engage-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h4 id="engage-f1-title">Auto-segments</h4>
+              <p id="engage-f1-text">New, Active, At risk, and Lapsed members identified automatically — no configuration needed.</p>
+            </div>
+          </div>
+          <div class="engage-feature">
+            <div class="engage-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div>
+              <h4 id="engage-f2-title">LINE broadcast</h4>
+              <p id="engage-f2-text">Send text or card messages to any segment — targeted, not spray-and-pray. Multicast only, never spammy.</p>
+            </div>
+          </div>
+          <div class="engage-feature">
+            <div class="engage-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+            </div>
+            <div>
+              <h4 id="engage-f3-title">Win-back automation</h4>
+              <p id="engage-f3-text">Automatic LINE message and bonus points when a member goes quiet for 30+ days — bringing them back without manual work.</p>
+            </div>
+          </div>
+          <div class="engage-feature">
+            <div class="engage-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            </div>
+            <div>
+              <h4 id="engage-f4-title">Birthday &amp; milestones</h4>
+              <p id="engage-f4-text">Reward loyalty milestones and birthdays automatically — a personal touch that keeps members feeling valued.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segment preview card -->
+        <div class="segment-preview-card">
+          <div class="seg-card-title" id="seg-card-title">Member segments</div>
+          <div class="seg-pill-row">
+            <span class="seg-pill green"><span class="seg-dot"></span><span id="seg-new">34 New</span></span>
+            <span class="seg-pill violet"><span class="seg-dot"></span><span id="seg-active">89 Active</span></span>
+            <span class="seg-pill amber"><span class="seg-dot"></span><span id="seg-risk">12 At risk</span></span>
+            <span class="seg-pill red"><span class="seg-dot"></span><span id="seg-lapsed">8 Lapsed</span></span>
+          </div>
+          <div class="seg-member-rows">
+            <div class="seg-member-row">
+              <div class="seg-avatar" style="background:var(--accent);">S</div>
+              <div class="seg-member-info">
+                <div class="seg-member-name">Siriporn K.</div>
+                <div class="seg-member-meta" id="seg-last1">Last visit 62 days ago</div>
+              </div>
+              <div class="seg-member-badge" style="background:rgba(255,255,255,0.07);color:var(--warn-d);" id="seg-badge1">At risk</div>
+            </div>
+            <div class="seg-member-row">
+              <div class="seg-avatar" style="background:var(--warn);">N</div>
+              <div class="seg-member-info">
+                <div class="seg-member-name">Natthapong W.</div>
+                <div class="seg-member-meta" id="seg-last2">Last visit 95 days ago</div>
+              </div>
+              <div class="seg-member-badge" style="background:rgba(255,255,255,0.07);color:var(--risk-d);" id="seg-badge2">Lapsed</div>
+            </div>
+            <div class="seg-member-row">
+              <div class="seg-avatar" style="background:var(--ok);">A</div>
+              <div class="seg-member-info">
+                <div class="seg-member-name">Apinya T.</div>
+                <div class="seg-member-meta" id="seg-last3">Joined 5 days ago</div>
+              </div>
+              <div class="seg-member-badge" style="background:rgba(255,255,255,0.07);color:var(--ok-d);" id="seg-badge3">New</div>
+            </div>
+          </div>
+          <div class="seg-broadcast-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 1L1 5.5l4 2 2 4.5 2.5-3.5L13 1z"/></svg>
+            <span id="seg-broadcast-btn">Broadcast to At risk →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gamification -->
+  <section class="gamification">
+    <div class="container">
+      <div class="section-eyebrow" id="game-eyebrow">Gamification</div>
+      <h2 class="section-title" id="game-title">Turn loyalty into a game</h2>
+      <p class="section-sub" id="game-sub">Keep customers coming back with daily games that reward bonus points — making your loyalty program something they actually look forward to opening.</p>
+      <div class="game-cards">
+        <div class="game-card">
+          <div class="game-card-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="22" height="22" rx="4"/><path d="M10 14h8M14 10v8"/><circle cx="14" cy="14" r="3" stroke-dasharray="3 2"/></svg>
+          </div>
+          <div class="game-badge" id="game1-badge">Daily · Configurable win rate</div>
+          <h3 id="game1-title">Scratch Card</h3>
+          <p id="game1-text">Members scratch a card inside LINE to instantly reveal if they've won bonus points. Set the win rate, point range, and daily play limit to match your margin.</p>
+        </div>
+        <div class="game-card">
+          <div class="game-card-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M14 3v11l6.5 6.5"/><path d="M14 14L7 7"/></svg>
+          </div>
+          <div class="game-badge" id="game2-badge">Daily · Custom prize segments</div>
+          <h3 id="game2-title">Lucky Spin</h3>
+          <p id="game2-text">A prize wheel with fully customisable segments — each showing a different point reward. Members spin once a day and see their result in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="for">
+    <div class="container">
+      <div class="section-eyebrow" id="for-eyebrow">Who it's for</div>
+      <h2 class="section-title" id="for-title">Built for Thai small businesses</h2>
+      <p class="section-sub" id="for-sub">Any business that wants customers to come back more often.</p>
+      <div class="for-grid">
+        <div class="for-card">
+          <div class="for-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4"/><circle cx="7" cy="17" r="1"/><circle cx="17" cy="17" r="1"/></svg>
+          </div>
+          <h3 id="for1-title">Cafés &amp; restaurants</h3>
+          <p id="for1-text">Stamp cards, visit rewards, and loyalty programs your regulars will love. Happy hour multipliers included.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L11 6.67l-2.06-2.06a5.5 5.5 0 00-7.78 7.78l2.06 2.06L11 22l7.78-7.78 2.06-2.06a5.5 5.5 0 000-7.55z"/></svg>
+          </div>
+          <h3 id="for2-title">Salons &amp; beauty</h3>
+          <p id="for2-text">Reward repeat bookings and turn first-time clients into regulars with points and birthday perks.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <h3 id="for3-title">Retail shops</h3>
+          <p id="for3-text">Points on every purchase, redeemable for discounts or free items. Segments show you who to re-engage.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.89 1.45l8 4A2 2 0 0122 7.24v9.53a2 2 0 01-1.11 1.79l-8 4a2 2 0 01-1.78 0l-8-4a2 2 0 01-1.11-1.8V7.24a2 2 0 011.11-1.79l8-4a2 2 0 011.78 0z"/><polyline points="2.32 6.16 12 11 21.68 6.16"/><line x1="12" y1="22.76" x2="12" y2="11"/></svg>
+          </div>
+          <h3 id="for4-title">Online stores</h3>
+          <p id="for4-text">Loyalty claims on delivery — parcel codes or QR tokens included in every order for seamless earning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-eyebrow" id="pricing-eyebrow">Pricing</div>
+      <h2 class="section-title" id="pricing-title">Simple, transparent pricing</h2>
+      <p class="section-sub" id="pricing-sub">All features on every plan — only your member count changes.</p>
+
+      <div class="pricing-toggle" id="pricing-toggle-wrap">
+        <span class="pricing-toggle-label" id="ptl-monthly">Monthly</span>
+        <button class="pricing-toggle-track" id="billing-toggle" aria-label="Toggle annual billing">
+          <span class="pricing-toggle-thumb"></span>
+        </button>
+        <span class="pricing-toggle-label" id="ptl-annual">Annual</span>
+        <span class="pricing-toggle-badge" id="ptl-badge">Save 2 months</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="pricing-card">
+          <div class="pricing-tier" id="pt-free">Free</div>
+          <div class="pricing-price">฿0 <span id="pp-free">/mo</span></div>
+          <div class="pricing-annual" id="pa-free"></div>
+          <div class="pricing-limit" id="pl-free">Up to 200 members</div>
+          <a href="https://stre-loyalty.web.app/portal" class="pricing-cta secondary" id="pc-free">Get started</a>
+        </div>
+        <!-- Starter -->
+        <div class="pricing-card">
+          <div class="pricing-tier" id="pt-starter">Starter</div>
+          <div class="pricing-price" id="pp-starter-price">฿590 <span>/mo</span></div>
+          <div class="pricing-annual" id="pa-starter">or ฿492/mo billed annually</div>
+          <div class="pricing-limit" id="pl-starter">Up to 1,000 members</div>
+          <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Starter plan" class="pricing-cta secondary" id="pc-starter">Upgrade</a>
+        </div>
+        <!-- Growth — featured -->
+        <div class="pricing-card featured">
+          <div class="pricing-tier" style="color:var(--violet)" id="pt-growth">Growth</div>
+          <div class="pricing-price" id="pp-growth-price">฿1,290 <span>/mo</span></div>
+          <div class="pricing-annual" id="pa-growth">or ฿1,075/mo billed annually</div>
+          <div class="pricing-limit" id="pl-growth">Up to 5,000 members</div>
+          <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Growth plan" class="pricing-cta primary" id="pc-growth">Upgrade</a>
+        </div>
+        <!-- Business -->
+        <div class="pricing-card">
+          <div class="pricing-tier" id="pt-business">Business</div>
+          <div class="pricing-price" id="pp-business-price">฿2,490 <span>/mo</span></div>
+          <div class="pricing-annual" id="pa-business">or ฿2,075/mo billed annually</div>
+          <div class="pricing-limit" id="pl-business">Unlimited members</div>
+          <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Business plan" class="pricing-cta secondary" id="pc-business">Upgrade</a>
+        </div>
+      </div>
+      <p class="pricing-note" id="pricing-note">No credit card required to start. Upgrade anytime by email.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 id="cta-h2">Ready to reward<br /><span>your customers?</span></h2>
+      <p id="cta-p">Start free. No credit card required. Live in under 15 minutes.</p>
+      <a href="https://stre-loyalty.web.app/portal" class="btn-cta">
+        <span id="cta-btn">Get started free</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 9h11M10 5l4.5 4L10 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="cta-note" id="cta-note">Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer-wrap">
+    <footer>
+      <div class="footer-logo"><span>Kudo</span>Loyalty</div>
+      <div class="footer-links">
+        <a href="mailto:krissada.narbonne@gmail.com" id="footer-contact">Contact</a>
+        <a href="https://stre-loyalty.web.app/portal" id="footer-signin">Sign in</a>
+      </div>
+      <div class="footer-copy">© 2026 KudoLoyalty · Built by <a href="https://www.strebrand.com" style="color:var(--muted-2);text-decoration:none;">STRE</a></div>
+    </footer>
+  </div>
+
+  <script>
+    const T = {
+      en: {
+        /* Nav */
+        'nav-cta': 'Get started →',
+        /* Hero */
+        'hero-eyebrow': 'LINE-native loyalty for Thai businesses',
+        'hero-h1': 'Your customers<br />are on <span>LINE.</span><br />Your loyalty<br />program should be too.',
+        'hero-sub': 'KudoLoyalty gives you a complete loyalty program inside LINE — points, rewards, segments, and broadcasts — without asking customers to download anything new.',
+        'hero-cta': 'Start free',
+        'hero-note': 'No credit card required',
+        /* How it works */
+        'how-eyebrow': 'How it works',
+        'how-title': 'Live in under 15 minutes',
+        'how-sub': 'No developers, no integrations, no headaches. Follow the guided setup and you\'re ready to go.',
+        'step1-title': 'Set up your program',
+        'step1-text': 'Pick your loyalty mode — points, stamps, or online claims — and add your first rewards. The guided wizard walks you through LINE connection and branding step by step.',
+        'step2-title': 'Share with customers',
+        'step2-text': 'Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.',
+        'step3-title': 'Staff confirms in-store',
+        'step3-text': 'When a customer redeems a reward, your staff confirms via the admin app on any device. Or issue instant digital coupons — your choice.',
+        'step4-title': 'Engage and broadcast',
+        'step4-text': 'Automatically group members by activity level. Send targeted LINE messages to re-engage at-risk members or reward your most loyal ones.',
+        /* Portal preview */
+        'portal-eyebrow': 'Merchant portal',
+        'portal-title': 'Your loyalty command center',
+        'portal-sub': 'Everything you need to run and grow your loyalty program — in one clean dashboard.',
+        'portal-b1': 'Auto-segment your members into New, Active, At risk, and Lapsed groups — automatically, with no setup.',
+        'portal-b2': 'Send targeted LINE messages to any segment — win-back campaigns, birthday rewards, or announcements.',
+        'portal-b3': 'Track earning trends, reward performance, and member activity — all in one analytics dashboard.',
+        'portal-b4': 'Manage rewards, promo codes, events, and gamification from a single sidebar — no switching between tools.',
+        /* Member app */
+        'member-eyebrow': 'Member app',
+        'member-title': 'Zero friction for your customers',
+        'member-sub': 'Members open LINE, tap your loyalty link, and they\'re in. No download, no new account, no password to forget.',
+        'member-b1': 'Check their points balance and progress toward the next reward',
+        'member-b2': 'Browse and redeem rewards — staff-verified in-store or instant digital coupons',
+        'member-b3': 'Play daily scratch cards or lucky spin to earn bonus points',
+        'member-b4': 'Receive automated birthday rewards and milestone bonuses automatically',
+        'member-b5': 'All inside the LINE app they already have — no extra step required',
+        /* Features */
+        'feat-eyebrow': 'Features',
+        'feat-title': 'Everything you need.<br />Nothing you don\'t.',
+        'f1-title': 'LINE-native',
+        'f1-text': 'Customers earn and redeem inside the LINE app they use every day. No download, no new account, no friction.',
+        'f2-title': 'Segments &amp; broadcasts',
+        'f2-text': 'Automatically group members by activity (New, Active, At risk, Lapsed) or create custom segments. Send targeted LINE messages to any group.',
+        'f3-title': 'Flexible rewards',
+        'f3-text': 'Points, stamps, or online claims. Staff-verified in-store or instant digital codes. Birthday bonuses, milestone rewards, and win-back campaigns included.',
+        'f4-title': 'Automated messages',
+        'f4-text': 'Set up a welcome message for new joiners, a win-back campaign for inactive members, and birthday rewards — all running automatically without lifting a finger.',
+        'f5-title': 'Live analytics',
+        'f5-text': 'See which members are active, which rewards are popular, and how your automations are performing. No spreadsheets required.',
+        'f6-title': 'Gamification',
+        'f6-text': 'Daily scratch cards and lucky spin wheels with configurable win rates — keeping members engaged between visits.',
+        /* Engage */
+        'engage-eyebrow': 'Engage',
+        'engage-title': 'Re-engage customers before they\'re gone',
+        'engage-sub': 'Most loyalty programs just collect data. KudoLoyalty helps you act on it — send the right message to the right members at the right time, directly through LINE.',
+        'engage-f1-title': 'Auto-segments',
+        'engage-f1-text': 'New, Active, At risk, and Lapsed members identified automatically — no configuration needed.',
+        'engage-f2-title': 'LINE broadcast',
+        'engage-f2-text': 'Send text or card messages to any segment — targeted, not spray-and-pray. Multicast only, never spammy.',
+        'engage-f3-title': 'Win-back automation',
+        'engage-f3-text': 'Automatic LINE message and bonus points when a member goes quiet for 30+ days — bringing them back without manual work.',
+        'engage-f4-title': 'Birthday &amp; milestones',
+        'engage-f4-text': 'Reward loyalty milestones and birthdays automatically — a personal touch that keeps members feeling valued.',
+        'seg-card-title': 'Member segments',
+        'seg-new': '34 New',
+        'seg-active': '89 Active',
+        'seg-risk': '12 At risk',
+        'seg-lapsed': '8 Lapsed',
+        'seg-last1': 'Last visit 62 days ago',
+        'seg-badge1': 'At risk',
+        'seg-last2': 'Last visit 95 days ago',
+        'seg-badge2': 'Lapsed',
+        'seg-last3': 'Joined 5 days ago',
+        'seg-badge3': 'New',
+        'seg-broadcast-btn': 'Broadcast to At risk →',
+        /* Gamification */
+        'game-eyebrow': 'Gamification',
+        'game-title': 'Turn loyalty into a game',
+        'game-sub': 'Keep customers coming back with daily games that reward bonus points — making your loyalty program something they actually look forward to opening.',
+        'game1-badge': 'Daily · Configurable win rate',
+        'game1-title': 'Scratch Card',
+        'game1-text': 'Members scratch a card inside LINE to instantly reveal if they\'ve won bonus points. Set the win rate, point range, and daily play limit to match your margin.',
+        'game2-badge': 'Daily · Custom prize segments',
+        'game2-title': 'Lucky Spin',
+        'game2-text': 'A prize wheel with fully customisable segments — each showing a different point reward. Members spin once a day and see their result in real time.',
+        /* Who it's for */
+        'for-eyebrow': 'Who it\'s for',
+        'for-title': 'Built for Thai small businesses',
+        'for-sub': 'Any business that wants customers to come back more often.',
+        'for1-title': 'Cafés &amp; restaurants',
+        'for1-text': 'Stamp cards, visit rewards, and loyalty programs your regulars will love. Happy hour multipliers included.',
+        'for2-title': 'Salons &amp; beauty',
+        'for2-text': 'Reward repeat bookings and turn first-time clients into regulars with points and birthday perks.',
+        'for3-title': 'Retail shops',
+        'for3-text': 'Points on every purchase, redeemable for discounts or free items. Segments show you who to re-engage.',
+        'for4-title': 'Online stores',
+        'for4-text': 'Loyalty claims on delivery — parcel codes or QR tokens included in every order for seamless earning.',
+        /* CTA */
+        'cta-h2': 'Ready to reward<br /><span>your customers?</span>',
+        'cta-p': 'Start free. No credit card required. Live in under 15 minutes.',
+        'cta-btn': 'Get started free',
+        'cta-note': 'Questions? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">krissada.narbonne@gmail.com</a>',
+        /* Pricing */
+        'pricing-eyebrow': 'Pricing',
+        'pricing-title': 'Simple, transparent pricing',
+        'pricing-sub': 'All features on every plan — only your member count changes.',
+        'ptl-monthly': 'Monthly', 'ptl-annual': 'Annual', 'ptl-badge': 'Save 2 months',
+        'pt-free': 'Free', 'pt-starter': 'Starter', 'pt-growth': 'Growth', 'pt-business': 'Business',
+        'pl-free': 'Up to 200 members', 'pl-starter': 'Up to 1,000 members', 'pl-growth': 'Up to 5,000 members', 'pl-business': 'Unlimited members',
+        'pc-free': 'Get started', 'pc-starter': 'Upgrade', 'pc-growth': 'Upgrade', 'pc-business': 'Upgrade',
+        'pricing-note': 'No credit card required to start. Upgrade anytime by email.',
+        /* Footer */
+        'footer-contact': 'Contact',
+        'footer-signin': 'Sign in',
+      },
+      th: {
+        /* Nav */
+        'nav-cta': 'เริ่มใช้งาน →',
+        /* Hero */
+        'hero-eyebrow': 'แพลตฟอร์มสะสมแต้มผ่าน LINE สำหรับธุรกิจไทย',
+        'hero-h1': 'ลูกค้าของคุณ<br />อยู่บน <span>LINE</span><br />โปรแกรมสะสมแต้ม<br />ก็ควรอยู่ที่นั่นด้วย',
+        'hero-sub': 'KudoLoyalty มอบระบบสะสมแต้มครบวงจรภายใน LINE — แต้ม รางวัล กลุ่มสมาชิก และการส่งข้อความ — โดยไม่ต้องให้ลูกค้าดาวน์โหลดอะไรเพิ่มเติม',
+        'hero-cta': 'เริ่มใช้ฟรี',
+        'hero-note': 'ไม่ต้องใช้บัตรเครดิต',
+        /* How it works */
+        'how-eyebrow': 'วิธีการใช้งาน',
+        'how-title': 'เริ่มต้นได้ภายใน 15 นาที',
+        'how-sub': 'ไม่ต้องมีนักพัฒนา ไม่ต้องเชื่อมต่อระบบซับซ้อน แค่ทำตามขั้นตอนที่แนะนำแล้วพร้อมใช้งานทันที',
+        'step1-title': 'ตั้งค่าโปรแกรมสะสมแต้ม',
+        'step1-text': 'เลือกรูปแบบสะสม — แต้ม ตราประทับ หรือซื้อออนไลน์ — แล้วเพิ่มรางวัลแรก ระบบ Wizard จะแนะนำทุกขั้นตอนตั้งแต่การเชื่อม LINE ไปจนถึงการตั้งค่าแบรนด์',
+        'step2-title': 'แชร์ให้ลูกค้า',
+        'step2-text': 'ลูกค้าเข้าร่วมผ่าน LINE ที่พวกเขาใช้อยู่ทุกวัน ไม่ต้องดาวน์โหลดแอปแยก ไม่ต้องสร้างบัญชีใหม่ ไม่มีขั้นตอนยุ่งยาก',
+        'step3-title': 'พนักงานยืนยันในร้าน',
+        'step3-text': 'เมื่อลูกค้าแลกรางวัล พนักงานยืนยันผ่านแอป Admin บนอุปกรณ์ใดก็ได้ หรือจะออกคูปองดิจิทัลทันทีก็ได้ เลือกได้ตามต้องการ',
+        'step4-title': 'เข้าถึงและส่งข้อความ',
+        'step4-text': 'จัดกลุ่มสมาชิกตามระดับการใช้งานอัตโนมัติ ส่งข้อความ LINE ที่ตรงเป้าหมายเพื่อดึงสมาชิกที่ห่างหายกลับมา หรือรางวัลพิเศษให้ผู้ซื่อสัตย์ที่สุด',
+        /* Portal preview */
+        'portal-eyebrow': 'พอร์ทัลสำหรับร้านค้า',
+        'portal-title': 'ศูนย์บัญชาการโปรแกรมสะสมแต้ม',
+        'portal-sub': 'ทุกสิ่งที่คุณต้องการในการบริหารและขยายโปรแกรมสะสมแต้ม — รวมอยู่ในแดชบอร์ดเดียวที่สะอาดตา',
+        'portal-b1': 'แบ่งกลุ่มสมาชิกอัตโนมัติเป็น ใหม่ ใช้งานอยู่ เริ่มห่างหาย และหายไปแล้ว — โดยไม่ต้องตั้งค่าใดเพิ่ม',
+        'portal-b2': 'ส่งข้อความ LINE ที่ตรงกลุ่มเป้าหมาย — แคมเปญดึงกลับ รางวัลวันเกิด หรือประกาศข่าวสาร',
+        'portal-b3': 'ติดตามแนวโน้มการสะสม ประสิทธิภาพรางวัล และความเคลื่อนไหวของสมาชิก — ในแดชบอร์ด Analytics เดียว',
+        'portal-b4': 'จัดการรางวัล โค้ดโปรโมชั่น กิจกรรม และเกม — จาก Sidebar เดียว ไม่ต้องสลับระหว่างเครื่องมือ',
+        /* Member app */
+        'member-eyebrow': 'แอปสมาชิก',
+        'member-title': 'ไม่มีขั้นตอนยุ่งยากสำหรับลูกค้า',
+        'member-sub': 'สมาชิกเปิด LINE กดลิงก์สะสมแต้มของคุณ แล้วก็พร้อมใช้งานได้เลย ไม่ต้องดาวน์โหลด ไม่ต้องสร้างบัญชีใหม่ ไม่มีรหัสผ่านให้จำ',
+        'member-b1': 'ดูยอดแต้มและความคืบหน้าไปสู่รางวัลถัดไป',
+        'member-b2': 'เรียกดูและแลกรางวัล — ยืนยันโดยพนักงานในร้านหรือคูปองดิจิทัลทันที',
+        'member-b3': 'เล่นขูดรางวัลหรือวงล้อโชคดีรายวันเพื่อรับแต้มโบนัส',
+        'member-b4': 'รับรางวัลวันเกิดและโบนัสครบรอบอัตโนมัติ',
+        'member-b5': 'ทั้งหมดอยู่ใน LINE ที่มีอยู่แล้ว — ไม่ต้องทำขั้นตอนเพิ่มเติม',
+        /* Features */
+        'feat-eyebrow': 'ฟีเจอร์',
+        'feat-title': 'ทุกสิ่งที่คุณต้องการ<br />ไม่มากและไม่น้อยกว่านั้น',
+        'f1-title': 'ผ่าน LINE โดยตรง',
+        'f1-text': 'ลูกค้าสะสมและแลกแต้มใน LINE ที่ใช้ทุกวัน ไม่ต้องดาวน์โหลดแอป ไม่ต้องสร้างบัญชีใหม่ ไม่มีขั้นตอนยุ่งยาก',
+        'f2-title': 'แบ่งกลุ่มและส่ง Broadcast',
+        'f2-text': 'จัดกลุ่มสมาชิกอัตโนมัติตามพฤติกรรม (ใหม่ ใช้งานอยู่ เริ่มห่างหาย หายไปแล้ว) หรือสร้างกลุ่มเอง ส่งข้อความ LINE ที่ตรงเป้าหมายไปยังทุกกลุ่ม',
+        'f3-title': 'รางวัลยืดหยุ่น',
+        'f3-text': 'แต้ม ตราประทับ หรือซื้อออนไลน์ ยืนยันโดยพนักงานหรือโค้ดดิจิทัลทันที รวมถึงรางวัลวันเกิด ไมล์สโตน และแคมเปญดึงกลับ',
+        'f4-title': 'ข้อความอัตโนมัติ',
+        'f4-text': 'ตั้งค่าข้อความต้อนรับสมาชิกใหม่ แคมเปญดึงกลับสำหรับผู้ไม่ใช้งาน และรางวัลวันเกิด — ทำงานอัตโนมัติโดยไม่ต้องทำอะไรเพิ่ม',
+        'f5-title': 'วิเคราะห์แบบเรียลไทม์',
+        'f5-text': 'ดูว่าสมาชิกรายใดใช้งานอยู่ รางวัลใดได้รับความนิยม และ Automation ทำงานได้ดีแค่ไหน ไม่ต้องใช้ Spreadsheet',
+        'f6-title': 'เกมสะสมแต้ม',
+        'f6-text': 'ขูดรางวัลและวงล้อโชคดีรายวัน พร้อมอัตราชนะที่กำหนดได้ — ดึงดูดสมาชิกให้กลับมาระหว่างการเยี่ยมชม',
+        /* Engage */
+        'engage-eyebrow': 'การมีส่วนร่วม',
+        'engage-title': 'ดึงลูกค้าที่หายไปให้กลับมาก่อนสาย',
+        'engage-sub': 'โปรแกรมสะสมแต้มส่วนใหญ่แค่เก็บข้อมูล KudoLoyalty ช่วยให้คุณลงมือทำ — ส่งข้อความที่ถูกต้องให้สมาชิกที่ใช่ในเวลาที่เหมาะสม ผ่าน LINE โดยตรง',
+        'engage-f1-title': 'แบ่งกลุ่มสมาชิกอัตโนมัติ',
+        'engage-f1-text': 'ระบบระบุสมาชิกกลุ่ม ใหม่ ใช้งานอยู่ เริ่มห่างหาย และหายไปแล้ว โดยอัตโนมัติ ไม่ต้องตั้งค่า',
+        'engage-f2-title': 'LINE Broadcast',
+        'engage-f2-text': 'ส่งข้อความหรือการ์ดไปยังกลุ่มใดก็ได้ — ตรงเป้าหมาย ไม่ใช่การส่งหว่าน ใช้ Multicast เท่านั้น ไม่สแปม',
+        'engage-f3-title': 'ระบบดึงกลับอัตโนมัติ',
+        'engage-f3-text': 'ส่งข้อความ LINE และแต้มโบนัสอัตโนมัติเมื่อสมาชิกเงียบหายไป 30+ วัน — ดึงพวกเขากลับมาโดยไม่ต้องทำด้วยมือ',
+        'engage-f4-title': 'วันเกิดและไมล์สโตน',
+        'engage-f4-text': 'มอบรางวัลไมล์สโตนและวันเกิดอัตโนมัติ — สัมผัสส่วนตัวที่ทำให้สมาชิกรู้สึกว่าตัวเองมีคุณค่า',
+        'seg-card-title': 'กลุ่มสมาชิก',
+        'seg-new': '34 ใหม่',
+        'seg-active': '89 ใช้งานอยู่',
+        'seg-risk': '12 เริ่มห่างหาย',
+        'seg-lapsed': '8 หายไปแล้ว',
+        'seg-last1': 'มาเยี่ยมครั้งสุดท้าย 62 วันที่แล้ว',
+        'seg-badge1': 'เริ่มห่างหาย',
+        'seg-last2': 'มาเยี่ยมครั้งสุดท้าย 95 วันที่แล้ว',
+        'seg-badge2': 'หายไปแล้ว',
+        'seg-last3': 'เข้าร่วมเมื่อ 5 วันที่แล้ว',
+        'seg-badge3': 'ใหม่',
+        'seg-broadcast-btn': 'Broadcast ไปยังกลุ่มเริ่มห่างหาย →',
+        /* Gamification */
+        'game-eyebrow': 'เกมสะสมแต้ม',
+        'game-title': 'เปลี่ยนความภักดีให้เป็นเกม',
+        'game-sub': 'ดึงดูดลูกค้าให้กลับมาด้วยเกมรายวันที่มอบแต้มโบนัส — ทำให้โปรแกรมสะสมแต้มของคุณน่าเปิดดูทุกวัน',
+        'game1-badge': 'รายวัน · กำหนดอัตราชนะได้',
+        'game1-title': 'ขูดรางวัล',
+        'game1-text': 'สมาชิกขูดการ์ดใน LINE เพื่อรู้ทันทีว่าได้แต้มโบนัสหรือไม่ ตั้งค่าอัตราชนะ ช่วงแต้ม และจำนวนครั้งต่อวันได้ตามต้องการ',
+        'game2-badge': 'รายวัน · กำหนดช่องรางวัลเอง',
+        'game2-title': 'วงล้อโชคดี',
+        'game2-text': 'วงล้อรางวัลที่กำหนดช่องได้เอง แต่ละช่องแสดงจำนวนแต้มที่ต่างกัน สมาชิกหมุนได้วันละครั้งและเห็นผลทันที',
+        /* Who it's for */
+        'for-eyebrow': 'เหมาะสำหรับใคร',
+        'for-title': 'สร้างมาสำหรับธุรกิจขนาดเล็กในไทย',
+        'for-sub': 'ทุกธุรกิจที่ต้องการให้ลูกค้ากลับมาบ่อยขึ้น',
+        'for1-title': 'คาเฟ่และร้านอาหาร',
+        'for1-text': 'บัตรสะสมตราประทับ รางวัลเยี่ยมชม และโปรแกรมที่ลูกค้าประจำจะชื่นชอบ รวมถึง Happy Hour Multiplier',
+        'for2-title': 'ร้านเสริมสวยและความงาม',
+        'for2-text': 'ให้รางวัลการนัดซ้ำ เปลี่ยนลูกค้าใหม่ให้กลายเป็นลูกค้าประจำด้วยแต้มและสิทธิพิเศษวันเกิด',
+        'for3-title': 'ร้านค้าปลีก',
+        'for3-text': 'แต้มทุกครั้งที่ซื้อ แลกเป็นส่วนลดหรือสินค้าฟรี กลุ่มสมาชิกช่วยบอกว่าใครต้องการการเข้าถึง',
+        'for4-title': 'ร้านค้าออนไลน์',
+        'for4-text': 'สะสมแต้มผ่านการจัดส่ง — โค้ดพัสดุหรือ QR Token ในทุกออร์เดอร์เพื่อประสบการณ์ที่ราบรื่น',
+        /* CTA */
+        'cta-h2': 'พร้อมมอบรางวัล<br /><span>ให้ลูกค้าแล้วหรือยัง?</span>',
+        'cta-p': 'เริ่มฟรี ไม่ต้องใช้บัตรเครดิต เริ่มใช้งานได้ภายใน 15 นาที',
+        'cta-btn': 'เริ่มใช้งานฟรีเลย',
+        'cta-note': 'มีคำถาม? <a href="mailto:krissada.narbonne@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:underline;">ติดต่อเรา</a>',
+        /* Pricing */
+        'pricing-eyebrow': 'ราคา',
+        'pricing-title': 'ราคาโปร่งใส เข้าใจง่าย',
+        'pricing-sub': 'ทุกฟีเจอร์ครบทุกแพ็กเกจ — ต่างกันแค่จำนวนสมาชิก',
+        'ptl-monthly': 'รายเดือน', 'ptl-annual': 'รายปี', 'ptl-badge': 'ประหยัด 2 เดือน',
+        'pt-free': 'ฟรี', 'pt-starter': 'สตาร์ทเตอร์', 'pt-growth': 'โกรท', 'pt-business': 'บิซเนส',
+        'pl-free': 'สูงสุด 200 สมาชิก', 'pl-starter': 'สูงสุด 1,000 สมาชิก', 'pl-growth': 'สูงสุด 5,000 สมาชิก', 'pl-business': 'ไม่จำกัดสมาชิก',
+        'pc-free': 'เริ่มใช้งาน', 'pc-starter': 'อัพเกรด', 'pc-growth': 'อัพเกรด', 'pc-business': 'อัพเกรด',
+        'pricing-note': 'ไม่ต้องใช้บัตรเครดิตในการเริ่มต้น อัพเกรดได้ทุกเมื่อผ่านอีเมล',
+        /* Footer */
+        'footer-contact': 'ติดต่อ',
+        'footer-signin': 'เข้าสู่ระบบ',
+      }
+    };
+
+    var currentLang = localStorage.getItem('kl_land_lang') ||
+      (navigator.language && navigator.language.toLowerCase().startsWith('th') ? 'th' : 'en');
+
+    function applyLang(lang) {
+      var t = T[lang];
+      for (var id in t) {
+        var el = document.getElementById(id);
+        if (el) el.innerHTML = t[id];
+      }
+      var btn = document.getElementById('lang-btn');
+      if (btn) btn.textContent = lang === 'en' ? 'ภาษาไทย' : 'English';
+      document.documentElement.lang = lang === 'th' ? 'th' : 'en';
+      currentLang = lang;
+      localStorage.setItem('kl_land_lang', lang);
+      // price units (/mo ↔ /เดือน) live outside T[], so refresh them too.
+      // guarded: applyLang can run before annualData is initialised below.
+      if (typeof annualDataEn !== 'undefined') updatePricing();
+    }
+
+    function toggleLang() { applyLang(currentLang === 'en' ? 'th' : 'en'); }
+
+    if (currentLang === 'th') applyLang('th');
+
+    // Annual billing toggle
+    var isAnnual = false;
+    var annualData = {
+      starter: { monthly: '฿590', annual: '฿492', annualNote: 'หรือ ฿492/เดือน เมื่อชำระรายปี' },
+      growth:  { monthly: '฿1,290', annual: '฿1,075', annualNote: 'หรือ ฿1,075/เดือน เมื่อชำระรายปี' },
+      business:{ monthly: '฿2,490', annual: '฿2,075', annualNote: 'หรือ ฿2,075/เดือน เมื่อชำระรายปี' },
+    };
+    var annualDataEn = {
+      starter: { monthly: '฿590', annual: '฿492', annualNote: 'or ฿492/mo billed annually' },
+      growth:  { monthly: '฿1,290', annual: '฿1,075', annualNote: 'or ฿1,075/mo billed annually' },
+      business:{ monthly: '฿2,490', annual: '฿2,075', annualNote: 'or ฿2,075/mo billed annually' },
+    };
+    function updatePricing() {
+      var d = currentLang === 'th' ? annualData : annualDataEn;
+      var mo = '/mo'; var moTh = '/เดือน';
+      ['starter','growth','business'].forEach(function(t) {
+        var priceEl = document.getElementById('pp-' + t + '-price');
+        var noteEl = document.getElementById('pa-' + t);
+        if (!priceEl || !noteEl) return;
+        var price = isAnnual ? d[t].annual : d[t].monthly;
+        var moLabel = currentLang === 'th' ? moTh : mo;
+        priceEl.innerHTML = price + ' <span>' + moLabel + '</span>';
+        noteEl.textContent = isAnnual ? '' : d[t].annualNote;
+      });
+      var track = document.getElementById('billing-toggle');
+      if (track) {
+        if (isAnnual) track.classList.add('annual');
+        else track.classList.remove('annual');
+      }
+    }
+    document.getElementById('billing-toggle') && document.getElementById('billing-toggle').addEventListener('click', function() {
+      isAnnual = !isAnnual;
+      updatePricing();
+    });
+    updatePricing();
+  </script>
+</body>
+</html>
