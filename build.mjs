@@ -23,31 +23,31 @@ const LOCALES = {
     out: 'index.html',
     ogLocale: 'th_TH',
     switchTo: { href: '/en', hreflang: 'en', label: 'English' },
-    title: 'KudoLoyalty — ระบบสะสมแต้มผ่าน LINE สำหรับร้านค้าไทย',
+    title: 'Kudo — ระบบสะสมแต้มผ่าน LINE สำหรับร้านค้าไทย',
     description:
       'ระบบสะสมแต้มและสมาชิกที่ทำงานอยู่ใน LINE — แต้ม รางวัล กลุ่มลูกค้า และการส่งข้อความอัตโนมัติ ' +
       'ลูกค้าไม่ต้องดาวน์โหลดแอปใหม่ ตั้งค่าเองได้ในไม่ถึง 15 นาที',
-    ogTitle: 'KudoLoyalty — ระบบสะสมแต้มที่อยู่ใน LINE',
+    ogTitle: 'Kudo — ระบบสะสมแต้มที่อยู่ใน LINE',
     ogDescription:
       'ลูกค้าของคุณอยู่บน LINE อยู่แล้ว ให้โปรแกรมสะสมแต้มอยู่ที่นั่นด้วย เริ่มใช้ฟรี ไม่ต้องใช้บัตรเครดิต',
     imageAlt:
-      'KudoLoyalty — โปรแกรมสะสมแต้มที่ทำงานใน LINE แสดงแต้มสะสมของสมาชิกและรางวัลที่พร้อมแลก',
+      'Kudo — โปรแกรมสะสมแต้มที่ทำงานใน LINE แสดงแต้มสะสมของสมาชิกและรางวัลที่พร้อมแลก',
   },
   en: {
     path: '/en',
     out: 'en/index.html',
     ogLocale: 'en_US',
     switchTo: { href: '/', hreflang: 'th', label: 'ภาษาไทย' },
-    title: 'KudoLoyalty — Loyalty built for LINE',
+    title: 'Kudo — Loyalty built for LINE',
     description:
-      'KudoLoyalty — LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, ' +
+      'Kudo — LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, ' +
       'broadcasts, and automated messages — without asking customers to download anything new.',
-    ogTitle: 'KudoLoyalty — Loyalty built for LINE',
+    ogTitle: 'Kudo — Loyalty built for LINE',
     ogDescription:
       'Your customers are already on LINE. Give them a loyalty program that lives there too. ' +
       'Self-serve setup in under 15 minutes.',
     imageAlt:
-      "KudoLoyalty — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem.",
+      "Kudo — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem.",
   },
 };
 
@@ -109,7 +109,7 @@ const jsonld = (loc) => JSON.stringify({
     {
       '@type': 'Organization',
       '@id': `${SITE}/#org`,
-      name: 'KudoLoyalty',
+      name: 'Kudo',
       url: SITE,
       logo: `${SITE}/og.png`,
       email: 'krissada.narbonne@gmail.com',
@@ -119,14 +119,14 @@ const jsonld = (loc) => JSON.stringify({
       '@type': 'WebSite',
       '@id': `${SITE}/#site`,
       url: SITE,
-      name: 'KudoLoyalty',
+      name: 'Kudo',
       publisher: { '@id': `${SITE}/#org` },
       inLanguage: loc === 'th' ? 'th-TH' : 'en-US',
     },
     {
       '@type': 'SoftwareApplication',
       '@id': `${SITE}/#app`,
-      name: 'KudoLoyalty',
+      name: 'Kudo',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web, LINE',
       description: LOCALES[loc].description,
