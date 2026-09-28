@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
+    <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -707,6 +707,63 @@
       .portal-wordmark { font-size: 10px; }
       .nav-inner { height: 64px; }
       .logo { font-size: 21px; }
+    }
+  
+
+    /* ═══════════════════ Legal pages (prose) ══════════════════ */
+    .legal-wrap { padding: 64px var(--gutter) 96px; background: var(--canvas); }
+    .legal {
+      max-width: 760px; margin: 0 auto;
+      background: var(--canvas); border-radius: var(--radius-xl);
+      box-shadow: var(--extrude); padding: 56px 56px 60px;
+    }
+    .legal-kicker {
+      display: inline-block; font-size: 12.5px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--brand-ink); background: var(--brand-tint);
+      border-radius: var(--pill); padding: 6px 14px; margin-bottom: 18px;
+    }
+    .legal h1 { font-size: clamp(30px, 4.4vw, 42px); font-weight: 800; letter-spacing: -.025em; line-height: 1.1; color: var(--ink); margin-bottom: 12px; }
+    .legal .legal-meta { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+    .legal > p:first-of-type { font-size: 17.5px; color: var(--ink-soft); }
+    .legal h2 {
+      font-size: 21px; font-weight: 800; letter-spacing: -.02em; color: var(--ink);
+      margin: 40px 0 12px; padding-top: 24px; border-top: 1px solid var(--line);
+    }
+    .legal h3 { font-size: 16.5px; font-weight: 800; color: var(--ink); margin: 22px 0 8px; }
+    .legal p, .legal li { font-size: 16px; color: var(--ink-soft); line-height: 1.7; }
+    .legal p { margin-bottom: 14px; }
+    .legal ul, .legal ol { margin: 0 0 16px; padding-left: 22px; }
+    .legal li { margin-bottom: 8px; }
+    .legal li::marker { color: var(--brand); }
+    .legal a { color: var(--brand-ink); text-underline-offset: 2px; }
+    .legal strong { color: var(--ink); font-weight: 700; }
+    .legal .legal-toc {
+      background: var(--surface); border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm); padding: 20px 24px; margin: 28px 0 8px;
+    }
+    .legal .legal-toc ol { margin: 0; padding-left: 20px; }
+    .legal .legal-toc li { font-size: 15px; margin-bottom: 5px; }
+    .legal table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; font-size: 15px; }
+    .legal th, .legal td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+    .legal th { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .legal .scroll { overflow-x: auto; }
+    /* Facts only the business can supply — deliberately conspicuous. */
+    .fill {
+      display: inline-block; font-weight: 700; font-size: .93em;
+      color: #8A4B00; background: #FFF1DA;
+      border-radius: var(--radius-sm); padding: 1px 8px;
+      box-shadow: inset 0 0 0 1px rgba(138,75,0,.22);
+    }
+    .legal-note {
+      background: var(--brand-tint); border-radius: var(--radius-md);
+      padding: 18px 22px; margin: 28px 0 0; font-size: 15px; color: var(--ink-soft);
+    }
+    .legal-note strong { color: var(--brand-ink); }
+    @media (max-width: 700px) {
+      .legal-wrap { padding: 40px 18px 72px; }
+      .legal { padding: 36px 24px 40px; border-radius: var(--radius-lg); }
+      .legal h2 { font-size: 19px; margin-top: 32px; }
     }
   </style>
 
@@ -1551,6 +1608,8 @@
     <footer>
       <div class="footer-logo">Kudo</div>
       <div class="footer-links">
+        <a href="/en/privacy" id="footer-privacy">Privacy</a>
+        <a href="/en/terms" id="footer-terms">Terms</a>
         <a href="mailto:krissada.narbonne@gmail.com" id="footer-contact">Contact</a>
         <a href="https://stre-loyalty.web.app/portal" id="footer-signin">Sign in</a>
       </div>

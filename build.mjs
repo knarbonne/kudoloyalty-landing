@@ -72,6 +72,31 @@ const PRICING = {
 };
 
 const src = readFileSync('src/index.html', 'utf8');
+const CSS = '  <style>\n' + readFileSync('src/styles.css', 'utf8').replace(/\n$/, '') + '\n  </style>';
+const legalShell = readFileSync('src/legal.html', 'utf8');
+
+/* Legal pages: prose per locale, dropped into the shared shell. */
+const LEGAL = {
+  privacy: {
+    slug: 'privacy',
+    th: { title: 'นโยบายความเป็นส่วนตัว — Kudo', desc: 'Kudo เก็บและใช้ข้อมูลส่วนบุคคลอย่างไร ภายใต้ PDPA ของประเทศไทย' },
+    en: { title: 'Privacy Policy — Kudo', desc: 'How Kudo collects, uses and protects personal data under Thailand\'s PDPA.' },
+  },
+  terms: {
+    slug: 'terms',
+    th: { title: 'ข้อกำหนดการให้บริการ — Kudo', desc: 'ข้อกำหนดการใช้งาน Kudo สำหรับร้านค้า ครอบคลุมแพ็กเกจ ค่าบริการ และความรับผิดชอบ' },
+    en: { title: 'Terms of Service — Kudo', desc: 'The terms governing merchant use of Kudo, covering plans, fees and responsibilities.' },
+  },
+};
+
+const NAV = {
+  th: { cta: 'เริ่มใช้งาน →', home: 'หน้าแรก', privacy: 'ความเป็นส่วนตัว', terms: 'ข้อกำหนด', contact: 'ติดต่อ', other: 'English' },
+  en: { cta: 'Get started →', home: 'Home', privacy: 'Privacy', terms: 'Terms', contact: 'Contact', other: 'ภาษาไทย' },
+};
+
+/* Every URL the site publishes, so the sitemap and hreflang stay honest. */
+const urlFor = (loc, slug) => (loc === 'th' ? (slug ? `/${slug}` : '/') : (slug ? `/en/${slug}` : '/en'));
+const PAGES = ['', 'privacy', 'terms'];
 
 /* ── pull the translation table out of the source ─────────────────── */
 const tStart = src.indexOf('const T = {');
@@ -195,6 +220,9 @@ function build(loc) {
     r.hit ? hits++ : misses.push(id);
   }
 
+  html = html.replace('<!--STYLES-->', CSS);
+  html = html.replace(/\{\{PRIVACY\}\}/g, urlFor(loc, 'privacy'));
+  html = html.replace(/\{\{TERMS\}\}/g, urlFor(loc, 'terms'));
   html = html.replace('<html lang="en">', `<html lang="${loc}">`);
 
   /* head: canonical, hreflang cluster, per-locale metadata */
@@ -243,36 +271,76 @@ function build(loc) {
   );
 }
 
+function buildLegal(name, loc) {
+  const L = LOCALES[loc], meta = LEGAL[name][loc], slug = LEGAL[name].slug, nav = NAV[loc];
+  const body = readFileSync(`src/content/${name}.${loc}.html`, 'utf8').replace(/\n$/, '');
+  const other = loc === 'th' ? 'en' : 'th';
+
+  const alts = Object.keys(LOCALES)
+    .map((k) => `  <link rel="alternate" hreflang="${k}" href="${SITE}${urlFor(k, slug)}" />`)
+    .join('\n');
+
+  let html = legalShell
+    .replace('<!--STYLES-->', CSS)
+    .replace('<html lang="en">', `<html lang="${loc}">`)
+    .replace('{{TITLE}}', meta.title)
+    .replace('{{DESC}}', meta.desc)
+    .replace('{{BODY}}', body)
+    .replace('{{CTA}}', nav.cta)
+    .replace('{{NAV_HOME}}', nav.home)
+    .replace('{{NAV_PRIVACY}}', nav.privacy)
+    .replace('{{NAV_TERMS}}', nav.terms)
+    .replace('{{NAV_CONTACT}}', nav.contact)
+    .replace('<!--LANGBTN-->', `<a class="lang-btn" href="${urlFor(other, slug)}" hreflang="${other}">${nav.other}</a>`)
+    .replace('<!--HEADLINKS-->',
+      `<link rel="canonical" href="${SITE}${urlFor(loc, slug)}" />\n` + alts +
+      `\n  <link rel="alternate" hreflang="x-default" href="${SITE}${urlFor('th', slug)}" />`)
+    .replace(/\{\{HOME\}\}/g, urlFor(loc, ''))
+    .replace(/\{\{PRIVACY\}\}/g, urlFor(loc, 'privacy'))
+    .replace(/\{\{TERMS\}\}/g, urlFor(loc, 'terms'));
+
+  const out = loc === 'th' ? `${slug}.html` : `en/${slug}.html`;
+  if (out.includes('/')) mkdirSync(out.split('/')[0], { recursive: true });
+  writeFileSync(out, html);
+  const fills = (body.match(/class="fill"/g) || []).length;
+  console.log(`  ${out.padEnd(16)} ${String(body.split('\n').length).padStart(3)} lines` +
+    (fills ? `  (${fills} fields still to fill in)` : ''));
+}
+
 console.log('building:');
 Object.keys(LOCALES).forEach(build);
+for (const name of Object.keys(LEGAL)) for (const loc of Object.keys(LOCALES)) buildLegal(name, loc);
 
 /* ── crawl files ──────────────────────────────────────────────────── */
 const lastmod = new Date().toISOString().slice(0, 10);
 writeFileSync('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 
-const alt = (l) =>
-  Object.entries(LOCALES)
-    .map(([k, v]) => `    <xhtml:link rel="alternate" hreflang="${k}" href="${SITE}${v.path}" />`)
+const altBlock = (slug) =>
+  Object.keys(LOCALES)
+    .map((k) => `    <xhtml:link rel="alternate" hreflang="${k}" href="${SITE}${urlFor(k, slug)}" />`)
     .join('\n') +
-  `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${LOCALES.th.path}" />`;
+  `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${urlFor('th', slug)}" />`;
+
+const entries = [];
+for (const slug of PAGES) {
+  for (const loc of Object.keys(LOCALES)) {
+    entries.push(`  <url>
+    <loc>${SITE}${urlFor(loc, slug)}</loc>
+${altBlock(slug)}
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${slug ? 'yearly' : 'weekly'}</changefreq>
+    <priority>${slug ? '0.3' : loc === 'th' ? '1.0' : '0.8'}</priority>
+  </url>`);
+  }
+}
 
 writeFileSync(
   'sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${Object.entries(LOCALES)
-  .map(
-    ([k, v]) => `  <url>
-    <loc>${SITE}${v.path}</loc>
-${alt(k)}
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${k === 'th' ? '1.0' : '0.8'}</priority>
-  </url>`
-  )
-  .join('\n')}
+${entries.join('\n')}
 </urlset>
 `
 );
-console.log(`  robots.txt\n  sitemap.xml      lastmod ${lastmod}`);
+console.log(`  robots.txt\n  sitemap.xml      ${entries.length} urls, lastmod ${lastmod}`);

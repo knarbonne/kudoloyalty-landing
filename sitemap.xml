@@ -19,4 +19,40 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://kudoloyalty-landing.vercel.app/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kudoloyalty-landing.vercel.app/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kudoloyalty-landing.vercel.app/privacy" />
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://kudoloyalty-landing.vercel.app/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kudoloyalty-landing.vercel.app/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kudoloyalty-landing.vercel.app/privacy" />
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://kudoloyalty-landing.vercel.app/terms</loc>
+    <xhtml:link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kudoloyalty-landing.vercel.app/en/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kudoloyalty-landing.vercel.app/terms" />
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://kudoloyalty-landing.vercel.app/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kudoloyalty-landing.vercel.app/en/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kudoloyalty-landing.vercel.app/terms" />
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
