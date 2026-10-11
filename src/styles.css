@@ -1,7 +1,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ═══════════════════════════════════════════════════════════
-       Kudo — Soft UI, matched to the merchant portal.
+       Kudo Soft UI, matched to the merchant portal.
        A card is the SAME colour as the page, moulded out of it by a
        light/dark shadow pair. Depth is the shadow, never a border.
        Light source is top-left throughout.
@@ -10,7 +10,7 @@
       /* ── Softened violet (not the sharp #7C3AED) ──────────── */
       --brand:      #7A67E4;
       --brand-dark: #6A57D6;
-      --brand-ink:  #574AC0;   /* violet TEXT on light — passes AA */
+      --brand-ink:  #574AC0;   /* violet TEXT on light, passes AA */
       --brand-tint: #F2F0FC;
 
       /* ── Ink ──────────────────────────────────────────────── */
@@ -138,7 +138,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* Gentle lift — no hard press anywhere. */
+    /* Gentle lift, no hard press anywhere. */
     .nav-cta, .btn-primary, .btn-cta, .btn-secondary, .pricing-cta,
     .lang-btn, .seg-broadcast-btn, .feature-card, .game-card, .for-card, .step {
       transition: transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s cubic-bezier(.2,.7,.3,1), background .18s ease;
@@ -261,7 +261,7 @@
     /* ── Hero visual: raised, gently floated ── */
     .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .hero-visuals-wrap {
-      position: relative; width: 100%; height: 450px;
+      position: relative; width: 100%; height: 470px;
       animation: softFloat .75s cubic-bezier(.2,.7,.3,1) both;
     }
     /* A soft floor so the two surfaces sit in the same space rather than
@@ -281,7 +281,10 @@
       z-index: 3;
     }
     .mock-notch { width: 52px; height: 5px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 8px; }
-    .mock-screen { background: var(--screen); border-radius: var(--r-screen-r); overflow: hidden; }
+    .mock-screen {
+      background: var(--screen); border-radius: var(--r-screen-r);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mock-hero-card { margin: 7px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mock-cover { background: var(--brand); height: 70px; display: flex; flex-direction: column; justify-content: flex-end; padding: 7px; }
     .mock-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 6px 8px; display: flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm); }
@@ -301,9 +304,13 @@
     .mock-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mock-tab { flex: 1; text-align: center; padding: 7px 0; font-size: 8px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mock-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mock-reward-card { margin: 6px 7px 7px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mock-reward-card {
+      margin: 6px 7px 7px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mock-reward-img {
-      height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/16px no-repeat;
+      flex: 1; min-height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/40px no-repeat;
       border-bottom: none;
     }
     .mock-reward-body { padding: 6px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
@@ -312,7 +319,7 @@
     .mock-reward-cost { font-size: 8px; font-weight: 700; color: var(--screen-dim); flex-shrink: 0; font-variant-numeric: tabular-nums; }
     .mock-redeem-btn { width: 100%; background: var(--brand); color: #fff; font-size: 8px; font-weight: 800; text-align: center; padding: 5px; border: none; border-radius: 6px; }
 
-    /* Portal browser screen — a raised card */
+    /* Portal browser screen, a raised card */
     .mock-portal-card {
       position: absolute; top: 26px; left: 0; right: 182px;
       background: var(--canvas); border: none;
@@ -430,7 +437,10 @@
       box-shadow: var(--shadow-md), var(--extrude);
     }
     .member-big-notch { width: 58px; height: 6px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 10px; }
-    .member-big-screen { background: var(--screen); border-radius: var(--r-screen-lg); overflow: hidden; }
+    .member-big-screen {
+      background: var(--screen); border-radius: var(--r-screen-lg);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mbig-hero-card { margin: 9px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mbig-cover { background: var(--brand); height: 88px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; }
     .mbig-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 7px 10px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
@@ -447,9 +457,13 @@
     .mbig-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mbig-tab { flex: 1; text-align: center; padding: 9px 0; font-size: 10px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mbig-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mbig-reward-card { margin: 8px 9px 9px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mbig-reward-card {
+      margin: 8px 9px 9px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mbig-reward-img {
-      height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/22px no-repeat;
+      flex: 1; min-height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/54px no-repeat;
       border-bottom: none;
     }
     .mbig-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
@@ -487,7 +501,7 @@
     .feature-card h3 { font-size: 19px; font-weight: 800; color: var(--ink); line-height: 1.26; }
     .feature-card p { font-size: 15px; color: var(--muted); line-height: 1.62; }
 
-    /* ═══════════════ Engage — soft violet-tint block ══════════ */
+    /* ═══════════════ Engage: soft violet-tint block ══════════ */
     .engage-section { background: var(--brand-tint); padding: var(--section-y) var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .engage-section .section-eyebrow { background: var(--surface); color: var(--brand-ink); border: none; }
     .engage-section .section-title { color: var(--ink); }
@@ -648,7 +662,7 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 44px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { height: 360px; }
+      .hero-visuals-wrap { height: 395px; }
       .mock-phone { width: 190px; transform: scale(.853); transform-origin: bottom right; }
       .mock-portal-card { right: 150px; left: 0; top: 14px; }
       .game-cards { grid-template-columns: 1fr; }
@@ -664,9 +678,9 @@
       .steps { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary, .hero-actions .btn-secondary { justify-content: center; }
-      .hero-visuals-wrap { height: 300px; }
+      .hero-visuals-wrap { height: 330px; }
       .mock-phone { width: 190px; transform: scale(.716); transform-origin: bottom right; }
-      /* at this size the sidebar costs more than it tells — drop it and
+      /* at this size the sidebar costs more than it tells, so drop it and
          give the segment rows the width they need to stay readable */
       .mock-portal-card { right: 128px; left: 0; top: 10px; }
       .mock-portal-card .portal-sidebar { display: none; }
@@ -718,7 +732,7 @@
     .legal th, .legal td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
     .legal th { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
     .legal .scroll { overflow-x: auto; }
-    /* Facts only the business can supply — deliberately conspicuous. */
+    /* Facts only the business can supply, deliberately conspicuous. */
     .fill {
       display: inline-block; font-weight: 700; font-size: .93em;
       color: #8A4B00; background: #FFF1DA;

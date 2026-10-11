@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Kudo เก็บและใช้ข้อมูลส่วนบุคคลอย่างไร ภายใต้ PDPA ของประเทศไทย" />
   <meta name="theme-color" content="#7A67E4" />
-  <title>นโยบายความเป็นส่วนตัว — Kudo</title>
+  <title>นโยบายความเป็นส่วนตัว · Kudo</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237A67E4'/><text x='50' y='71' font-size='54' text-anchor='middle' fill='%23ffffff' font-family='Verdana,system-ui,sans-serif' font-weight='800'>K</text></svg>" />
   <link rel="canonical" href="https://kudoloyalty-landing.vercel.app/privacy" />
   <link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/privacy" />
@@ -19,7 +19,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ═══════════════════════════════════════════════════════════
-       Kudo — Soft UI, matched to the merchant portal.
+       Kudo Soft UI, matched to the merchant portal.
        A card is the SAME colour as the page, moulded out of it by a
        light/dark shadow pair. Depth is the shadow, never a border.
        Light source is top-left throughout.
@@ -28,7 +28,7 @@
       /* ── Softened violet (not the sharp #7C3AED) ──────────── */
       --brand:      #7A67E4;
       --brand-dark: #6A57D6;
-      --brand-ink:  #574AC0;   /* violet TEXT on light — passes AA */
+      --brand-ink:  #574AC0;   /* violet TEXT on light, passes AA */
       --brand-tint: #F2F0FC;
 
       /* ── Ink ──────────────────────────────────────────────── */
@@ -156,7 +156,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* Gentle lift — no hard press anywhere. */
+    /* Gentle lift, no hard press anywhere. */
     .nav-cta, .btn-primary, .btn-cta, .btn-secondary, .pricing-cta,
     .lang-btn, .seg-broadcast-btn, .feature-card, .game-card, .for-card, .step {
       transition: transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s cubic-bezier(.2,.7,.3,1), background .18s ease;
@@ -279,7 +279,7 @@
     /* ── Hero visual: raised, gently floated ── */
     .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .hero-visuals-wrap {
-      position: relative; width: 100%; height: 450px;
+      position: relative; width: 100%; height: 470px;
       animation: softFloat .75s cubic-bezier(.2,.7,.3,1) both;
     }
     /* A soft floor so the two surfaces sit in the same space rather than
@@ -299,7 +299,10 @@
       z-index: 3;
     }
     .mock-notch { width: 52px; height: 5px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 8px; }
-    .mock-screen { background: var(--screen); border-radius: var(--r-screen-r); overflow: hidden; }
+    .mock-screen {
+      background: var(--screen); border-radius: var(--r-screen-r);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mock-hero-card { margin: 7px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mock-cover { background: var(--brand); height: 70px; display: flex; flex-direction: column; justify-content: flex-end; padding: 7px; }
     .mock-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 6px 8px; display: flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm); }
@@ -319,9 +322,13 @@
     .mock-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mock-tab { flex: 1; text-align: center; padding: 7px 0; font-size: 8px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mock-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mock-reward-card { margin: 6px 7px 7px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mock-reward-card {
+      margin: 6px 7px 7px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mock-reward-img {
-      height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/16px no-repeat;
+      flex: 1; min-height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/40px no-repeat;
       border-bottom: none;
     }
     .mock-reward-body { padding: 6px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
@@ -330,7 +337,7 @@
     .mock-reward-cost { font-size: 8px; font-weight: 700; color: var(--screen-dim); flex-shrink: 0; font-variant-numeric: tabular-nums; }
     .mock-redeem-btn { width: 100%; background: var(--brand); color: #fff; font-size: 8px; font-weight: 800; text-align: center; padding: 5px; border: none; border-radius: 6px; }
 
-    /* Portal browser screen — a raised card */
+    /* Portal browser screen, a raised card */
     .mock-portal-card {
       position: absolute; top: 26px; left: 0; right: 182px;
       background: var(--canvas); border: none;
@@ -448,7 +455,10 @@
       box-shadow: var(--shadow-md), var(--extrude);
     }
     .member-big-notch { width: 58px; height: 6px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 10px; }
-    .member-big-screen { background: var(--screen); border-radius: var(--r-screen-lg); overflow: hidden; }
+    .member-big-screen {
+      background: var(--screen); border-radius: var(--r-screen-lg);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mbig-hero-card { margin: 9px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mbig-cover { background: var(--brand); height: 88px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; }
     .mbig-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 7px 10px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
@@ -465,9 +475,13 @@
     .mbig-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mbig-tab { flex: 1; text-align: center; padding: 9px 0; font-size: 10px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mbig-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mbig-reward-card { margin: 8px 9px 9px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mbig-reward-card {
+      margin: 8px 9px 9px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mbig-reward-img {
-      height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/22px no-repeat;
+      flex: 1; min-height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/54px no-repeat;
       border-bottom: none;
     }
     .mbig-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
@@ -505,7 +519,7 @@
     .feature-card h3 { font-size: 19px; font-weight: 800; color: var(--ink); line-height: 1.26; }
     .feature-card p { font-size: 15px; color: var(--muted); line-height: 1.62; }
 
-    /* ═══════════════ Engage — soft violet-tint block ══════════ */
+    /* ═══════════════ Engage: soft violet-tint block ══════════ */
     .engage-section { background: var(--brand-tint); padding: var(--section-y) var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .engage-section .section-eyebrow { background: var(--surface); color: var(--brand-ink); border: none; }
     .engage-section .section-title { color: var(--ink); }
@@ -666,7 +680,7 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 44px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { height: 360px; }
+      .hero-visuals-wrap { height: 395px; }
       .mock-phone { width: 190px; transform: scale(.853); transform-origin: bottom right; }
       .mock-portal-card { right: 150px; left: 0; top: 14px; }
       .game-cards { grid-template-columns: 1fr; }
@@ -682,9 +696,9 @@
       .steps { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary, .hero-actions .btn-secondary { justify-content: center; }
-      .hero-visuals-wrap { height: 300px; }
+      .hero-visuals-wrap { height: 330px; }
       .mock-phone { width: 190px; transform: scale(.716); transform-origin: bottom right; }
-      /* at this size the sidebar costs more than it tells — drop it and
+      /* at this size the sidebar costs more than it tells, so drop it and
          give the segment rows the width they need to stay readable */
       .mock-portal-card { right: 128px; left: 0; top: 10px; }
       .mock-portal-card .portal-sidebar { display: none; }
@@ -736,7 +750,7 @@
     .legal th, .legal td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
     .legal th { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
     .legal .scroll { overflow-x: auto; }
-    /* Facts only the business can supply — deliberately conspicuous. */
+    /* Facts only the business can supply, deliberately conspicuous. */
     .fill {
       display: inline-block; font-weight: 700; font-size: .93em;
       color: #8A4B00; background: #FFF1DA;
@@ -769,127 +783,127 @@
 
   <div class="legal-wrap">
     <main class="legal">
-      <span class="legal-kicker">ข้อกฎหมาย</span>
-      <h1>นโยบายความเป็นส่วนตัว</h1>
-      <p class="legal-meta">ปรับปรุงล่าสุด <span class="fill">[วันที่มีผลบังคับใช้]</span> · ใช้กับ kudoloyalty.io ระบบหลังบ้านสำหรับร้านค้า และแอปสำหรับสมาชิกของ Kudo</p>
+ <span class="legal-kicker">ข้อกฎหมาย</span>
+ <h1>นโยบายความเป็นส่วนตัว</h1>
+ <p class="legal-meta">ปรับปรุงล่าสุด <span class="fill">[วันที่มีผลบังคับใช้]</span> · ใช้กับ kudoloyalty.io ระบบหลังบ้านสำหรับร้านค้า และแอปสำหรับสมาชิกของ Kudo</p>
 
-      <p>Kudo คือแพลตฟอร์มสะสมแต้มที่ทำงานอยู่ภายใน LINE นโยบายฉบับนี้อธิบายว่าเราเก็บข้อมูลส่วนบุคคลอะไรบ้าง เก็บไปทำไม แบ่งปันให้ใคร และคุณมีสิทธิอะไรเหนือข้อมูลนั้น เอกสารนี้ครอบคลุมคนสองกลุ่มที่ต่างกัน และความต่างนี้สำคัญตลอดทั้งฉบับ</p>
+ <p>Kudo คือแพลตฟอร์มสะสมแต้มที่ทำงานอยู่ภายใน LINE นโยบายฉบับนี้อธิบายว่าเราเก็บข้อมูลส่วนบุคคลอะไรบ้าง เก็บไปทำไม แบ่งปันให้ใคร และคุณมีสิทธิอะไรเหนือข้อมูลนั้น เอกสารนี้ครอบคลุมคนสองกลุ่มที่ต่างกัน และความต่างนี้สำคัญตลอดทั้งฉบับ</p>
 
-      <ul>
-        <li><strong>ร้านค้า</strong> — ธุรกิจที่สมัครใช้ Kudo เพื่อทำโปรแกรมสะสมแต้ม</li>
-        <li><strong>สมาชิก</strong> — ลูกค้าของร้านค้าเหล่านั้นที่เข้าร่วมโปรแกรมผ่าน LINE</li>
-      </ul>
+ <ul>
+ <li><strong>ร้านค้า</strong>, ธุรกิจที่สมัครใช้ Kudo เพื่อทำโปรแกรมสะสมแต้ม</li>
+ <li><strong>สมาชิก</strong>, ลูกค้าของร้านค้าเหล่านั้นที่เข้าร่วมโปรแกรมผ่าน LINE</li>
+ </ul>
 
-      <h2 id="who">1. ใครรับผิดชอบข้อมูลของคุณ</h2>
-      <p>Kudo ดำเนินการโดย <span class="fill">[ชื่อนิติบุคคล]</span> จดทะเบียนในประเทศไทย เลขทะเบียน <span class="fill">[เลขทะเบียนนิติบุคคล]</span> ที่อยู่ <span class="fill">[ที่อยู่จดทะเบียน]</span></p>
-      <p>ภายใต้พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ("PDPA") ความรับผิดชอบแบ่งตามว่าเป็นข้อมูลของใคร</p>
-      <ul>
-        <li>ข้อมูลบัญชีของ<strong>ร้านค้า</strong> — Kudo เป็น<strong>ผู้ควบคุมข้อมูลส่วนบุคคล</strong></li>
-        <li>ข้อมูลของ<strong>สมาชิก</strong> — ร้านค้าที่ทำโปรแกรมเป็น<strong>ผู้ควบคุมข้อมูลส่วนบุคคล</strong> และ Kudo เป็น<strong>ผู้ประมวลผลข้อมูลส่วนบุคคล</strong> เราดำเนินการกับข้อมูลสมาชิกตามคำสั่งของร้านค้านั้น หากคุณเป็นสมาชิกและต้องการให้ลบข้อมูล ร้านค้าเป็นผู้ตัดสินใจ แต่คุณติดต่อเรามาได้และเราจะส่งคำขอต่อให้</li>
-      </ul>
+ <h2 id="who">1. ใครรับผิดชอบข้อมูลของคุณ</h2>
+ <p>Kudo ดำเนินการโดย <span class="fill">[ชื่อนิติบุคคล]</span> จดทะเบียนในประเทศไทย เลขทะเบียน <span class="fill">[เลขทะเบียนนิติบุคคล]</span> ที่อยู่ <span class="fill">[ที่อยู่จดทะเบียน]</span></p>
+ <p>ภายใต้พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ("PDPA") ความรับผิดชอบแบ่งตามว่าเป็นข้อมูลของใคร</p>
+ <ul>
+ <li>ข้อมูลบัญชีของ<strong>ร้านค้า</strong>, Kudo เป็น<strong>ผู้ควบคุมข้อมูลส่วนบุคคล</strong></li>
+ <li>ข้อมูลของ<strong>สมาชิก</strong>, ร้านค้าที่ทำโปรแกรมเป็น<strong>ผู้ควบคุมข้อมูลส่วนบุคคล</strong> และ Kudo เป็น<strong>ผู้ประมวลผลข้อมูลส่วนบุคคล</strong> เราดำเนินการกับข้อมูลสมาชิกตามคำสั่งของร้านค้านั้น หากคุณเป็นสมาชิกและต้องการให้ลบข้อมูล ร้านค้าเป็นผู้ตัดสินใจ แต่คุณติดต่อเรามาได้และเราจะส่งคำขอต่อให้</li>
+ </ul>
 
-      <h2 id="collect">2. เราเก็บข้อมูลอะไรบ้าง</h2>
-      <h3>จากร้านค้า</h3>
-      <ul>
-        <li>ชื่อ อีเมล และข้อมูลธุรกิจที่คุณกรอกตอนตั้งค่า</li>
-        <li>รหัสบัญชี LINE Official Account และข้อมูลรับรองที่จำเป็นสำหรับการส่งข้อความในนามของคุณ</li>
-        <li>บันทึกการชำระเงินสำหรับแพ็กเกจแบบเสียค่าบริการ</li>
-        <li>ข้อความติดต่อฝ่ายสนับสนุน</li>
-      </ul>
+ <h2 id="collect">2. เราเก็บข้อมูลอะไรบ้าง</h2>
+ <h3>จากร้านค้า</h3>
+ <ul>
+ <li>ชื่อ อีเมล และข้อมูลธุรกิจที่คุณกรอกตอนตั้งค่า</li>
+ <li>รหัสบัญชี LINE Official Account และข้อมูลรับรองที่จำเป็นสำหรับการส่งข้อความในนามของคุณ</li>
+ <li>บันทึกการชำระเงินสำหรับแพ็กเกจแบบเสียค่าบริการ</li>
+ <li>ข้อความติดต่อฝ่ายสนับสนุน</li>
+ </ul>
 
-      <h3>จากสมาชิก</h3>
-      <ul>
-        <li>LINE user ID ชื่อที่แสดง และรูปโปรไฟล์ ซึ่งได้รับจาก LINE เมื่อคุณเข้าร่วมโปรแกรม</li>
-        <li>วันเกิด <strong>เฉพาะเมื่อ</strong> คุณให้ไว้ และใช้เพื่อให้ร้านค้าส่งของรางวัลวันเกิดเท่านั้น</li>
-        <li>ยอดแต้มหรือดวงตราสะสม และประวัติการได้รับและการแลก</li>
-        <li>ของรางวัลที่คุณแลกและเวลาที่แลก</li>
-        <li>กิจกรรมที่ใช้จัดกลุ่มคุณเป็น สมาชิกใหม่ ใช้งานอยู่ เสี่ยงหาย หรือ หายไป</li>
-      </ul>
-      <p>เรา<strong>ไม่ได้</strong>รับรหัสผ่าน LINE ของคุณ ประวัติแชทของคุณกับผู้อื่น เบอร์โทรศัพท์ หรือรายชื่อเพื่อนของคุณ</p>
+ <h3>จากสมาชิก</h3>
+ <ul>
+ <li>LINE user ID ชื่อที่แสดง และรูปโปรไฟล์ ซึ่งได้รับจาก LINE เมื่อคุณเข้าร่วมโปรแกรม</li>
+ <li>วันเกิด <strong>เฉพาะเมื่อ</strong> คุณให้ไว้ และใช้เพื่อให้ร้านค้าส่งของรางวัลวันเกิดเท่านั้น</li>
+ <li>ยอดแต้มหรือดวงตราสะสม และประวัติการได้รับและการแลก</li>
+ <li>ของรางวัลที่คุณแลกและเวลาที่แลก</li>
+ <li>กิจกรรมที่ใช้จัดกลุ่มคุณเป็น สมาชิกใหม่ ใช้งานอยู่ เสี่ยงหาย หรือ หายไป</li>
+ </ul>
+ <p>เรา<strong>ไม่ได้</strong>รับรหัสผ่าน LINE ของคุณ ประวัติแชทของคุณกับผู้อื่น เบอร์โทรศัพท์ หรือรายชื่อเพื่อนของคุณ</p>
 
-      <h3>ที่เก็บโดยอัตโนมัติ</h3>
-      <ul>
-        <li>หมายเลข IP ชนิดเบราว์เซอร์และอุปกรณ์ และหน้าที่เข้าชม</li>
-        <li>คุกกี้และการจัดเก็บลักษณะเดียวกันเท่าที่จำเป็นต่อการคงสถานะเข้าสู่ระบบและจดจำภาษาที่เลือก</li>
-      </ul>
+ <h3>ที่เก็บโดยอัตโนมัติ</h3>
+ <ul>
+ <li>หมายเลข IP ชนิดเบราว์เซอร์และอุปกรณ์ และหน้าที่เข้าชม</li>
+ <li>คุกกี้และการจัดเก็บลักษณะเดียวกันเท่าที่จำเป็นต่อการคงสถานะเข้าสู่ระบบและจดจำภาษาที่เลือก</li>
+ </ul>
 
-      <h2 id="why">3. เราใช้ข้อมูลเพื่ออะไร และใช้ฐานทางกฎหมายใด</h2>
-      <div class="scroll">
-        <table>
-          <tr><th>วัตถุประสงค์</th><th>ฐานทางกฎหมายตาม PDPA</th></tr>
-          <tr><td>ดำเนินโปรแกรมสะสมแต้ม — บันทึกแต้ม ออกของรางวัล ตรวจสอบการแลก</td><td>การปฏิบัติตามสัญญา</td></tr>
-          <tr><td>ส่งข้อความของโปรแกรมผ่าน LINE ในนามของร้านค้า</td><td>ความยินยอม ที่ให้ไว้ตอนเข้าร่วมโปรแกรม</td></tr>
-          <tr><td>ของรางวัลวันเกิดและรางวัลตามเงื่อนไขพิเศษ</td><td>ความยินยอม</td></tr>
-          <tr><td>การเรียกเก็บเงินและบัญชีสำหรับร้านค้า</td><td>สัญญา และหน้าที่ตามกฎหมาย</td></tr>
-          <tr><td>ความปลอดภัย การป้องกันการฉ้อโกง และการแก้ไขข้อผิดพลาด</td><td>ประโยชน์โดยชอบด้วยกฎหมาย</td></tr>
-          <tr><td>สถิติภาพรวมที่ระบุตัวบุคคลไม่ได้</td><td>ประโยชน์โดยชอบด้วยกฎหมาย</td></tr>
-        </table>
-      </div>
-      <p>เราไม่ขายข้อมูลส่วนบุคคล และไม่ใช้ข้อมูลสมาชิกเพื่อโฆษณาให้กับผู้ใดนอกจากร้านค้าที่คุณเข้าร่วมโปรแกรมด้วย</p>
+ <h2 id="why">3. เราใช้ข้อมูลเพื่ออะไร และใช้ฐานทางกฎหมายใด</h2>
+ <div class="scroll">
+ <table>
+ <tr><th>วัตถุประสงค์</th><th>ฐานทางกฎหมายตาม PDPA</th></tr>
+ <tr><td>ดำเนินโปรแกรมสะสมแต้ม, บันทึกแต้ม ออกของรางวัล ตรวจสอบการแลก</td><td>การปฏิบัติตามสัญญา</td></tr>
+ <tr><td>ส่งข้อความของโปรแกรมผ่าน LINE ในนามของร้านค้า</td><td>ความยินยอม ที่ให้ไว้ตอนเข้าร่วมโปรแกรม</td></tr>
+ <tr><td>ของรางวัลวันเกิดและรางวัลตามเงื่อนไขพิเศษ</td><td>ความยินยอม</td></tr>
+ <tr><td>การเรียกเก็บเงินและบัญชีสำหรับร้านค้า</td><td>สัญญา และหน้าที่ตามกฎหมาย</td></tr>
+ <tr><td>ความปลอดภัย การป้องกันการฉ้อโกง และการแก้ไขข้อผิดพลาด</td><td>ประโยชน์โดยชอบด้วยกฎหมาย</td></tr>
+ <tr><td>สถิติภาพรวมที่ระบุตัวบุคคลไม่ได้</td><td>ประโยชน์โดยชอบด้วยกฎหมาย</td></tr>
+ </table>
+ </div>
+ <p>เราไม่ขายข้อมูลส่วนบุคคล และไม่ใช้ข้อมูลสมาชิกเพื่อโฆษณาให้กับผู้ใดนอกจากร้านค้าที่คุณเข้าร่วมโปรแกรมด้วย</p>
 
-      <h2 id="line">4. LINE เกี่ยวข้องอย่างไร</h2>
-      <ul>
-        <li>เมื่อคุณเข้าร่วมโปรแกรม คุณอนุญาตให้ LINE แบ่งปัน user ID ชื่อที่แสดง และรูปโปรไฟล์ของคุณให้ร้านค้าผ่าน Kudo</li>
-        <li>ข้อความที่ร้านค้าส่งถึงคุณถูกส่งผ่าน LINE Messaging API และอยู่ภายใต้ข้อกำหนดและนโยบายความเป็นส่วนตัวของ LINE เอง</li>
-        <li>คุณบล็อกหรือเลิกติดตามบัญชี LINE ของร้านค้าได้ทุกเมื่อเพื่อหยุดรับข้อความ การทำเช่นนั้นไม่ได้ลบแต้มของคุณ หากต้องการลบ กรุณาติดต่อร้านค้า</li>
-      </ul>
+ <h2 id="line">4. LINE เกี่ยวข้องอย่างไร</h2>
+ <ul>
+ <li>เมื่อคุณเข้าร่วมโปรแกรม คุณอนุญาตให้ LINE แบ่งปัน user ID ชื่อที่แสดง และรูปโปรไฟล์ของคุณให้ร้านค้าผ่าน Kudo</li>
+ <li>ข้อความที่ร้านค้าส่งถึงคุณถูกส่งผ่าน LINE Messaging API และอยู่ภายใต้ข้อกำหนดและนโยบายความเป็นส่วนตัวของ LINE เอง</li>
+ <li>คุณบล็อกหรือเลิกติดตามบัญชี LINE ของร้านค้าได้ทุกเมื่อเพื่อหยุดรับข้อความ การทำเช่นนั้นไม่ได้ลบแต้มของคุณ หากต้องการลบ กรุณาติดต่อร้านค้า</li>
+ </ul>
 
-      <h2 id="share">5. เราแบ่งปันข้อมูลให้ใคร</h2>
-      <div class="scroll">
-        <table>
-          <tr><th>ผู้รับ</th><th>วัตถุประสงค์</th></tr>
-          <tr><td>ร้านค้าที่คุณเข้าร่วมโปรแกรมด้วย</td><td>เป็นผู้ดำเนินโปรแกรมและเป็นผู้ควบคุมข้อมูล</td></tr>
-          <tr><td>LINE Corporation</td><td>การยืนยันตัวตนและการส่งข้อความ</td></tr>
-          <tr><td>Google Cloud / Firebase</td><td>โฮสติ้ง ฐานข้อมูล และการยืนยันตัวตน</td></tr>
-          <tr><td>Vercel</td><td>โฮสติ้งสำหรับเว็บไซต์สาธารณะของเรา</td></tr>
-          <tr><td><span class="fill">[ผู้ให้บริการรับชำระเงิน]</span></td><td>ดำเนินการรับชำระค่าบริการจากร้านค้า</td></tr>
-        </table>
-      </div>
-      <p>เราอาจเปิดเผยข้อมูลเมื่อกฎหมายกำหนด หรือเพื่อก่อตั้งสิทธิเรียกร้องหรือต่อสู้คดี</p>
+ <h2 id="share">5. เราแบ่งปันข้อมูลให้ใคร</h2>
+ <div class="scroll">
+ <table>
+ <tr><th>ผู้รับ</th><th>วัตถุประสงค์</th></tr>
+ <tr><td>ร้านค้าที่คุณเข้าร่วมโปรแกรมด้วย</td><td>เป็นผู้ดำเนินโปรแกรมและเป็นผู้ควบคุมข้อมูล</td></tr>
+ <tr><td>LINE Corporation</td><td>การยืนยันตัวตนและการส่งข้อความ</td></tr>
+ <tr><td>Google Cloud / Firebase</td><td>โฮสติ้ง ฐานข้อมูล และการยืนยันตัวตน</td></tr>
+ <tr><td>Vercel</td><td>โฮสติ้งสำหรับเว็บไซต์สาธารณะของเรา</td></tr>
+ <tr><td><span class="fill">[ผู้ให้บริการรับชำระเงิน]</span></td><td>ดำเนินการรับชำระค่าบริการจากร้านค้า</td></tr>
+ </table>
+ </div>
+ <p>เราอาจเปิดเผยข้อมูลเมื่อกฎหมายกำหนด หรือเพื่อก่อตั้งสิทธิเรียกร้องหรือต่อสู้คดี</p>
 
-      <h2 id="transfer">6. ข้อมูลของคุณถูกเก็บไว้ที่ใด</h2>
-      <p>ผู้ให้บริการโครงสร้างพื้นฐานของเราใช้ศูนย์ข้อมูลนอกประเทศไทย ปัจจุบันอยู่ที่ <span class="fill">[ภูมิภาค เช่น asia-southeast1 สิงคโปร์]</span> กรณีที่ข้อมูลส่วนบุคคลถูกส่งออกนอกราชอาณาจักร เราอาศัยมาตรการคุ้มครองที่กำหนดไว้ตามมาตรา 28 และ 29 แห่ง PDPA รวมถึงข้อผูกพันด้านการคุ้มครองข้อมูลตามสัญญากับผู้ให้บริการ</p>
+ <h2 id="transfer">6. ข้อมูลของคุณถูกเก็บไว้ที่ใด</h2>
+ <p>ผู้ให้บริการโครงสร้างพื้นฐานของเราใช้ศูนย์ข้อมูลนอกประเทศไทย ปัจจุบันอยู่ที่ <span class="fill">[ภูมิภาค เช่น asia-southeast1 สิงคโปร์]</span> กรณีที่ข้อมูลส่วนบุคคลถูกส่งออกนอกราชอาณาจักร เราอาศัยมาตรการคุ้มครองที่กำหนดไว้ตามมาตรา 28 และ 29 แห่ง PDPA รวมถึงข้อผูกพันด้านการคุ้มครองข้อมูลตามสัญญากับผู้ให้บริการ</p>
 
-      <h2 id="retain">7. เราเก็บข้อมูลไว้นานเท่าใด</h2>
-      <ul>
-        <li><strong>ข้อมูลสมาชิก</strong> — ตลอดระยะเวลาที่โปรแกรมของร้านค้ายังใช้งานอยู่ และอีก <span class="fill">[N]</span> วันหลังจากร้านค้าปิดบัญชีหรือลบสมาชิก จากนั้นจะถูกลบอย่างถาวร</li>
-        <li><strong>ข้อมูลบัญชีร้านค้า</strong> — ตลอดระยะเวลาที่บัญชียังเปิดอยู่ และอีก <span class="fill">[N]</span> วันหลังปิดบัญชี</li>
-        <li><strong>บันทึกการชำระเงิน</strong> — ตามที่กฎหมายภาษีและบัญชีของไทยกำหนด ปัจจุบันคือ 5 ปี</li>
-        <li><strong>บันทึกระบบ</strong> — <span class="fill">[N]</span> วัน</li>
-      </ul>
+ <h2 id="retain">7. เราเก็บข้อมูลไว้นานเท่าใด</h2>
+ <ul>
+ <li><strong>ข้อมูลสมาชิก</strong>, ตลอดระยะเวลาที่โปรแกรมของร้านค้ายังใช้งานอยู่ และอีก <span class="fill">[N]</span> วันหลังจากร้านค้าปิดบัญชีหรือลบสมาชิก จากนั้นจะถูกลบอย่างถาวร</li>
+ <li><strong>ข้อมูลบัญชีร้านค้า</strong>, ตลอดระยะเวลาที่บัญชียังเปิดอยู่ และอีก <span class="fill">[N]</span> วันหลังปิดบัญชี</li>
+ <li><strong>บันทึกการชำระเงิน</strong>, ตามที่กฎหมายภาษีและบัญชีของไทยกำหนด ปัจจุบันคือ 5 ปี</li>
+ <li><strong>บันทึกระบบ</strong>, <span class="fill">[N]</span> วัน</li>
+ </ul>
 
-      <h2 id="rights">8. สิทธิของคุณ</h2>
-      <p>ภายใต้ PDPA คุณสามารถขอให้เรา</p>
-      <ul>
-        <li>ส่งสำเนาข้อมูลส่วนบุคคลที่เรามีเกี่ยวกับคุณ</li>
-        <li>แก้ไขข้อมูลที่ไม่ถูกต้องหรือไม่สมบูรณ์</li>
-        <li>ลบข้อมูล หรือจำกัดการใช้ข้อมูล</li>
-        <li>โอนข้อมูลไปยังผู้ให้บริการรายอื่นในรูปแบบที่อ่านได้ด้วยเครื่อง</li>
-        <li>หยุดประมวลผลข้อมูล ในกรณีที่เราอาศัยฐานประโยชน์โดยชอบด้วยกฎหมาย</li>
-        <li>ถอนความยินยอมที่เคยให้ไว้ ซึ่งไม่กระทบการประมวลผลที่ทำไปแล้ว</li>
-      </ul>
-      <p>ส่งอีเมลมาที่ <a href="mailto:krissada.narbonne@gmail.com">krissada.narbonne@gmail.com</a> เราจะตอบกลับภายใน 30 วัน หากคุณเป็น<strong>สมาชิก</strong> เราจะส่งคำขอของคุณต่อให้ร้านค้าซึ่งเป็นผู้ควบคุมข้อมูล และสนับสนุนร้านค้าในการตอบกลับ</p>
-      <p>หากเห็นว่าเราจัดการข้อมูลของคุณโดยมิชอบ คุณมีสิทธิร้องเรียนต่อคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส./PDPC)</p>
+ <h2 id="rights">8. สิทธิของคุณ</h2>
+ <p>ภายใต้ PDPA คุณสามารถขอให้เรา</p>
+ <ul>
+ <li>ส่งสำเนาข้อมูลส่วนบุคคลที่เรามีเกี่ยวกับคุณ</li>
+ <li>แก้ไขข้อมูลที่ไม่ถูกต้องหรือไม่สมบูรณ์</li>
+ <li>ลบข้อมูล หรือจำกัดการใช้ข้อมูล</li>
+ <li>โอนข้อมูลไปยังผู้ให้บริการรายอื่นในรูปแบบที่อ่านได้ด้วยเครื่อง</li>
+ <li>หยุดประมวลผลข้อมูล ในกรณีที่เราอาศัยฐานประโยชน์โดยชอบด้วยกฎหมาย</li>
+ <li>ถอนความยินยอมที่เคยให้ไว้ ซึ่งไม่กระทบการประมวลผลที่ทำไปแล้ว</li>
+ </ul>
+ <p>ส่งอีเมลมาที่ <a href="mailto:krissada.narbonne@gmail.com">krissada.narbonne@gmail.com</a> เราจะตอบกลับภายใน 30 วัน หากคุณเป็น<strong>สมาชิก</strong> เราจะส่งคำขอของคุณต่อให้ร้านค้าซึ่งเป็นผู้ควบคุมข้อมูล และสนับสนุนร้านค้าในการตอบกลับ</p>
+ <p>หากเห็นว่าเราจัดการข้อมูลของคุณโดยมิชอบ คุณมีสิทธิร้องเรียนต่อคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล (สคส./PDPC)</p>
 
-      <h2 id="security">9. ความปลอดภัย</h2>
-      <p>ข้อมูลถูกเข้ารหัสระหว่างการส่งด้วย TLS และเข้ารหัสขณะจัดเก็บโดยผู้ให้บริการโครงสร้างพื้นฐาน การเข้าถึงข้อมูลจริงจำกัดเฉพาะผู้ที่จำเป็นต้องใช้เพื่อให้บริการ ไม่มีระบบใดปลอดภัยสมบูรณ์ เราจึงไม่อาจรับประกันความปลอดภัยโดยเด็ดขาด แต่จะแจ้งผู้ใช้ที่ได้รับผลกระทบและ PDPC เมื่อเกิดเหตุละเมิดที่เข้าเงื่อนไขตามที่ PDPA กำหนด</p>
+ <h2 id="security">9. ความปลอดภัย</h2>
+ <p>ข้อมูลถูกเข้ารหัสระหว่างการส่งด้วย TLS และเข้ารหัสขณะจัดเก็บโดยผู้ให้บริการโครงสร้างพื้นฐาน การเข้าถึงข้อมูลจริงจำกัดเฉพาะผู้ที่จำเป็นต้องใช้เพื่อให้บริการ ไม่มีระบบใดปลอดภัยสมบูรณ์ เราจึงไม่อาจรับประกันความปลอดภัยโดยเด็ดขาด แต่จะแจ้งผู้ใช้ที่ได้รับผลกระทบและ PDPC เมื่อเกิดเหตุละเมิดที่เข้าเงื่อนไขตามที่ PDPA กำหนด</p>
 
-      <h2 id="children">10. ผู้เยาว์</h2>
-      <p>Kudo ไม่ได้มุ่งให้บริการแก่เด็กอายุต่ำกว่า <span class="fill">[อายุ — ตรวจสอบกับที่ปรึกษากฎหมาย]</span> ปี และเราไม่เก็บข้อมูลของเด็กโดยเจตนา หากโปรแกรมของร้านค้าใดมีแนวโน้มดึงดูดผู้เยาว์ ร้านค้ามีหน้าที่ขอความยินยอมจากผู้ปกครองตามที่ PDPA กำหนด หากคุณเชื่อว่ามีการเก็บข้อมูลของเด็กไว้ กรุณาติดต่อเราเพื่อให้ลบ</p>
+ <h2 id="children">10. ผู้เยาว์</h2>
+ <p>Kudo ไม่ได้มุ่งให้บริการแก่เด็กอายุต่ำกว่า <span class="fill">[อายุ, ตรวจสอบกับที่ปรึกษากฎหมาย]</span> ปี และเราไม่เก็บข้อมูลของเด็กโดยเจตนา หากโปรแกรมของร้านค้าใดมีแนวโน้มดึงดูดผู้เยาว์ ร้านค้ามีหน้าที่ขอความยินยอมจากผู้ปกครองตามที่ PDPA กำหนด หากคุณเชื่อว่ามีการเก็บข้อมูลของเด็กไว้ กรุณาติดต่อเราเพื่อให้ลบ</p>
 
-      <h2 id="changes">11. การเปลี่ยนแปลงนโยบายนี้</h2>
-      <p>เราอาจปรับปรุงนโยบายนี้ หากการเปลี่ยนแปลงกระทบสิทธิของคุณอย่างมีนัยสำคัญ เราจะแจ้งผ่านระบบหลังบ้านหรือทางอีเมลก่อนมีผลบังคับใช้ วันที่ด้านบนสะท้อนฉบับปัจจุบันเสมอ</p>
+ <h2 id="changes">11. การเปลี่ยนแปลงนโยบายนี้</h2>
+ <p>เราอาจปรับปรุงนโยบายนี้ หากการเปลี่ยนแปลงกระทบสิทธิของคุณอย่างมีนัยสำคัญ เราจะแจ้งผ่านระบบหลังบ้านหรือทางอีเมลก่อนมีผลบังคับใช้ วันที่ด้านบนสะท้อนฉบับปัจจุบันเสมอ</p>
 
-      <h2 id="contact">12. ติดต่อเรา</h2>
-      <p>คำถาม คำขอ หรือข้อร้องเรียน: <a href="mailto:krissada.narbonne@gmail.com">krissada.narbonne@gmail.com</a> หรือส่งไปรษณีย์ถึง <span class="fill">[ที่อยู่จดทะเบียน]</span></p>
-      <p>ผู้ติดต่อด้านการคุ้มครองข้อมูลของเราคือ <span class="fill">[ชื่อ DPO หรือ "ผู้ติดต่อข้างต้น"]</span></p>
+ <h2 id="contact">12. ติดต่อเรา</h2>
+ <p>คำถาม คำขอ หรือข้อร้องเรียน: <a href="mailto:krissada.narbonne@gmail.com">krissada.narbonne@gmail.com</a> หรือส่งไปรษณีย์ถึง <span class="fill">[ที่อยู่จดทะเบียน]</span></p>
+ <p>ผู้ติดต่อด้านการคุ้มครองข้อมูลของเราคือ <span class="fill">[ชื่อ DPO หรือ "ผู้ติดต่อข้างต้น"]</span></p>
 
-      <h2 id="lang">13. ภาษาที่ใช้บังคับ</h2>
-      <p>นโยบายฉบับนี้จัดทำเป็นภาษาไทยและภาษาอังกฤษ ในกรณีที่ข้อความสองฉบับขัดแย้งกัน ให้ยึดถือ<a href="/en/privacy">ฉบับภาษาอังกฤษ</a>เป็นหลัก</p>
+ <h2 id="lang">13. ภาษาที่ใช้บังคับ</h2>
+ <p>นโยบายฉบับนี้จัดทำเป็นภาษาไทยและภาษาอังกฤษ ในกรณีที่ข้อความสองฉบับขัดแย้งกัน ให้ยึดถือ<a href="/en/privacy">ฉบับภาษาอังกฤษ</a>เป็นหลัก</p>
 
-      <div class="legal-note">
-        <strong>ก่อนเผยแพร่:</strong> ทุกช่องที่ไฮไลต์ไว้ต้องกรอกค่าจริง และควรให้ทนายความไทยตรวจทานเอกสารนี้เทียบกับการไหลของข้อมูลจริงของคุณ เอกสารนี้ร่างขึ้นจากลักษณะการทำงานที่เห็นได้ของผลิตภัณฑ์ ไม่ใช่คำแนะนำทางกฎหมาย และไม่ใช่การรับประกันการปฏิบัติตามกฎหมาย
-      </div>
+ <div class="legal-note">
+ <strong>ก่อนเผยแพร่:</strong> ทุกช่องที่ไฮไลต์ไว้ต้องกรอกค่าจริง และควรให้ทนายความไทยตรวจทานเอกสารนี้เทียบกับการไหลของข้อมูลจริงของคุณ เอกสารนี้ร่างขึ้นจากลักษณะการทำงานที่เห็นได้ของผลิตภัณฑ์ ไม่ใช่คำแนะนำทางกฎหมาย และไม่ใช่การรับประกันการปฏิบัติตามกฎหมาย
+ </div>
     </main>
   </div>
 

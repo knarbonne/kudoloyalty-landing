@@ -3,36 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kudo — LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, broadcasts, and automated messages — without asking customers to download anything new." />
+  <meta name="description" content="Kudo is a LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, broadcasts and automated messages, without asking customers to download anything new." />
   <meta name="theme-color" content="#7A67E4" />
-  <title>Kudo — Loyalty built for LINE</title>
+  <title>Kudo · Loyalty built for LINE</title>
   <link rel="canonical" href="https://kudoloyalty-landing.vercel.app/en" />
   <link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/" />
   <link rel="alternate" hreflang="en" href="https://kudoloyalty-landing.vercel.app/en" />
   <link rel="alternate" hreflang="x-default" href="https://kudoloyalty-landing.vercel.app/" />
 
-  <!-- Link preview. og:image MUST be an absolute URL — scrapers (LINE, Slack,
+  <!-- Link preview. og:image MUST be an absolute URL. Scrapers (LINE, Slack,
        Facebook, X) fetch it directly and never run the page's JS or CSS.
        Change the host in these four URLs if a custom domain is added. -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kudo" />
   <meta property="og:url" content="https://kudoloyalty-landing.vercel.app/en" />
-  <meta property="og:title" content="Kudo — Loyalty built for LINE" />
+  <meta property="og:title" content="Kudo · Loyalty built for LINE" />
   <meta property="og:description" content="Your customers are already on LINE. Give them a loyalty program that lives there too. Self-serve setup in under 15 minutes." />
   <meta property="og:image" content="https://kudoloyalty-landing.vercel.app/og.png" />
   <meta property="og:image:secure_url" content="https://kudoloyalty-landing.vercel.app/og.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Kudo — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem." />
+  <meta property="og:image:alt" content="A Kudo loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem." />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="th_TH" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kudo — Loyalty built for LINE" />
+  <meta name="twitter:title" content="Kudo · Loyalty built for LINE" />
   <meta name="twitter:description" content="Your customers are already on LINE. Give them a loyalty program that lives there too. Self-serve setup in under 15 minutes." />
   <meta name="twitter:image" content="https://kudoloyalty-landing.vercel.app/og.png" />
-  <meta name="twitter:image:alt" content="Kudo — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem." />
+  <meta name="twitter:image:alt" content="A Kudo loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237A67E4'/><text x='50' y='71' font-size='54' text-anchor='middle' fill='%23ffffff' font-family='Verdana,system-ui,sans-serif' font-weight='800'>K</text></svg>" />
 
   <!-- Open Props: raw design tokens (radius/size/ease scales) -->
@@ -47,7 +47,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ═══════════════════════════════════════════════════════════
-       Kudo — Soft UI, matched to the merchant portal.
+       Kudo Soft UI, matched to the merchant portal.
        A card is the SAME colour as the page, moulded out of it by a
        light/dark shadow pair. Depth is the shadow, never a border.
        Light source is top-left throughout.
@@ -56,7 +56,7 @@
       /* ── Softened violet (not the sharp #7C3AED) ──────────── */
       --brand:      #7A67E4;
       --brand-dark: #6A57D6;
-      --brand-ink:  #574AC0;   /* violet TEXT on light — passes AA */
+      --brand-ink:  #574AC0;   /* violet TEXT on light, passes AA */
       --brand-tint: #F2F0FC;
 
       /* ── Ink ──────────────────────────────────────────────── */
@@ -184,7 +184,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* Gentle lift — no hard press anywhere. */
+    /* Gentle lift, no hard press anywhere. */
     .nav-cta, .btn-primary, .btn-cta, .btn-secondary, .pricing-cta,
     .lang-btn, .seg-broadcast-btn, .feature-card, .game-card, .for-card, .step {
       transition: transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s cubic-bezier(.2,.7,.3,1), background .18s ease;
@@ -307,7 +307,7 @@
     /* ── Hero visual: raised, gently floated ── */
     .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .hero-visuals-wrap {
-      position: relative; width: 100%; height: 450px;
+      position: relative; width: 100%; height: 470px;
       animation: softFloat .75s cubic-bezier(.2,.7,.3,1) both;
     }
     /* A soft floor so the two surfaces sit in the same space rather than
@@ -327,7 +327,10 @@
       z-index: 3;
     }
     .mock-notch { width: 52px; height: 5px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 8px; }
-    .mock-screen { background: var(--screen); border-radius: var(--r-screen-r); overflow: hidden; }
+    .mock-screen {
+      background: var(--screen); border-radius: var(--r-screen-r);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mock-hero-card { margin: 7px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mock-cover { background: var(--brand); height: 70px; display: flex; flex-direction: column; justify-content: flex-end; padding: 7px; }
     .mock-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 6px 8px; display: flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm); }
@@ -347,9 +350,13 @@
     .mock-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mock-tab { flex: 1; text-align: center; padding: 7px 0; font-size: 8px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mock-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mock-reward-card { margin: 6px 7px 7px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mock-reward-card {
+      margin: 6px 7px 7px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mock-reward-img {
-      height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/16px no-repeat;
+      flex: 1; min-height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/40px no-repeat;
       border-bottom: none;
     }
     .mock-reward-body { padding: 6px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
@@ -358,7 +365,7 @@
     .mock-reward-cost { font-size: 8px; font-weight: 700; color: var(--screen-dim); flex-shrink: 0; font-variant-numeric: tabular-nums; }
     .mock-redeem-btn { width: 100%; background: var(--brand); color: #fff; font-size: 8px; font-weight: 800; text-align: center; padding: 5px; border: none; border-radius: 6px; }
 
-    /* Portal browser screen — a raised card */
+    /* Portal browser screen, a raised card */
     .mock-portal-card {
       position: absolute; top: 26px; left: 0; right: 182px;
       background: var(--canvas); border: none;
@@ -476,7 +483,10 @@
       box-shadow: var(--shadow-md), var(--extrude);
     }
     .member-big-notch { width: 58px; height: 6px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 10px; }
-    .member-big-screen { background: var(--screen); border-radius: var(--r-screen-lg); overflow: hidden; }
+    .member-big-screen {
+      background: var(--screen); border-radius: var(--r-screen-lg);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mbig-hero-card { margin: 9px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mbig-cover { background: var(--brand); height: 88px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; }
     .mbig-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 7px 10px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
@@ -493,9 +503,13 @@
     .mbig-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mbig-tab { flex: 1; text-align: center; padding: 9px 0; font-size: 10px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mbig-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mbig-reward-card { margin: 8px 9px 9px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mbig-reward-card {
+      margin: 8px 9px 9px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mbig-reward-img {
-      height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/22px no-repeat;
+      flex: 1; min-height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/54px no-repeat;
       border-bottom: none;
     }
     .mbig-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
@@ -533,7 +547,7 @@
     .feature-card h3 { font-size: 19px; font-weight: 800; color: var(--ink); line-height: 1.26; }
     .feature-card p { font-size: 15px; color: var(--muted); line-height: 1.62; }
 
-    /* ═══════════════ Engage — soft violet-tint block ══════════ */
+    /* ═══════════════ Engage: soft violet-tint block ══════════ */
     .engage-section { background: var(--brand-tint); padding: var(--section-y) var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .engage-section .section-eyebrow { background: var(--surface); color: var(--brand-ink); border: none; }
     .engage-section .section-title { color: var(--ink); }
@@ -694,7 +708,7 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 44px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { height: 360px; }
+      .hero-visuals-wrap { height: 395px; }
       .mock-phone { width: 190px; transform: scale(.853); transform-origin: bottom right; }
       .mock-portal-card { right: 150px; left: 0; top: 14px; }
       .game-cards { grid-template-columns: 1fr; }
@@ -710,9 +724,9 @@
       .steps { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary, .hero-actions .btn-secondary { justify-content: center; }
-      .hero-visuals-wrap { height: 300px; }
+      .hero-visuals-wrap { height: 330px; }
       .mock-phone { width: 190px; transform: scale(.716); transform-origin: bottom right; }
-      /* at this size the sidebar costs more than it tells — drop it and
+      /* at this size the sidebar costs more than it tells, so drop it and
          give the segment rows the width they need to stay readable */
       .mock-portal-card { right: 128px; left: 0; top: 10px; }
       .mock-portal-card .portal-sidebar { display: none; }
@@ -764,7 +778,7 @@
     .legal th, .legal td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
     .legal th { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
     .legal .scroll { overflow-x: auto; }
-    /* Facts only the business can supply — deliberately conspicuous. */
+    /* Facts only the business can supply, deliberately conspicuous. */
     .fill {
       display: inline-block; font-weight: 700; font-size: .93em;
       color: #8A4B00; background: #FFF1DA;
@@ -815,7 +829,7 @@
       "name": "Kudo",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, LINE",
-      "description": "Kudo — LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, broadcasts, and automated messages — without asking customers to download anything new.",
+      "description": "Kudo is a LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, broadcasts and automated messages, without asking customers to download anything new.",
       "publisher": {
         "@id": "https://kudoloyalty-landing.vercel.app/#org"
       },
@@ -881,7 +895,7 @@
           <span id="hero-eyebrow">LINE-native loyalty for Thai businesses</span>
         </div>
         <h1 id="hero-h1">Your customers<br />are on <span>LINE.</span><br />Your loyalty<br />program should be too.</h1>
-        <p class="hero-sub" id="hero-sub">Kudo gives you a complete loyalty program inside LINE — points, rewards, segments, and broadcasts — without asking customers to download anything new.</p>
+        <p class="hero-sub" id="hero-sub">Kudo gives you a complete loyalty program inside LINE. Points, rewards, segments and broadcasts, without asking customers to download anything new.</p>
         <div class="hero-actions">
           <a href="https://stre-loyalty.web.app/portal" class="btn-primary">
             <span id="hero-cta">Start free</span>
@@ -1071,17 +1085,17 @@
         <div class="step">
           <div class="step-num">1</div>
           <h3 id="step1-title">Set up your program</h3>
-          <p id="step1-text">Pick your loyalty mode — points, stamps, or online claims — and add your first rewards. The guided wizard walks you through LINE connection and branding step by step.</p>
+          <p id="step1-text">Pick your loyalty mode: points, stamps or online claims. Then add your first rewards. The guided wizard walks you through LINE connection and branding step by step.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <h3 id="step2-title">Share with customers</h3>
-          <p id="step2-text">Customers join through LINE — the app they already use every day. No separate download, no new account, no friction.</p>
+          <p id="step2-text">Customers join through LINE, the app they already use every day. No separate download, no new account, no friction.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <h3 id="step3-title">Staff confirms in-store</h3>
-          <p id="step3-text">When a customer redeems a reward, your staff confirms via the admin app on any device. Or issue instant digital coupons — your choice.</p>
+          <p id="step3-text">When a customer redeems a reward, your staff confirms via the admin app on any device. Or issue instant digital coupons. Your choice.</p>
         </div>
         <div class="step">
           <div class="step-num">4</div>
@@ -1236,31 +1250,31 @@
       <div class="portal-preview-copy">
         <div class="section-eyebrow" id="portal-eyebrow">Merchant portal</div>
         <h2 class="section-title" id="portal-title">Your loyalty command center</h2>
-        <p class="section-sub" style="margin-bottom:0;" id="portal-sub">Everything you need to run and grow your loyalty program — in one clean dashboard.</p>
+        <p class="section-sub" style="margin-bottom:0;" id="portal-sub">Everything you need to run and grow your loyalty program, in one clean dashboard.</p>
         <ul class="bullet-list">
           <li>
             <div class="bullet-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.314 2.686-6 6-6s6 2.686 6 6"/></svg>
             </div>
-            <span id="portal-b1">Auto-segment your members into New, Active, At risk, and Lapsed groups — automatically, with no setup.</span>
+            <span id="portal-b1">Auto-segment your members into New, Active, At risk and Lapsed groups automatically, with no setup.</span>
           </li>
           <li>
             <div class="bullet-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h14v9H2zM6 15h6M9 12v3"/></svg>
             </div>
-            <span id="portal-b2">Send targeted LINE messages to any segment — win-back campaigns, birthday rewards, or announcements.</span>
+            <span id="portal-b2">Send targeted LINE messages to any segment: win-back campaigns, birthday rewards or announcements.</span>
           </li>
           <li>
             <div class="bullet-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 14 6 8 9 11 12 7 16 11"/></svg>
             </div>
-            <span id="portal-b3">Track earning trends, reward performance, and member activity — all in one analytics dashboard.</span>
+            <span id="portal-b3">Track earning trends, reward performance and member activity, all in one analytics dashboard.</span>
           </li>
           <li>
             <div class="bullet-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H4a1 1 0 00-1 1v13a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1z"/><path d="M6 7h6M6 10h6M6 13h4"/></svg>
             </div>
-            <span id="portal-b4">Manage rewards, promo codes, events, and gamification from a single sidebar — no switching between tools.</span>
+            <span id="portal-b4">Manage rewards, promo codes, events, and gamification from a single sidebar. No switching between tools.</span>
           </li>
         </ul>
       </div>
@@ -1276,10 +1290,10 @@
         <p class="section-sub" style="margin-bottom:0;" id="member-sub">Members open LINE, tap your loyalty link, and they're in. No download, no new account, no password to forget.</p>
         <ul class="member-bullet-list">
           <li><div class="member-bullet-dot"></div><span id="member-b1">Check their points balance and progress toward the next reward</span></li>
-          <li><div class="member-bullet-dot"></div><span id="member-b2">Browse and redeem rewards — staff-verified in-store or instant digital coupons</span></li>
+          <li><div class="member-bullet-dot"></div><span id="member-b2">Browse and redeem rewards, staff-verified in store or as instant digital coupons</span></li>
           <li><div class="member-bullet-dot"></div><span id="member-b3">Play daily scratch cards or lucky spin to earn bonus points</span></li>
           <li><div class="member-bullet-dot"></div><span id="member-b4">Receive automated birthday rewards and milestone bonuses automatically</span></li>
-          <li><div class="member-bullet-dot"></div><span id="member-b5">All inside the LINE app they already have — no extra step required</span></li>
+          <li><div class="member-bullet-dot"></div><span id="member-b5">All inside the LINE app they already have, with no extra step</span></li>
         </ul>
       </div>
       <div class="member-visual-side">
@@ -1365,7 +1379,7 @@
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
           </div>
           <h3 id="f4-title">Automated messages</h3>
-          <p id="f4-text">Set up a welcome message for new joiners, a win-back campaign for inactive members, and birthday rewards — all running automatically without lifting a finger.</p>
+          <p id="f4-text">Set up a welcome message for new joiners, a win-back campaign for inactive members, and birthday rewards. They all run automatically without lifting a finger.</p>
         </div>
 
         <div class="feature-card">
@@ -1381,7 +1395,7 @@
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="9"/><path d="M11 7l1.5 3.5L16 11l-3.5 1.5L11 16l-1.5-3.5L6 11l3.5-1.5L11 7z"/></svg>
           </div>
           <h3 id="f6-title">Gamification</h3>
-          <p id="f6-text">Daily scratch cards and lucky spin wheels with configurable win rates — keeping members engaged between visits.</p>
+          <p id="f6-text">Daily scratch cards and lucky spin wheels with configurable win rates, keeping members engaged between visits.</p>
         </div>
 
       </div>
@@ -1393,7 +1407,7 @@
     <div class="container">
       <div class="section-eyebrow" id="engage-eyebrow">Engage</div>
       <h2 class="section-title" id="engage-title">Re-engage customers before they're gone</h2>
-      <p class="section-sub" id="engage-sub">Most loyalty programs just collect data. Kudo helps you act on it — send the right message to the right members at the right time, directly through LINE.</p>
+      <p class="section-sub" id="engage-sub">Most loyalty programs just collect data. Kudo helps you act on it, sending the right message to the right members at the right time, directly through LINE.</p>
 
       <div class="engage-content">
         <div class="engage-feature-rows">
@@ -1403,7 +1417,7 @@
             </div>
             <div>
               <h4 id="engage-f1-title">Auto-segments</h4>
-              <p id="engage-f1-text">New, Active, At risk, and Lapsed members identified automatically — no configuration needed.</p>
+              <p id="engage-f1-text">New, Active, At risk, and Lapsed members identified automatically, with no configuration needed.</p>
             </div>
           </div>
           <div class="engage-feature">
@@ -1412,7 +1426,7 @@
             </div>
             <div>
               <h4 id="engage-f2-title">LINE broadcast</h4>
-              <p id="engage-f2-text">Send text or card messages to any segment — targeted, not spray-and-pray. Multicast only, never spammy.</p>
+              <p id="engage-f2-text">Send text or card messages to any segment. Targeted, not spray-and-pray. Multicast only, never spammy.</p>
             </div>
           </div>
           <div class="engage-feature">
@@ -1421,7 +1435,7 @@
             </div>
             <div>
               <h4 id="engage-f3-title">Win-back automation</h4>
-              <p id="engage-f3-text">Automatic LINE message and bonus points when a member goes quiet for 30+ days — bringing them back without manual work.</p>
+              <p id="engage-f3-text">Automatic LINE message and bonus points when a member goes quiet for 30+ days, bringing them back without manual work.</p>
             </div>
           </div>
           <div class="engage-feature">
@@ -1430,7 +1444,7 @@
             </div>
             <div>
               <h4 id="engage-f4-title">Birthday &amp; milestones</h4>
-              <p id="engage-f4-text">Reward loyalty milestones and birthdays automatically — a personal touch that keeps members feeling valued.</p>
+              <p id="engage-f4-text">Reward loyalty milestones and birthdays automatically. A personal touch that keeps members feeling valued.</p>
             </div>
           </div>
         </div>
@@ -1484,7 +1498,7 @@
     <div class="container">
       <div class="section-eyebrow" id="game-eyebrow">Gamification</div>
       <h2 class="section-title" id="game-title">Turn loyalty into a game</h2>
-      <p class="section-sub" id="game-sub">Keep customers coming back with daily games that reward bonus points — making your loyalty program something they actually look forward to opening.</p>
+      <p class="section-sub" id="game-sub">Keep customers coming back with daily games that reward bonus points, making your loyalty program something they actually look forward to opening.</p>
       <div class="game-cards">
         <div class="game-card">
           <div class="game-card-icon">
@@ -1500,7 +1514,7 @@
           </div>
           <div class="game-badge" id="game2-badge">Daily · Custom prize segments</div>
           <h3 id="game2-title">Lucky Spin</h3>
-          <p id="game2-text">A prize wheel with fully customisable segments — each showing a different point reward. Members spin once a day and see their result in real time.</p>
+          <p id="game2-text">A prize wheel with fully customisable segments, each showing a different point reward. Members spin once a day and see their result in real time.</p>
         </div>
       </div>
     </div>
@@ -1539,7 +1553,7 @@
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.89 1.45l8 4A2 2 0 0122 7.24v9.53a2 2 0 01-1.11 1.79l-8 4a2 2 0 01-1.78 0l-8-4a2 2 0 01-1.11-1.8V7.24a2 2 0 011.11-1.79l8-4a2 2 0 011.78 0z"/><polyline points="2.32 6.16 12 11 21.68 6.16"/><line x1="12" y1="22.76" x2="12" y2="11"/></svg>
           </div>
           <h3 id="for4-title">Online stores</h3>
-          <p id="for4-text">Loyalty claims on delivery — parcel codes or QR tokens included in every order for seamless earning.</p>
+          <p id="for4-text">Loyalty claims on delivery. Parcel codes or QR tokens included in every order for seamless earning.</p>
         </div>
         <div class="for-card">
           <div class="for-icon">
@@ -1557,7 +1571,7 @@
     <div class="container">
       <div class="section-eyebrow" id="pricing-eyebrow">Pricing</div>
       <h2 class="section-title" id="pricing-title">Simple, transparent pricing</h2>
-      <p class="section-sub" id="pricing-sub">All features on every plan — only your member count changes.</p>
+      <p class="section-sub" id="pricing-sub">All features on every plan. Only your member count changes.</p>
 
       <div class="pricing-toggle" id="pricing-toggle-wrap">
         <span class="pricing-toggle-label" id="ptl-monthly">Monthly</span>
@@ -1585,7 +1599,7 @@
           <div class="pricing-limit" id="pl-starter">Up to 1,000 members</div>
           <a href="mailto:krissada.narbonne@gmail.com?subject=Upgrade to Starter plan" class="pricing-cta secondary" id="pc-starter">Upgrade</a>
         </div>
-        <!-- Growth — featured -->
+        <!-- Growth: featured -->
         <div class="pricing-card featured">
           <div class="pricing-tier" style="color:var(--violet)" id="pt-growth">Growth</div>
           <div class="pricing-price" id="pp-growth-price">฿1,290 <span>/mo</span></div>
@@ -1634,7 +1648,7 @@
   </div>
 
   <script>
-    /* Billing toggle. Copy is baked per locale at build time — see build.mjs. */
+    /* Billing toggle. Copy is baked per locale at build time; see build.mjs. */
     (function () {
       var isAnnual = false;
       var MO = "/mo";

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ข้อกำหนดการใช้งาน Kudo สำหรับร้านค้า ครอบคลุมแพ็กเกจ ค่าบริการ และความรับผิดชอบ" />
   <meta name="theme-color" content="#7A67E4" />
-  <title>ข้อกำหนดการให้บริการ — Kudo</title>
+  <title>ข้อกำหนดการให้บริการ · Kudo</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237A67E4'/><text x='50' y='71' font-size='54' text-anchor='middle' fill='%23ffffff' font-family='Verdana,system-ui,sans-serif' font-weight='800'>K</text></svg>" />
   <link rel="canonical" href="https://kudoloyalty-landing.vercel.app/terms" />
   <link rel="alternate" hreflang="th" href="https://kudoloyalty-landing.vercel.app/terms" />
@@ -19,7 +19,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ═══════════════════════════════════════════════════════════
-       Kudo — Soft UI, matched to the merchant portal.
+       Kudo Soft UI, matched to the merchant portal.
        A card is the SAME colour as the page, moulded out of it by a
        light/dark shadow pair. Depth is the shadow, never a border.
        Light source is top-left throughout.
@@ -28,7 +28,7 @@
       /* ── Softened violet (not the sharp #7C3AED) ──────────── */
       --brand:      #7A67E4;
       --brand-dark: #6A57D6;
-      --brand-ink:  #574AC0;   /* violet TEXT on light — passes AA */
+      --brand-ink:  #574AC0;   /* violet TEXT on light, passes AA */
       --brand-tint: #F2F0FC;
 
       /* ── Ink ──────────────────────────────────────────────── */
@@ -156,7 +156,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* Gentle lift — no hard press anywhere. */
+    /* Gentle lift, no hard press anywhere. */
     .nav-cta, .btn-primary, .btn-cta, .btn-secondary, .pricing-cta,
     .lang-btn, .seg-broadcast-btn, .feature-card, .game-card, .for-card, .step {
       transition: transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s cubic-bezier(.2,.7,.3,1), background .18s ease;
@@ -279,7 +279,7 @@
     /* ── Hero visual: raised, gently floated ── */
     .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .hero-visuals-wrap {
-      position: relative; width: 100%; height: 450px;
+      position: relative; width: 100%; height: 470px;
       animation: softFloat .75s cubic-bezier(.2,.7,.3,1) both;
     }
     /* A soft floor so the two surfaces sit in the same space rather than
@@ -299,7 +299,10 @@
       z-index: 3;
     }
     .mock-notch { width: 52px; height: 5px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 8px; }
-    .mock-screen { background: var(--screen); border-radius: var(--r-screen-r); overflow: hidden; }
+    .mock-screen {
+      background: var(--screen); border-radius: var(--r-screen-r);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mock-hero-card { margin: 7px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mock-cover { background: var(--brand); height: 70px; display: flex; flex-direction: column; justify-content: flex-end; padding: 7px; }
     .mock-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 6px 8px; display: flex; align-items: center; gap: 7px; box-shadow: var(--shadow-sm); }
@@ -319,9 +322,13 @@
     .mock-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mock-tab { flex: 1; text-align: center; padding: 7px 0; font-size: 8px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mock-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mock-reward-card { margin: 6px 7px 7px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mock-reward-card {
+      margin: 6px 7px 7px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mock-reward-img {
-      height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/16px no-repeat;
+      flex: 1; min-height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/40px no-repeat;
       border-bottom: none;
     }
     .mock-reward-body { padding: 6px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
@@ -330,7 +337,7 @@
     .mock-reward-cost { font-size: 8px; font-weight: 700; color: var(--screen-dim); flex-shrink: 0; font-variant-numeric: tabular-nums; }
     .mock-redeem-btn { width: 100%; background: var(--brand); color: #fff; font-size: 8px; font-weight: 800; text-align: center; padding: 5px; border: none; border-radius: 6px; }
 
-    /* Portal browser screen — a raised card */
+    /* Portal browser screen, a raised card */
     .mock-portal-card {
       position: absolute; top: 26px; left: 0; right: 182px;
       background: var(--canvas); border: none;
@@ -448,7 +455,10 @@
       box-shadow: var(--shadow-md), var(--extrude);
     }
     .member-big-notch { width: 58px; height: 6px; background: rgba(255,255,255,.22); border-radius: var(--pill); margin: 0 auto 10px; }
-    .member-big-screen { background: var(--screen); border-radius: var(--r-screen-lg); overflow: hidden; }
+    .member-big-screen {
+      background: var(--screen); border-radius: var(--r-screen-lg);
+      aspect-ratio: 0.46; display: flex; flex-direction: column; overflow: hidden;
+    }
     .mbig-hero-card { margin: 9px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
     .mbig-cover { background: var(--brand); height: 88px; display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; }
     .mbig-glass { background: var(--surface); border: none; border-radius: var(--radius-sm); padding: 7px 10px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
@@ -465,9 +475,13 @@
     .mbig-tabs { display: flex; background: var(--screen-card); border-bottom: 1px solid var(--screen-line); }
     .mbig-tab { flex: 1; text-align: center; padding: 9px 0; font-size: 10px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mbig-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
-    .mbig-reward-card { margin: 8px 9px 9px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .mbig-reward-card {
+      margin: 8px 9px 9px; background: var(--screen-card);
+      border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm);
+      overflow: hidden; flex: 1; min-height: 0; display: flex; flex-direction: column;
+    }
     .mbig-reward-img {
-      height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/22px no-repeat;
+      flex: 1; min-height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/54px no-repeat;
       border-bottom: none;
     }
     .mbig-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
@@ -505,7 +519,7 @@
     .feature-card h3 { font-size: 19px; font-weight: 800; color: var(--ink); line-height: 1.26; }
     .feature-card p { font-size: 15px; color: var(--muted); line-height: 1.62; }
 
-    /* ═══════════════ Engage — soft violet-tint block ══════════ */
+    /* ═══════════════ Engage: soft violet-tint block ══════════ */
     .engage-section { background: var(--brand-tint); padding: var(--section-y) var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .engage-section .section-eyebrow { background: var(--surface); color: var(--brand-ink); border: none; }
     .engage-section .section-title { color: var(--ink); }
@@ -666,7 +680,7 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 44px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { height: 360px; }
+      .hero-visuals-wrap { height: 395px; }
       .mock-phone { width: 190px; transform: scale(.853); transform-origin: bottom right; }
       .mock-portal-card { right: 150px; left: 0; top: 14px; }
       .game-cards { grid-template-columns: 1fr; }
@@ -682,9 +696,9 @@
       .steps { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary, .hero-actions .btn-secondary { justify-content: center; }
-      .hero-visuals-wrap { height: 300px; }
+      .hero-visuals-wrap { height: 330px; }
       .mock-phone { width: 190px; transform: scale(.716); transform-origin: bottom right; }
-      /* at this size the sidebar costs more than it tells — drop it and
+      /* at this size the sidebar costs more than it tells, so drop it and
          give the segment rows the width they need to stay readable */
       .mock-portal-card { right: 128px; left: 0; top: 10px; }
       .mock-portal-card .portal-sidebar { display: none; }
@@ -736,7 +750,7 @@
     .legal th, .legal td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
     .legal th { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
     .legal .scroll { overflow-x: auto; }
-    /* Facts only the business can supply — deliberately conspicuous. */
+    /* Facts only the business can supply, deliberately conspicuous. */
     .fill {
       display: inline-block; font-weight: 700; font-size: .93em;
       color: #8A4B00; background: #FFF1DA;
@@ -769,106 +783,106 @@
 
   <div class="legal-wrap">
     <main class="legal">
-      <span class="legal-kicker">ข้อกฎหมาย</span>
-      <h1>ข้อกำหนดการให้บริการ</h1>
-      <p class="legal-meta">ปรับปรุงล่าสุด <span class="fill">[วันที่มีผลบังคับใช้]</span> · ข้อกำหนดนี้ใช้กับการใช้งาน Kudo โดยร้านค้า</p>
+ <span class="legal-kicker">ข้อกฎหมาย</span>
+ <h1>ข้อกำหนดการให้บริการ</h1>
+ <p class="legal-meta">ปรับปรุงล่าสุด <span class="fill">[วันที่มีผลบังคับใช้]</span> · ข้อกำหนดนี้ใช้กับการใช้งาน Kudo โดยร้านค้า</p>
 
-      <p>ข้อกำหนดนี้เป็นข้อตกลงระหว่าง <span class="fill">[ชื่อนิติบุคคล]</span> ("Kudo" หรือ "เรา") กับธุรกิจที่สมัครใช้บริการ ("คุณ" หรือ "ร้านค้า") การสร้างบัญชีหรือการใช้งาน Kudo ถือว่าคุณยอมรับข้อกำหนดนี้ หากคุณตกลงในนามนิติบุคคล คุณยืนยันว่าคุณมีอำนาจผูกพันนิติบุคคลนั้น</p>
+ <p>ข้อกำหนดนี้เป็นข้อตกลงระหว่าง <span class="fill">[ชื่อนิติบุคคล]</span> ("Kudo" หรือ "เรา") กับธุรกิจที่สมัครใช้บริการ ("คุณ" หรือ "ร้านค้า") การสร้างบัญชีหรือการใช้งาน Kudo ถือว่าคุณยอมรับข้อกำหนดนี้ หากคุณตกลงในนามนิติบุคคล คุณยืนยันว่าคุณมีอำนาจผูกพันนิติบุคคลนั้น</p>
 
-      <h2 id="service">1. Kudo ให้บริการอะไร</h2>
-      <p>Kudo คือซอฟต์แวร์ที่ให้ธุรกิจทำโปรแกรมสะสมแต้มภายใน LINE — ออกแต้มหรือดวงตรา จัดการของรางวัลและการแลก จัดกลุ่มสมาชิก และส่งข้อความผ่านบัญชี LINE Official Account ของร้านค้า เราให้บริการซอฟต์แวร์ เราไม่ได้เป็นผู้ดำเนินโปรแกรมสะสมแต้มของคุณ ไม่ได้กำหนดกติกา และไม่ได้เป็นผู้ออกค่าใช้จ่ายของรางวัล</p>
+ <h2 id="service">1. Kudo ให้บริการอะไร</h2>
+ <p>Kudo คือซอฟต์แวร์ที่ให้ธุรกิจทำโปรแกรมสะสมแต้มภายใน LINE, ออกแต้มหรือดวงตรา จัดการของรางวัลและการแลก จัดกลุ่มสมาชิก และส่งข้อความผ่านบัญชี LINE Official Account ของร้านค้า เราให้บริการซอฟต์แวร์ เราไม่ได้เป็นผู้ดำเนินโปรแกรมสะสมแต้มของคุณ ไม่ได้กำหนดกติกา และไม่ได้เป็นผู้ออกค่าใช้จ่ายของรางวัล</p>
 
-      <h2 id="accounts">2. บัญชีและคุณสมบัติ</h2>
-      <ul>
-        <li>คุณต้องเป็นธุรกิจหรือบุคคลที่สามารถทำสัญญาผูกพันได้ตามกฎหมาย</li>
-        <li>คุณรับผิดชอบทุกการกระทำภายใต้บัญชีของคุณ และการรักษาข้อมูลรับรองให้ปลอดภัย</li>
-        <li>ข้อมูลที่ให้เราต้องถูกต้องและปรับปรุงให้เป็นปัจจุบัน</li>
-        <li>แจ้งเราทันทีหากเชื่อว่าบัญชีของคุณถูกบุกรุก</li>
-      </ul>
+ <h2 id="accounts">2. บัญชีและคุณสมบัติ</h2>
+ <ul>
+ <li>คุณต้องเป็นธุรกิจหรือบุคคลที่สามารถทำสัญญาผูกพันได้ตามกฎหมาย</li>
+ <li>คุณรับผิดชอบทุกการกระทำภายใต้บัญชีของคุณ และการรักษาข้อมูลรับรองให้ปลอดภัย</li>
+ <li>ข้อมูลที่ให้เราต้องถูกต้องและปรับปรุงให้เป็นปัจจุบัน</li>
+ <li>แจ้งเราทันทีหากเชื่อว่าบัญชีของคุณถูกบุกรุก</li>
+ </ul>
 
-      <h2 id="plans">3. แพ็กเกจ ค่าบริการ และการเรียกเก็บเงิน</h2>
-      <p>Kudo ให้บริการตามแพ็กเกจต่อไปนี้ ราคาเป็นเงินบาทและยังไม่รวมภาษีมูลค่าเพิ่ม เว้นแต่ระบุไว้เป็นอย่างอื่น</p>
-      <div class="scroll">
-        <table>
-          <tr><th>แพ็กเกจ</th><th>รายเดือน</th><th>รายปี (ต่อเดือน)</th><th>จำนวนสมาชิก</th></tr>
-          <tr><td>Free</td><td>฿0</td><td>฿0</td><td>สูงสุด 200</td></tr>
-          <tr><td>Starter</td><td>฿590</td><td>฿492</td><td>สูงสุด 1,000</td></tr>
-          <tr><td>Growth</td><td>฿1,290</td><td>฿1,075</td><td>สูงสุด 5,000</td></tr>
-          <tr><td>Business</td><td>฿2,490</td><td>฿2,075</td><td>ไม่จำกัด</td></tr>
-        </table>
-      </div>
-      <ul>
-        <li>แพ็กเกจแบบเสียค่าบริการเรียกเก็บล่วงหน้า เป็นรายเดือนหรือรายปีตามที่คุณเลือก</li>
-        <li><strong>การต่ออายุ</strong> แพ็กเกจต่ออายุอัตโนมัติเมื่อสิ้นสุดรอบ เว้นแต่ยกเลิกก่อนสิ้นรอบ</li>
-        <li><strong>การคืนเงิน</strong> <span class="fill">[ระบุนโยบายคืนเงินของคุณ]</span></li>
-        <li><strong>เมื่อสมาชิกเกินจำนวนที่กำหนด</strong> <span class="fill">[ระบุว่าจะเกิดอะไรขึ้น]</span></li>
-        <li><strong>การเปลี่ยนแปลงราคา</strong> เราจะแจ้งล่วงหน้าอย่างน้อย 30 วันก่อนราคาใหม่มีผลในรอบต่ออายุถัดไป</li>
-        <li><strong>การชำระล่าช้า</strong> เราอาจระงับการเข้าถึงฟีเจอร์แบบเสียค่าบริการหากค้างชำระเกิน <span class="fill">[N]</span> วัน</li>
-      </ul>
+ <h2 id="plans">3. แพ็กเกจ ค่าบริการ และการเรียกเก็บเงิน</h2>
+ <p>Kudo ให้บริการตามแพ็กเกจต่อไปนี้ ราคาเป็นเงินบาทและยังไม่รวมภาษีมูลค่าเพิ่ม เว้นแต่ระบุไว้เป็นอย่างอื่น</p>
+ <div class="scroll">
+ <table>
+ <tr><th>แพ็กเกจ</th><th>รายเดือน</th><th>รายปี (ต่อเดือน)</th><th>จำนวนสมาชิก</th></tr>
+ <tr><td>Free</td><td>฿0</td><td>฿0</td><td>สูงสุด 200</td></tr>
+ <tr><td>Starter</td><td>฿590</td><td>฿492</td><td>สูงสุด 1,000</td></tr>
+ <tr><td>Growth</td><td>฿1,290</td><td>฿1,075</td><td>สูงสุด 5,000</td></tr>
+ <tr><td>Business</td><td>฿2,490</td><td>฿2,075</td><td>ไม่จำกัด</td></tr>
+ </table>
+ </div>
+ <ul>
+ <li>แพ็กเกจแบบเสียค่าบริการเรียกเก็บล่วงหน้า เป็นรายเดือนหรือรายปีตามที่คุณเลือก</li>
+ <li><strong>การต่ออายุ</strong> แพ็กเกจต่ออายุอัตโนมัติเมื่อสิ้นสุดรอบ เว้นแต่ยกเลิกก่อนสิ้นรอบ</li>
+ <li><strong>การคืนเงิน</strong> <span class="fill">[ระบุนโยบายคืนเงินของคุณ]</span></li>
+ <li><strong>เมื่อสมาชิกเกินจำนวนที่กำหนด</strong> <span class="fill">[ระบุว่าจะเกิดอะไรขึ้น]</span></li>
+ <li><strong>การเปลี่ยนแปลงราคา</strong> เราจะแจ้งล่วงหน้าอย่างน้อย 30 วันก่อนราคาใหม่มีผลในรอบต่ออายุถัดไป</li>
+ <li><strong>การชำระล่าช้า</strong> เราอาจระงับการเข้าถึงฟีเจอร์แบบเสียค่าบริการหากค้างชำระเกิน <span class="fill">[N]</span> วัน</li>
+ </ul>
 
-      <h2 id="merchant">4. ความรับผิดชอบของร้านค้า</h2>
-      <p>คุณรับผิดชอบแต่เพียงผู้เดียวใน</p>
-      <ul>
-        <li>เงื่อนไขของโปรแกรมสะสมแต้มของคุณเอง และการมอบของรางวัลทุกรายการที่คุณประกาศไว้</li>
-        <li>ความถูกต้องของราคา มูลค่าของรางวัล วันหมดอายุ และเงื่อนไขที่คุณเผยแพร่</li>
-        <li>เนื้อหาของข้อความทุกฉบับที่คุณส่งถึงสมาชิกผ่าน Kudo</li>
-        <li>การมีบัญชี LINE Official Account ที่ใช้งานได้ และการปฏิบัติตามข้อกำหนดของ LINE</li>
-        <li>การขอความยินยอมที่จำเป็นจากสมาชิกก่อนส่งข้อความ</li>
-        <li>การปฏิบัติตามกฎหมายคุ้มครองผู้บริโภค กฎหมายโฆษณา กฎหมายภาษี และกฎหมายคุ้มครองข้อมูลส่วนบุคคลของไทยที่ใช้กับโปรแกรมของคุณ</li>
-      </ul>
+ <h2 id="merchant">4. ความรับผิดชอบของร้านค้า</h2>
+ <p>คุณรับผิดชอบแต่เพียงผู้เดียวใน</p>
+ <ul>
+ <li>เงื่อนไขของโปรแกรมสะสมแต้มของคุณเอง และการมอบของรางวัลทุกรายการที่คุณประกาศไว้</li>
+ <li>ความถูกต้องของราคา มูลค่าของรางวัล วันหมดอายุ และเงื่อนไขที่คุณเผยแพร่</li>
+ <li>เนื้อหาของข้อความทุกฉบับที่คุณส่งถึงสมาชิกผ่าน Kudo</li>
+ <li>การมีบัญชี LINE Official Account ที่ใช้งานได้ และการปฏิบัติตามข้อกำหนดของ LINE</li>
+ <li>การขอความยินยอมที่จำเป็นจากสมาชิกก่อนส่งข้อความ</li>
+ <li>การปฏิบัติตามกฎหมายคุ้มครองผู้บริโภค กฎหมายโฆษณา กฎหมายภาษี และกฎหมายคุ้มครองข้อมูลส่วนบุคคลของไทยที่ใช้กับโปรแกรมของคุณ</li>
+ </ul>
 
-      <h2 id="members">5. สมาชิกและของรางวัล</h2>
-      <p>แต้ม ดวงตรา และของรางวัลที่ออกผ่าน Kudo เป็นพันธะผูกพันจาก<strong>คุณถึงสมาชิกของคุณ</strong> สิ่งเหล่านี้ไม่มีมูลค่าเป็นเงินสด และไม่ใช่เงินอิเล็กทรอนิกส์หรือเครื่องมือชำระเงินที่ออกโดย Kudo เราไม่ได้เป็นคู่สัญญาในความสัมพันธ์นั้น ไม่รับประกันของรางวัลใด และไม่รับผิดหากของรางวัลไม่ได้รับการมอบให้</p>
-      <p>หากบัญชีของคุณปิดลง สมาชิกจะไม่สามารถเข้าถึงยอดคงเหลือในบัญชีนั้นได้ คุณมีหน้าที่แจ้งพวกเขาและจัดการสิ่งที่ค้างอยู่</p>
+ <h2 id="members">5. สมาชิกและของรางวัล</h2>
+ <p>แต้ม ดวงตรา และของรางวัลที่ออกผ่าน Kudo เป็นพันธะผูกพันจาก<strong>คุณถึงสมาชิกของคุณ</strong> สิ่งเหล่านี้ไม่มีมูลค่าเป็นเงินสด และไม่ใช่เงินอิเล็กทรอนิกส์หรือเครื่องมือชำระเงินที่ออกโดย Kudo เราไม่ได้เป็นคู่สัญญาในความสัมพันธ์นั้น ไม่รับประกันของรางวัลใด และไม่รับผิดหากของรางวัลไม่ได้รับการมอบให้</p>
+ <p>หากบัญชีของคุณปิดลง สมาชิกจะไม่สามารถเข้าถึงยอดคงเหลือในบัญชีนั้นได้ คุณมีหน้าที่แจ้งพวกเขาและจัดการสิ่งที่ค้างอยู่</p>
 
-      <h2 id="data">6. บทบาทด้านการคุ้มครองข้อมูลส่วนบุคคล</h2>
-      <p>สำหรับข้อมูลส่วนบุคคลของสมาชิก <strong>คุณเป็นผู้ควบคุมข้อมูลส่วนบุคคล และ Kudo เป็นผู้ประมวลผลข้อมูลส่วนบุคคล</strong> ตาม PDPA เราประมวลผลข้อมูลสมาชิกตามคำสั่งที่เป็นลายลักษณ์อักษรของคุณเท่านั้น ตามที่อธิบายไว้ใน<a href="/privacy">นโยบายความเป็นส่วนตัว</a> ซึ่งถือเป็นส่วนหนึ่งของข้อกำหนดนี้</p>
-      <p>คุณยืนยันว่าคุณมีฐานทางกฎหมายในการเก็บและประมวลผลข้อมูลของสมาชิก และในการสั่งให้เราประมวลผลข้อมูลนั้น</p>
+ <h2 id="data">6. บทบาทด้านการคุ้มครองข้อมูลส่วนบุคคล</h2>
+ <p>สำหรับข้อมูลส่วนบุคคลของสมาชิก <strong>คุณเป็นผู้ควบคุมข้อมูลส่วนบุคคล และ Kudo เป็นผู้ประมวลผลข้อมูลส่วนบุคคล</strong> ตาม PDPA เราประมวลผลข้อมูลสมาชิกตามคำสั่งที่เป็นลายลักษณ์อักษรของคุณเท่านั้น ตามที่อธิบายไว้ใน<a href="/privacy">นโยบายความเป็นส่วนตัว</a> ซึ่งถือเป็นส่วนหนึ่งของข้อกำหนดนี้</p>
+ <p>คุณยืนยันว่าคุณมีฐานทางกฎหมายในการเก็บและประมวลผลข้อมูลของสมาชิก และในการสั่งให้เราประมวลผลข้อมูลนั้น</p>
 
-      <h2 id="line">7. การพึ่งพาแพลตฟอร์ม LINE</h2>
-      <p>Kudo สร้างอยู่บนแพลตฟอร์มและ API ของ LINE ซึ่ง LINE อาจเปลี่ยนแปลง จำกัด กำหนดราคา หรือยกเลิกได้ทุกเมื่อ และอยู่นอกเหนือการควบคุมของเรา หาก LINE เปลี่ยนแปลงจนกระทบความสามารถของ Kudo อย่างมีนัยสำคัญ เราจะแจ้งคุณโดยเร็วที่สุดเท่าที่ทำได้ แต่เราไม่รับผิดต่อผลของการเปลี่ยนแปลงที่ LINE เป็นผู้ทำ</p>
-      <p>ค่าบริการที่ LINE เรียกเก็บสำหรับการส่งข้อความเป็นเรื่องระหว่างคุณกับ LINE ไม่รวมอยู่ในค่าบริการ Kudo</p>
+ <h2 id="line">7. การพึ่งพาแพลตฟอร์ม LINE</h2>
+ <p>Kudo สร้างอยู่บนแพลตฟอร์มและ API ของ LINE ซึ่ง LINE อาจเปลี่ยนแปลง จำกัด กำหนดราคา หรือยกเลิกได้ทุกเมื่อ และอยู่นอกเหนือการควบคุมของเรา หาก LINE เปลี่ยนแปลงจนกระทบความสามารถของ Kudo อย่างมีนัยสำคัญ เราจะแจ้งคุณโดยเร็วที่สุดเท่าที่ทำได้ แต่เราไม่รับผิดต่อผลของการเปลี่ยนแปลงที่ LINE เป็นผู้ทำ</p>
+ <p>ค่าบริการที่ LINE เรียกเก็บสำหรับการส่งข้อความเป็นเรื่องระหว่างคุณกับ LINE ไม่รวมอยู่ในค่าบริการ Kudo</p>
 
-      <h2 id="acceptable">8. การใช้งานที่ยอมรับได้</h2>
-      <p>คุณต้องไม่ใช้ Kudo เพื่อ</p>
-      <ul>
-        <li>ส่งข้อความที่ผู้รับไม่ได้ร้องขอหรือข้อความหลอกลวง หรือส่งถึงผู้ที่ไม่ได้เข้าร่วมโปรแกรมของคุณ</li>
-        <li>กระทำการผิดกฎหมาย หรือละเมิดสิทธิของผู้อื่น</li>
-        <li>อัปโหลดมัลแวร์ หรือพยายามเจาะระบบ ทำให้ระบบล่ม หรือทำวิศวกรรมย้อนกลับ</li>
-        <li>ขายต่อหรือนำ Kudo ไปใช้ในชื่อแบรนด์อื่นโดยไม่ได้รับความยินยอมเป็นลายลักษณ์อักษรจากเรา</li>
-        <li>ทำโปรแกรมสำหรับสินค้าหรือบริการที่ผิดกฎหมายในประเทศไทย</li>
-      </ul>
+ <h2 id="acceptable">8. การใช้งานที่ยอมรับได้</h2>
+ <p>คุณต้องไม่ใช้ Kudo เพื่อ</p>
+ <ul>
+ <li>ส่งข้อความที่ผู้รับไม่ได้ร้องขอหรือข้อความหลอกลวง หรือส่งถึงผู้ที่ไม่ได้เข้าร่วมโปรแกรมของคุณ</li>
+ <li>กระทำการผิดกฎหมาย หรือละเมิดสิทธิของผู้อื่น</li>
+ <li>อัปโหลดมัลแวร์ หรือพยายามเจาะระบบ ทำให้ระบบล่ม หรือทำวิศวกรรมย้อนกลับ</li>
+ <li>ขายต่อหรือนำ Kudo ไปใช้ในชื่อแบรนด์อื่นโดยไม่ได้รับความยินยอมเป็นลายลักษณ์อักษรจากเรา</li>
+ <li>ทำโปรแกรมสำหรับสินค้าหรือบริการที่ผิดกฎหมายในประเทศไทย</li>
+ </ul>
 
-      <h2 id="ip">9. ทรัพย์สินทางปัญญา</h2>
-      <p>เราเป็นเจ้าของ Kudo ทั้งซอฟต์แวร์ การออกแบบ และแบรนด์ คุณได้รับสิทธิใช้งานแบบไม่ผูกขาดและโอนสิทธิไม่ได้ตลอดเวลาที่บัญชียังใช้งานอยู่ คุณเป็นเจ้าของเนื้อหาของคุณเอง ได้แก่ โลโก้ คำอธิบายของรางวัล ข้อมูลสมาชิก และข้อความ คุณให้สิทธิเราเท่าที่จำเป็นในการจัดเก็บและแสดงเนื้อหานั้นเพื่อให้บริการแก่คุณ</p>
+ <h2 id="ip">9. ทรัพย์สินทางปัญญา</h2>
+ <p>เราเป็นเจ้าของ Kudo ทั้งซอฟต์แวร์ การออกแบบ และแบรนด์ คุณได้รับสิทธิใช้งานแบบไม่ผูกขาดและโอนสิทธิไม่ได้ตลอดเวลาที่บัญชียังใช้งานอยู่ คุณเป็นเจ้าของเนื้อหาของคุณเอง ได้แก่ โลโก้ คำอธิบายของรางวัล ข้อมูลสมาชิก และข้อความ คุณให้สิทธิเราเท่าที่จำเป็นในการจัดเก็บและแสดงเนื้อหานั้นเพื่อให้บริการแก่คุณ</p>
 
-      <h2 id="availability">10. ความพร้อมใช้งานและการสนับสนุน</h2>
-      <p>เรามุ่งรักษาให้ Kudo ใช้งานได้ต่อเนื่อง แต่ไม่ได้รับประกันตัวเลขความพร้อมใช้งานใดเป็นการเฉพาะ เว้นแต่ตกลงกับคุณเป็นลายลักษณ์อักษร เราอาจมีการบำรุงรักษาระบบ และจะพยายามจัดช่วงที่กระทบการใช้งานให้อยู่นอกเวลาทำการในประเทศไทย การสนับสนุนให้บริการทางอีเมลที่ <a href="mailto:krissada.narbonne@gmail.com">krissada.narbonne@gmail.com</a> ในช่วง <span class="fill">[เวลาให้บริการ]</span></p>
+ <h2 id="availability">10. ความพร้อมใช้งานและการสนับสนุน</h2>
+ <p>เรามุ่งรักษาให้ Kudo ใช้งานได้ต่อเนื่อง แต่ไม่ได้รับประกันตัวเลขความพร้อมใช้งานใดเป็นการเฉพาะ เว้นแต่ตกลงกับคุณเป็นลายลักษณ์อักษร เราอาจมีการบำรุงรักษาระบบ และจะพยายามจัดช่วงที่กระทบการใช้งานให้อยู่นอกเวลาทำการในประเทศไทย การสนับสนุนให้บริการทางอีเมลที่ <a href="mailto:krissada.narbonne@gmail.com">krissada.narbonne@gmail.com</a> ในช่วง <span class="fill">[เวลาให้บริการ]</span></p>
 
-      <h2 id="termination">11. การระงับและการยุติบริการ</h2>
-      <ul>
-        <li>คุณปิดบัญชีได้ทุกเมื่อ แพ็กเกจจะใช้ได้จนสิ้นสุดรอบที่ชำระไว้แล้ว</li>
-        <li>เราอาจระงับหรือปิดบัญชีของคุณหากคุณฝ่าฝืนข้อกำหนดนี้อย่างมีนัยสำคัญ หากค้างชำระ หรือเมื่อกฎหมายกำหนด เท่าที่ทำได้เราจะแจ้งเตือนก่อนและให้โอกาสแก้ไข</li>
-        <li>หลังยุติบริการ เราเก็บรักษาและลบข้อมูลของคุณตามที่กำหนดไว้ใน<a href="/privacy">นโยบายความเป็นส่วนตัว</a> กรุณาส่งออกข้อมูลก่อนปิดบัญชี</li>
-      </ul>
+ <h2 id="termination">11. การระงับและการยุติบริการ</h2>
+ <ul>
+ <li>คุณปิดบัญชีได้ทุกเมื่อ แพ็กเกจจะใช้ได้จนสิ้นสุดรอบที่ชำระไว้แล้ว</li>
+ <li>เราอาจระงับหรือปิดบัญชีของคุณหากคุณฝ่าฝืนข้อกำหนดนี้อย่างมีนัยสำคัญ หากค้างชำระ หรือเมื่อกฎหมายกำหนด เท่าที่ทำได้เราจะแจ้งเตือนก่อนและให้โอกาสแก้ไข</li>
+ <li>หลังยุติบริการ เราเก็บรักษาและลบข้อมูลของคุณตามที่กำหนดไว้ใน<a href="/privacy">นโยบายความเป็นส่วนตัว</a> กรุณาส่งออกข้อมูลก่อนปิดบัญชี</li>
+ </ul>
 
-      <h2 id="liability">12. ข้อจำกัดความรับผิด</h2>
-      <p>Kudo ให้บริการตามสภาพที่เป็นอยู่ เท่าที่กฎหมายอนุญาต เราไม่รับประกันโดยปริยายในเรื่องคุณภาพเชิงพาณิชย์ ความเหมาะสมกับวัตถุประสงค์เฉพาะ และการไม่ละเมิดสิทธิ</p>
-      <p>เราไม่รับผิดต่อความเสียหายทางอ้อมหรือความเสียหายสืบเนื่อง การขาดกำไร การขาดรายได้ หรือข้อมูลสูญหายหรือเสียหายอันเกิดจากการใช้บริการ ความรับผิดรวมของเราในรอบ 12 เดือนใด ๆ จำกัดไม่เกินค่าบริการที่คุณชำระให้เราในรอบนั้น</p>
-      <p>ข้อกำหนดนี้ไม่ยกเว้นความรับผิดที่กฎหมายไม่อนุญาตให้ยกเว้น รวมถึงการฉ้อฉล หรือการเสียชีวิตหรือบาดเจ็บทางร่างกายอันเกิดจากความประมาทเลินเล่อ</p>
+ <h2 id="liability">12. ข้อจำกัดความรับผิด</h2>
+ <p>Kudo ให้บริการตามสภาพที่เป็นอยู่ เท่าที่กฎหมายอนุญาต เราไม่รับประกันโดยปริยายในเรื่องคุณภาพเชิงพาณิชย์ ความเหมาะสมกับวัตถุประสงค์เฉพาะ และการไม่ละเมิดสิทธิ</p>
+ <p>เราไม่รับผิดต่อความเสียหายทางอ้อมหรือความเสียหายสืบเนื่อง การขาดกำไร การขาดรายได้ หรือข้อมูลสูญหายหรือเสียหายอันเกิดจากการใช้บริการ ความรับผิดรวมของเราในรอบ 12 เดือนใด ๆ จำกัดไม่เกินค่าบริการที่คุณชำระให้เราในรอบนั้น</p>
+ <p>ข้อกำหนดนี้ไม่ยกเว้นความรับผิดที่กฎหมายไม่อนุญาตให้ยกเว้น รวมถึงการฉ้อฉล หรือการเสียชีวิตหรือบาดเจ็บทางร่างกายอันเกิดจากความประมาทเลินเล่อ</p>
 
-      <h2 id="law">13. กฎหมายที่ใช้บังคับ</h2>
-      <p>ข้อกำหนดนี้อยู่ภายใต้กฎหมายไทย ข้อพิพาทอยู่ในเขตอำนาจของศาล<span class="fill">[จังหวัด เช่น กรุงเทพมหานคร]</span> ประเทศไทย แต่เพียงผู้เดียว</p>
+ <h2 id="law">13. กฎหมายที่ใช้บังคับ</h2>
+ <p>ข้อกำหนดนี้อยู่ภายใต้กฎหมายไทย ข้อพิพาทอยู่ในเขตอำนาจของศาล<span class="fill">[จังหวัด เช่น กรุงเทพมหานคร]</span> ประเทศไทย แต่เพียงผู้เดียว</p>
 
-      <h2 id="changes">14. การเปลี่ยนแปลงข้อกำหนด</h2>
-      <p>เราอาจปรับปรุงข้อกำหนดนี้ สำหรับการเปลี่ยนแปลงที่มีนัยสำคัญ เราจะแจ้งล่วงหน้าอย่างน้อย 30 วันทางอีเมลหรือผ่านระบบหลังบ้าน การใช้งาน Kudo ต่อหลังการเปลี่ยนแปลงมีผลถือว่าคุณยอมรับ หากไม่ยอมรับ คุณปิดบัญชีได้ก่อนวันที่มีผล</p>
+ <h2 id="changes">14. การเปลี่ยนแปลงข้อกำหนด</h2>
+ <p>เราอาจปรับปรุงข้อกำหนดนี้ สำหรับการเปลี่ยนแปลงที่มีนัยสำคัญ เราจะแจ้งล่วงหน้าอย่างน้อย 30 วันทางอีเมลหรือผ่านระบบหลังบ้าน การใช้งาน Kudo ต่อหลังการเปลี่ยนแปลงมีผลถือว่าคุณยอมรับ หากไม่ยอมรับ คุณปิดบัญชีได้ก่อนวันที่มีผล</p>
 
-      <h2 id="lang">15. ภาษาที่ใช้บังคับ</h2>
-      <p>ข้อกำหนดฉบับนี้จัดทำเป็นภาษาไทยและภาษาอังกฤษ ในกรณีที่ข้อความสองฉบับขัดแย้งกัน ให้ยึดถือ<a href="/en/terms">ฉบับภาษาอังกฤษ</a>เป็นหลัก</p>
+ <h2 id="lang">15. ภาษาที่ใช้บังคับ</h2>
+ <p>ข้อกำหนดฉบับนี้จัดทำเป็นภาษาไทยและภาษาอังกฤษ ในกรณีที่ข้อความสองฉบับขัดแย้งกัน ให้ยึดถือ<a href="/en/terms">ฉบับภาษาอังกฤษ</a>เป็นหลัก</p>
 
-      <div class="legal-note">
-        <strong>ก่อนเผยแพร่:</strong> ทุกช่องที่ไฮไลต์ไว้ต้องกรอกค่าจริง และควรให้ทนายความไทยตรวจทานเทียบกับวิธีเรียกเก็บเงิน การให้บริการสนับสนุน และการยุติบริการจริงของคุณ ร่างจากผลิตภัณฑ์และราคาที่เผยแพร่ ไม่ใช่คำแนะนำทางกฎหมาย
-      </div>
+ <div class="legal-note">
+ <strong>ก่อนเผยแพร่:</strong> ทุกช่องที่ไฮไลต์ไว้ต้องกรอกค่าจริง และควรให้ทนายความไทยตรวจทานเทียบกับวิธีเรียกเก็บเงิน การให้บริการสนับสนุน และการยุติบริการจริงของคุณ ร่างจากผลิตภัณฑ์และราคาที่เผยแพร่ ไม่ใช่คำแนะนำทางกฎหมาย
+ </div>
     </main>
   </div>
 

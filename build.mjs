@@ -6,7 +6,7 @@
  * reports navigator.language as en-US, so the Thai copy was never indexed
  * and had no URL of its own. Now each locale is a real, static document.
  *
- *   src/index.html  ->  index.html      (th, root — the primary market)
+ *   src/index.html  ->  index.html      (th, root: the primary market)
  *                   ->  en/index.html   (en)
  *
  * Also writes robots.txt and sitemap.xml.
@@ -23,31 +23,31 @@ const LOCALES = {
     out: 'index.html',
     ogLocale: 'th_TH',
     switchTo: { href: '/en', hreflang: 'en', label: 'English' },
-    title: 'Kudo — ระบบสะสมแต้มผ่าน LINE สำหรับร้านค้าไทย',
+    title: 'Kudo · ระบบสะสมแต้มผ่าน LINE สำหรับร้านค้าไทย',
     description:
-      'ระบบสะสมแต้มและสมาชิกที่ทำงานอยู่ใน LINE — แต้ม รางวัล กลุ่มลูกค้า และการส่งข้อความอัตโนมัติ ' +
+      'ระบบสะสมแต้มและสมาชิกที่ทำงานอยู่ใน LINE ทั้งแต้ม รางวัล กลุ่มลูกค้า และการส่งข้อความอัตโนมัติ ' +
       'ลูกค้าไม่ต้องดาวน์โหลดแอปใหม่ ตั้งค่าเองได้ในไม่ถึง 15 นาที',
-    ogTitle: 'Kudo — ระบบสะสมแต้มที่อยู่ใน LINE',
+    ogTitle: 'Kudo · ระบบสะสมแต้มที่อยู่ใน LINE',
     ogDescription:
       'ลูกค้าของคุณอยู่บน LINE อยู่แล้ว ให้โปรแกรมสะสมแต้มอยู่ที่นั่นด้วย เริ่มใช้ฟรี ไม่ต้องใช้บัตรเครดิต',
     imageAlt:
-      'Kudo — โปรแกรมสะสมแต้มที่ทำงานใน LINE แสดงแต้มสะสมของสมาชิกและรางวัลที่พร้อมแลก',
+      'โปรแกรมสะสมแต้ม Kudo ที่ทำงานใน LINE แสดงแต้มสะสมของสมาชิกและรางวัลที่พร้อมแลก',
   },
   en: {
     path: '/en',
     out: 'en/index.html',
     ogLocale: 'en_US',
     switchTo: { href: '/', hreflang: 'th', label: 'ภาษาไทย' },
-    title: 'Kudo — Loyalty built for LINE',
+    title: 'Kudo · Loyalty built for LINE',
     description:
-      'Kudo — LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, ' +
-      'broadcasts, and automated messages — without asking customers to download anything new.',
-    ogTitle: 'Kudo — Loyalty built for LINE',
+      'Kudo is a LINE-native loyalty platform for Thai SMEs. Points, stamps, segments, ' +
+      'broadcasts and automated messages, without asking customers to download anything new.',
+    ogTitle: 'Kudo · Loyalty built for LINE',
     ogDescription:
       'Your customers are already on LINE. Give them a loyalty program that lives there too. ' +
       'Self-serve setup in under 15 minutes.',
     imageAlt:
-      "Kudo — a loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem.",
+      "A Kudo loyalty program running inside LINE, showing a member's points balance and a reward ready to redeem.",
   },
 };
 
@@ -79,13 +79,13 @@ const legalShell = readFileSync('src/legal.html', 'utf8');
 const LEGAL = {
   privacy: {
     slug: 'privacy',
-    th: { title: 'นโยบายความเป็นส่วนตัว — Kudo', desc: 'Kudo เก็บและใช้ข้อมูลส่วนบุคคลอย่างไร ภายใต้ PDPA ของประเทศไทย' },
-    en: { title: 'Privacy Policy — Kudo', desc: 'How Kudo collects, uses and protects personal data under Thailand\'s PDPA.' },
+    th: { title: 'นโยบายความเป็นส่วนตัว · Kudo', desc: 'Kudo เก็บและใช้ข้อมูลส่วนบุคคลอย่างไร ภายใต้ PDPA ของประเทศไทย' },
+    en: { title: 'Privacy Policy · Kudo', desc: 'How Kudo collects, uses and protects personal data under Thailand\'s PDPA.' },
   },
   terms: {
     slug: 'terms',
-    th: { title: 'ข้อกำหนดการให้บริการ — Kudo', desc: 'ข้อกำหนดการใช้งาน Kudo สำหรับร้านค้า ครอบคลุมแพ็กเกจ ค่าบริการ และความรับผิดชอบ' },
-    en: { title: 'Terms of Service — Kudo', desc: 'The terms governing merchant use of Kudo, covering plans, fees and responsibilities.' },
+    th: { title: 'ข้อกำหนดการให้บริการ · Kudo', desc: 'ข้อกำหนดการใช้งาน Kudo สำหรับร้านค้า ครอบคลุมแพ็กเกจ ค่าบริการ และความรับผิดชอบ' },
+    en: { title: 'Terms of Service · Kudo', desc: 'The terms governing merchant use of Kudo, covering plans, fees and responsibilities.' },
   },
 };
 
@@ -177,7 +177,7 @@ const jsonld = (loc) => JSON.stringify({
 function buildScript(loc) {
   const p = PRICING[loc];
   return `  <script>
-    /* Billing toggle. Copy is baked per locale at build time — see build.mjs. */
+    /* Billing toggle. Copy is baked per locale at build time; see build.mjs. */
     (function () {
       var isAnnual = false;
       var MO = ${JSON.stringify(p.mo)};
