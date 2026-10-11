@@ -261,12 +261,20 @@
     /* ── Hero visual: raised, gently floated ── */
     .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .hero-visuals-wrap {
-      position: relative; width: 100%; height: 420px;
+      position: relative; width: 100%; height: 450px;
       animation: softFloat .75s cubic-bezier(.2,.7,.3,1) both;
+    }
+    /* A soft floor so the two surfaces sit in the same space rather than
+       floating independently. */
+    .hero-visuals-wrap::after {
+      content: '';
+      position: absolute; left: 6%; right: 4%; bottom: -14px; height: 26px;
+      background: radial-gradient(ellipse at center, rgba(40,45,70,.14), transparent 72%);
+      filter: blur(3px); pointer-events: none; z-index: 0;
     }
 
     .mock-phone {
-      position: absolute; bottom: 0; right: 10px; width: 190px;
+      position: absolute; bottom: 0; right: 0; width: 205px;
       background: var(--device); border: none;
       border-radius: var(--r-phone); padding: 10px 8px;
       box-shadow: var(--shadow-md), var(--extrude);
@@ -294,7 +302,10 @@
     .mock-tab { flex: 1; text-align: center; padding: 7px 0; font-size: 8px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mock-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
     .mock-reward-card { margin: 6px 7px 7px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
-    .mock-reward-img { height: 38px; background: var(--brand-tint); border-bottom: none; }
+    .mock-reward-img {
+      height: 38px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/16px no-repeat;
+      border-bottom: none;
+    }
     .mock-reward-body { padding: 6px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
     .mock-reward-row { display: flex; justify-content: space-between; align-items: flex-start; }
     .mock-reward-name { font-size: 9px; font-weight: 700; color: var(--ink); }
@@ -303,7 +314,7 @@
 
     /* Portal browser screen — a raised card */
     .mock-portal-card {
-      position: absolute; top: 0; left: 0; right: 120px;
+      position: absolute; top: 26px; left: 0; right: 182px;
       background: var(--canvas); border: none;
       border-radius: var(--radius-lg); box-shadow: var(--extrude);
       overflow: hidden; z-index: 2;
@@ -313,7 +324,7 @@
     .portal-dot { width: 7px; height: 7px; border-radius: var(--r-circle); background: var(--sunken); border: none; }
     .portal-dot.red, .portal-dot.yellow, .portal-dot.green { background: var(--sunken); }
     .portal-url { flex: 1; background: var(--sunken); border-radius: var(--radius-sm); border: none; box-shadow: var(--inset); padding: 3px 8px; font-size: 7px; color: var(--screen-dim); font-weight: 500; white-space: nowrap; overflow: hidden; }
-    .portal-layout { display: flex; min-height: 270px; }
+    .portal-layout { display: flex; min-height: 0; }
     .portal-sidebar { width: 95px; background: var(--surface); border-right: 1px solid var(--line); padding: 11px 9px 10px; display: flex; flex-direction: column; flex-shrink: 0; }
     .portal-wordmark { font-size: 12px; font-weight: 800; color: var(--brand-ink); letter-spacing: -0.03em; line-height: 1.2; padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
     .portal-wordmark-sub { font-size: 7px; color: var(--screen-dim); font-weight: 500; margin-top: 2px; }
@@ -322,7 +333,7 @@
     .portal-nav-icon { width: 12px; height: 12px; opacity: .55; flex-shrink: 0; }
     .portal-nav-item.active .portal-nav-icon { opacity: 1; }
     .portal-signout { display: flex; align-items: center; gap: 7px; padding: 6px 7px; font-size: 9px; font-weight: 500; color: var(--screen-dim); margin-top: auto; border-top: 1px solid var(--line); padding-top: 8px; }
-    .portal-main { flex: 1; min-width: 0; background: var(--surface-muted); padding: 11px; overflow: hidden; }
+    .portal-main { flex: 1; min-width: 0; background: var(--surface-muted); padding: 11px 12px 16px; overflow: hidden; }
     .portal-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
     .portal-page-title { font-size: 13px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
     .portal-merchant-name { font-size: 8px; color: var(--muted); font-weight: 600; background: var(--surface); border: none; box-shadow: var(--shadow-sm); border-radius: var(--radius-sm); padding: 3px 8px; }
@@ -437,7 +448,10 @@
     .mbig-tab { flex: 1; text-align: center; padding: 9px 0; font-size: 10px; font-weight: 600; color: var(--screen-dim); border-bottom: 2px solid transparent; }
     .mbig-tab.active { color: var(--brand-ink); border-bottom-color: var(--brand); font-weight: 800; }
     .mbig-reward-card { margin: 8px 9px 9px; background: var(--screen-card); border-radius: var(--radius-sm); border: none; box-shadow: var(--shadow-sm); overflow: hidden; }
-    .mbig-reward-img { height: 50px; background: var(--brand-tint); border-bottom: none; }
+    .mbig-reward-img {
+      height: 50px; background: var(--brand-tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A67E4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z'/%3E%3Cpath d='M6 2v2M10 2v2M14 2v2'/%3E%3C/svg%3E") center/22px no-repeat;
+      border-bottom: none;
+    }
     .mbig-reward-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
     .mbig-reward-row { display: flex; justify-content: space-between; align-items: flex-start; }
     .mbig-reward-name { font-size: 11px; font-weight: 700; color: var(--ink); }
@@ -634,9 +648,9 @@
     @media (max-width: 768px) {
       .hero .container { grid-template-columns: 1fr; gap: 44px; }
       .hero-visual { order: -1; }
-      .hero-visuals-wrap { height: 340px; }
+      .hero-visuals-wrap { height: 360px; }
       .mock-phone { width: 190px; transform: scale(.853); transform-origin: bottom right; }
-      .mock-portal-card { right: 96px; left: 0; }
+      .mock-portal-card { right: 150px; left: 0; top: 14px; }
       .game-cards { grid-template-columns: 1fr; }
       section { padding: var(--section-y) 18px; }
       .hero { padding: 60px 18px var(--section-y); }
@@ -650,10 +664,12 @@
       .steps { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary, .hero-actions .btn-secondary { justify-content: center; }
-      .hero-visuals-wrap { height: 290px; }
+      .hero-visuals-wrap { height: 300px; }
       .mock-phone { width: 190px; transform: scale(.716); transform-origin: bottom right; }
-      .mock-portal-card { right: 80px; left: 0; }
-      .portal-sidebar { width: 76px; }
+      /* at this size the sidebar costs more than it tells — drop it and
+         give the segment rows the width they need to stay readable */
+      .mock-portal-card { right: 128px; left: 0; top: 10px; }
+      .mock-portal-card .portal-sidebar { display: none; }
       .portal-layout { min-height: 0; height: auto; }
       .mock-portal-card .portal-seg-card:nth-last-child(1),
       .mock-portal-card .portal-seg-card:nth-last-child(2) { display: none; }
